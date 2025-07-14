@@ -245,32 +245,7 @@
                 console.log(`Current window.selectedShift: ${window.selectedShift} (type: ${typeof window.selectedShift})`);
                 return selectedShift;
             };
-<<<<<<< HEAD
-=======
         }
-<<<<<<< HEAD
-        
-        function debugShift() {
-            console.log('=== SHIFT DEBUGGING ===');
-            console.log(`selectedShift variable: ${selectedShift} (${typeof selectedShift})`);
-            
-            const selectedBtn = document.querySelector('.shift-btn.selected');
-            if (selectedBtn) {
-                console.log(`Selected button shift: ${selectedBtn.getAttribute('data-shift')}`);
-            } else {
-                console.log(`No button has 'selected' class`);
-            }
-            
-            // Test all buttons
-            document.querySelectorAll('.shift-btn').forEach((btn, i) => {
-                console.log(`Button ${i}: shift=${btn.getAttribute('data-shift')}, classes=${btn.className}`);
-            });
-            
-            alert(`selectedShift = ${selectedShift}\nType: ${typeof selectedShift}`);
->>>>>>> bc59a96 (oke mantap ini ikh dan ikk shiftnya udah ok banget)
-        }
-=======
->>>>>>> 69b7eec (jangkrik)
 
         function toggleSelectAll() {
             const checkboxes = document.querySelectorAll('.row-checkbox');

@@ -235,32 +235,7 @@
                     console.log(`Current selectedShift: ${selectedShift} (type: ${typeof selectedShift})`);
                     return selectedShift;
                 };
-<<<<<<< HEAD
-=======
             }
-<<<<<<< HEAD
-            
-            function debugShift() {
-                console.log('=== SHIFT DEBUGGING ===');
-                console.log(`selectedShift variable: ${selectedShift} (${typeof selectedShift})`);
-                
-                const selectedBtn = document.querySelector('.shift-btn.selected');
-                if (selectedBtn) {
-                    console.log(`Selected button shift: ${selectedBtn.getAttribute('data-shift')}`);
-                } else {
-                    console.log(`No button has 'selected' class`);
-                }
-                
-                // Test all buttons
-                document.querySelectorAll('.shift-btn').forEach((btn, i) => {
-                    console.log(`Button ${i}: shift=${btn.getAttribute('data-shift')}, classes=${btn.className}`);
-                });
-                
-                alert(`selectedShift = ${selectedShift}\nType: ${typeof selectedShift}`);
->>>>>>> bc59a96 (oke mantap ini ikh dan ikk shiftnya udah ok banget)
-            }
-=======
->>>>>>> 69b7eec (jangkrik)
 
             function updateProcessLogCount() {
                 const checkedBoxes = document.querySelectorAll('.row-checkbox:checked');
@@ -449,21 +424,11 @@
                                     log.includes('✅ IKK AUTOMATION COMPLETED SUCCESSFULLY!') ||
                                     log.includes('✅ Automation completed successfully!') ||
                                     log.includes('✅ IKK completed!') ||
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 69b7eec (jangkrik)
                                     log.includes('⚡⚡⚡ LIGHTNING AUTOMATION COMPLETED! ⚡⚡⚡') ||
                                     log.includes('✅ IKK AUTOMATION COMPLETED SUCCESSFULLY!') ||
                                     log.includes('🎉 AUTOMATION SELESAI! Tekan Enter untuk menutup browser...') ||
                                     log.includes('IKK AUTOMATION SUCCESS') ||
                                     log.includes('BERHASIL SUBMIT IKK!')
-<<<<<<< HEAD
-=======
-                                    log.includes('⚡⚡⚡ LIGHTNING AUTOMATION COMPLETED! ⚡⚡⚡')
->>>>>>> 81d0bb7 (best lah siap maspro)
-=======
->>>>>>> 69b7eec (jangkrik)
                                 ) {
                                     if (!window.completionNotificationShown) {
                                         window.completionNotificationShown = true;
@@ -512,8 +477,6 @@
                 notification.id = 'successNotification';
                 notification.innerHTML = `
                     <div class="text-center">
-<<<<<<< HEAD
-<<<<<<< HEAD
                         <div class="mb-2">
                             <i class="bi bi-fire" style="font-size: 2rem; color: #ffffff; text-shadow: 0 0 10px rgba(255,255,255,0.5);"></i>
                         </div>
@@ -527,30 +490,6 @@
                         </div>
                         <button class="btn btn-light btn-sm px-3" onclick="closeNotification('successNotification')" style="border-radius: 15px; font-weight: 600;">
                             <i class="bi bi-fire me-1"></i>Great!
-=======
-                        <div class="mb-3">
-                            <i class="bi bi-fire" style="font-size: 4rem; color: #fff; text-shadow: 0 0 20px rgba(255,80,80,0.5);"></i>
-=======
-                        <div class="mb-2">
-                            <i class="bi bi-fire" style="font-size: 2rem; color: #ffffff; text-shadow: 0 0 10px rgba(255,255,255,0.5);"></i>
->>>>>>> 69b7eec (jangkrik)
-                        </div>
-                        <div class="mb-2">
-                            <h4 class="mb-1" style="font-size: 1.2rem; font-weight: 700; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">
-                                🔥 IKK-API COMPLETED! 🔥
-                            </h4>
-                        </div>
-<<<<<<< HEAD
-                        <button class="btn btn-light btn-lg px-4 mt-3" onclick="closeNotification('successNotification')" style="border-radius: 25px; font-weight: 600;">
-                            <i class="bi bi-x-lg me-2"></i>Dismiss
->>>>>>> 81d0bb7 (best lah siap maspro)
-=======
-                        <div class="mb-2" style="font-size: 0.9rem; opacity: 0.95;">
-                            <div class="mb-1">⚡ Hot work automation finished!</div>
-                        </div>
-                        <button class="btn btn-light btn-sm px-3" onclick="closeNotification('successNotification')" style="border-radius: 15px; font-weight: 600;">
-                            <i class="bi bi-fire me-1"></i>Great!
->>>>>>> 69b7eec (jangkrik)
                         </button>
                     </div>
                 `;

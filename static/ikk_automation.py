@@ -84,7 +84,6 @@ def setup_date(selected_date=None):
     today = datetime.date.today()
     return today.strftime('%d/%m/%Y')
 
-<<<<<<< HEAD
 def calculate_expiry_date(work_date_str):
     """🗓️ SMART EXPIRY DATE CALCULATOR - ALWAYS 31 JULI 2027 (TIDAK SAMA DENGAN HARI INI) ⚡"""
     try:
@@ -406,60 +405,11 @@ def set_expiry_date_field(page, date_str, input_id='ahmgawpm003_tanggal_akhir_be
                     return field ? field.value : 'field_not_found';
                 }} catch(e) {{
                     return 'verification_error';
-=======
-def set_date_field(page, date_str):
-    """🚀 ULTRA-ROBUST IKK DATE SETTING - FAST & BULLETPROOF! ⚡"""
-    input_id = "ahmgawpm003_tanggal_pelaksanaan_pekerjaan_khusus_request_kontraktor"
-    
-    print(f"🚀 ULTRA-ROBUST MODE: Setting date {date_str}")
-    
-    try:
-        # Method 1: LIGHTNING-FAST JavaScript injection ⚡
-        success = page.evaluate(f"""
-            (function() {{
-                const input = document.getElementById('{input_id}');
-                if (input) {{
-                    // INSTANT enable and set value
-                    input.removeAttribute('readonly');
-                    input.removeAttribute('disabled');
-                    input.value = '{date_str}';
-                    input.setAttribute('value', '{date_str}');
-                    
-                    // Fire essential events instantly
-                    ['input', 'change', 'blur', 'keyup', 'keydown', 'focus'].forEach(function(eventType) {{
-                        input.dispatchEvent(new Event(eventType, {{ bubbles: true, cancelable: true }}));
-                    }});
-                    
-                    // Trigger IKK validation functions
-                    try {{
-                        if (typeof ahmgawpm003_dateChange === 'function') ahmgawpm003_dateChange();
-                        if (typeof ahmgawpm003_checkDate === 'function') ahmgawpm003_checkDate();
-                        if (typeof ahmgawpm003_validateForm === 'function') ahmgawpm003_validateForm();
-                        if (typeof validateDate === 'function') validateDate();
-                    }} catch(e) {{ 
-                        console.log('IKK validation function not found:', e); 
-                    }}
-                    
-                    // INSTANTLY enable Add Personnel button
-                    var addBtns = Array.from(document.querySelectorAll('button')).filter(function(btn) {{
-                        return btn.textContent.includes('Add Personnel') || btn.textContent.includes('Add');
-                    }});
-                    addBtns.forEach(function(btn) {{
-                        btn.removeAttribute('disabled');
-                        btn.disabled = false;
-                        btn.style.pointerEvents = 'auto';
-                        btn.style.opacity = '1';
-                    }});
-                    
-                    console.log('🚀 IKK Date set instantly:', input.value);
-                    return true;
->>>>>>> bc59a96 (oke mantap ini ikh dan ikk shiftnya udah ok banget)
                 }}
             }})()
         """)
         print(f"✅ Final expiry date value: '{final_value}'")
         
-<<<<<<< HEAD
         # Enable Add Personnel button (same as set_date_field)
         page.evaluate("""
             var addBtns = Array.from(document.querySelectorAll('button')).filter(function(btn) {
@@ -473,271 +423,9 @@ def set_date_field(page, date_str):
             });
         """)
         
-=======
-        # Quick verification
-        if success:
-            current_value = page.locator(f"#{input_id}").input_value()
-            if current_value == date_str:
-                print(f"🚀 LIGHTNING SUCCESS: {current_value}")
-                return True
-        
-        # Method 2: ROBUST Calendar Navigation with Speed Optimizations ⚡
-        print(f"🚀 ROBUST FALLBACK: Enhanced calendar navigation...")
-        calendar_icon = page.locator(f"#{input_id}_span")
-        if calendar_icon.is_visible():
-            calendar_icon.click()
-            page.wait_for_timeout(300)  # Minimal wait for calendar
-            
-            # Parse target date components
-            day_str, month_str, year_str = date_str.split('/')
-            target_day = int(day_str)
-            target_month = int(month_str)
-            target_year = int(year_str)
-            
-            print(f"⚡ Target: Day={target_day}, Month={target_month}, Year={target_year}")
-            
-            # FAST Year Navigation
-            max_year_clicks = 5
-            year_clicks = 0
-            
-            while year_clicks < max_year_clicks:
-                try:
-                    # Find year display (multiple patterns for robustness)
-                    year_selectors = [
-                        ".calendar-year", ".year", ".ui-datepicker-year",
-                        "select.ui-datepicker-year", "span.ui-datepicker-year"
-                    ]
-                    
-                    current_year = None
-                    for year_sel in year_selectors:
-                        try:
-                            year_element = page.locator(year_sel).first
-                            if year_element.is_visible():
-                                current_year_text = year_element.text_content()
-                                current_year = int(re.search(r'\d{4}', current_year_text).group())
-                                break
-                        except:
-                            continue
-                    
-                    if current_year and current_year == target_year:
-                        print(f"⚡ Year {target_year} found!")
-                        break
-                    elif current_year and current_year < target_year:
-                        # Navigate forward
-                        next_year_selectors = [
-                            ".calendar-next-year", ".next-year", ".ui-datepicker-next",
-                            "a.ui-datepicker-next", "button.next"
-                        ]
-                        clicked = False
-                        for sel in next_year_selectors:
-                            try:
-                                next_btn = page.locator(sel).first
-                                if next_btn.is_visible():
-                                    next_btn.click()
-                                    clicked = True
-                                    break
-                            except:
-                                continue
-                        if not clicked:
-                            break
-                    elif current_year and current_year > target_year:
-                        # Navigate backward
-                        prev_year_selectors = [
-                            ".calendar-prev-year", ".prev-year", ".ui-datepicker-prev",
-                            "a.ui-datepicker-prev", "button.prev"
-                        ]
-                        clicked = False
-                        for sel in prev_year_selectors:
-                            try:
-                                prev_btn = page.locator(sel).first
-                                if prev_btn.is_visible():
-                                    prev_btn.click()
-                                    clicked = True
-                                    break
-                            except:
-                                continue
-                        if not clicked:
-                            break
-                    else:
-                        break
-                        
-                except Exception as e:
-                    print(f"⚡ Year navigation error: {e}")
-                    break
-                    
-                year_clicks += 1
-                page.wait_for_timeout(150)  # Minimal delay for performance
-            
-            # FAST Month Navigation
-            max_month_clicks = 12
-            month_clicks = 0
-            
-            while month_clicks < max_month_clicks:
-                try:
-                    # Find month display (multiple patterns)
-                    month_selectors = [
-                        ".calendar-month", ".month", ".ui-datepicker-month",
-                        "select.ui-datepicker-month", "span.ui-datepicker-month"
-                    ]
-                    
-                    current_month = None
-                    for month_sel in month_selectors:
-                        try:
-                            month_element = page.locator(month_sel).first
-                            if month_element.is_visible():
-                                month_text = month_element.text_content().strip()
-                                # Fast month mapping
-                                month_map = {
-                                    'january': 1, 'jan': 1, 'februari': 2, 'feb': 2, 'maret': 3, 'mar': 3,
-                                    'april': 4, 'apr': 4, 'mei': 5, 'may': 5, 'juni': 6, 'jun': 6,
-                                    'juli': 7, 'jul': 7, 'agustus': 8, 'aug': 8, 'september': 9, 'sep': 9,
-                                    'oktober': 10, 'oct': 10, 'november': 11, 'nov': 11, 'desember': 12, 'dec': 12
-                                }
-                                month_lower = month_text.lower()
-                                for month_name, month_num in month_map.items():
-                                    if month_name in month_lower:
-                                        current_month = month_num
-                                        break
-                                
-                                # Fallback: extract number
-                                if not current_month:
-                                    month_match = re.search(r'\d+', month_text)
-                                    if month_match:
-                                        current_month = int(month_match.group())
-                                break
-                        except:
-                            continue
-                    
-                    if current_month and current_month == target_month:
-                        print(f"⚡ Month {target_month} found!")
-                        break
-                    elif current_month and current_month < target_month:
-                        # Navigate forward
-                        next_month_selectors = [
-                            ".calendar-next", ".next-month", ".ui-datepicker-next",
-                            "a.ui-datepicker-next", "button.next", ".ui-icon-circle-triangle-e"
-                        ]
-                        clicked = False
-                        for sel in next_month_selectors:
-                            try:
-                                next_btn = page.locator(sel).first
-                                if next_btn.is_visible():
-                                    next_btn.click()
-                                    clicked = True
-                                    break
-                            except:
-                                continue
-                        if not clicked:
-                            break
-                    elif current_month and current_month > target_month:
-                        # Navigate backward
-                        prev_month_selectors = [
-                            ".calendar-prev", ".prev-month", ".ui-datepicker-prev",
-                            "a.ui-datepicker-prev", "button.prev", ".ui-icon-circle-triangle-w"
-                        ]
-                        clicked = False
-                        for sel in prev_month_selectors:
-                            try:
-                                prev_btn = page.locator(sel).first
-                                if prev_btn.is_visible():
-                                    prev_btn.click()
-                                    clicked = True
-                                    break
-                            except:
-                                continue
-                        if not clicked:
-                            break
-                    else:
-                        break
-                        
-                except Exception as e:
-                    print(f"⚡ Month navigation error: {e}")
-                    break
-                    
-                month_clicks += 1
-                page.wait_for_timeout(150)  # Minimal delay
-            
-            # MULTI-STRATEGY Day Selection ⚡
-            day_selectors = [
-                f"td.day:has-text('{target_day}'):not(.disabled):not(.ui-datepicker-other-month)",
-                f"td:has-text('{target_day}'):not(.disabled):not(.ui-datepicker-other-month)",
-                f"a:has-text('{target_day}'):not(.ui-state-disabled)",
-                f"td.ui-datepicker-days-cell:has-text('{target_day}'):not(.ui-datepicker-other-month)",
-                f"span.day:has-text('{target_day}'):not(.disabled)"
-            ]
-            
-            day_clicked = False
-            for selector in day_selectors:
-                try:
-                    day_elements = page.locator(selector)
-                    count = day_elements.count()
-                    
-                    for i in range(count):
-                        day_element = day_elements.nth(i)
-                        if day_element.is_visible():
-                            day_element.click()
-                            print(f"⚡ Day {target_day} clicked successfully!")
-                            day_clicked = True
-                            break
-                    
-                    if day_clicked:
-                        break
-                except Exception as e:
-                    print(f"⚡ Day selector {selector} failed: {e}")
-                    continue
-            
-            if not day_clicked:
-                print(f"⚠️ Trying JavaScript fallback for day {target_day}...")
-                # JavaScript fallback for day selection
-                page.evaluate(f"""
-                    const dayElements = Array.from(document.querySelectorAll('td, a, span'));
-                    const targetDay = dayElements.find(el => 
-                        el.textContent.trim() === '{target_day}' && 
-                        !el.classList.contains('disabled') &&
-                        !el.classList.contains('ui-datepicker-other-month')
-                    );
-                    if (targetDay) {{
-                        targetDay.click();
-                        console.log('⚡ Day clicked via JS fallback');
-                    }}
-                """)
-        
-        # Method 3: LIGHTNING Direct Input Fallback ⚡
-        print(f"🚀 DIRECT INPUT FALLBACK")
-        input_element = page.locator(f"#{input_id}")
-        if input_element.is_visible():
-            input_element.clear()
-            input_element.fill(date_str)
-            input_element.press("Tab")
-            print(f"🚀 DIRECT INPUT COMPLETED")
-            
-        # INSTANT form enable - force enable all form elements ⚡
-        page.evaluate("""
-            (function() {
-                // INSTANT form enable - no delays
-                document.querySelectorAll('button[disabled], input[disabled]').forEach(function(el) {
-                    el.removeAttribute('disabled');
-                    el.disabled = false;
-                });
-                
-                // Specifically target Add Personnel buttons
-                Array.from(document.querySelectorAll('button')).forEach(function(btn) {
-                    if (btn.textContent.includes('Add Personnel') || btn.textContent.includes('Add')) {
-                        btn.removeAttribute('disabled');
-                        btn.disabled = false;
-                        btn.style.pointerEvents = 'auto';
-                        btn.style.opacity = '1';
-                    }
-                });
-            })()
-        """)
-        
-        print(f"🚀 ULTRA-ROBUST date setting completed!")
->>>>>>> bc59a96 (oke mantap ini ikh dan ikk shiftnya udah ok banget)
         return True
         
     except Exception as e:
-<<<<<<< HEAD
         print(f"⚠️ Human-like expiry date setting error: {e}")
         
         # Emergency fallback: direct input
@@ -1011,10 +699,6 @@ def set_date_field(page, date_str):
         except:
             return False
 
-=======
-        print(f"🚀 Date setting error (continuing): {e}")
-        return True  # Continue anyway for maximum speed
->>>>>>> bc59a96 (oke mantap ini ikh dan ikk shiftnya udah ok banget)
 
 def run(playwright: Playwright, personnel_data, ikk_category="IA", work_date="30", deskripsi="MELTING REPAIR", selected_shift=1):
     """🚀 IKK AUTOMATION MAIN - ULTRA FAST & ROBUST ⚡"""
@@ -1302,7 +986,6 @@ def run(playwright: Playwright, personnel_data, ikk_category="IA", work_date="30
         
         set_date_field(page, date_str)
 
-<<<<<<< HEAD
         # 🛡️ SET SAFETY INDUCTION ONCE FOR THE ENTIRE FORM (NOT PER PERSONNEL) 🛡️
         print("🛡️ SETTING SAFETY INDUCTION STATUS (ONCE FOR ENTIRE FORM)...")
         
@@ -1374,143 +1057,6 @@ def run(playwright: Playwright, personnel_data, ikk_category="IA", work_date="30
                                 console.log('✅ Safety status set to fallback:', firstOption.value);
                                 setValue = true;
                             }
-=======
-        # ⚡ ULTRA-FAST PERSONNEL ADDITION - ZERO DELAYS! ⚡
-        print(f"👥 ULTRA-FAST PERSONNEL: {len(personnel_data)} people")
-        
-        for i, (name, nik) in enumerate(personnel_data, 1):
-            print(f"  ⚡ Person {i}: {name}")
-            
-            try:
-                # Click Add Personnel - no wait needed
-                add_personnel_button = page.get_by_role("button", name="+ Add Personnel")
-                add_personnel_button.click()
-                
-                # Wait for modal - minimal timeout
-                page.wait_for_selector("#ahmgawpm003_nik_paspor_pekerja_add", timeout=3000)
-                
-                # ⚡ INSTANT BULK FILL - ALL FIELDS AT ONCE! ⚡
-                success = page.evaluate(f"""
-                    (function() {{
-                        // ULTRA-FAST bulk fill using JavaScript - NO DELAYS!
-                        const fields = {{
-                            'ahmgawpm003_nik_paspor_pekerja_add': '{nik}',
-                            'ahmgawpm003_nama_pekerja_add': '{name}',
-                            'ahmgawpm003_nomor_hp_pekerja_add': '08123456789',
-                            'ahmgawpm003_email_pekerja_add': 'worker@indonesia.com',
-                            'ahmgawpm003_seksi_add': 'HAI member',
-                            'ahmgawpm003_departemen_add': 'HAI member',
-                            'ahmgawpm003_divisi_add': 'HAI member'
-                        }};
-                        
-                        // Fill all text fields INSTANTLY
-                        let fieldsSet = 0;
-                        Object.entries(fields).forEach(([id, value]) => {{
-                            const field = document.getElementById(id);
-                            if (field) {{
-                                field.value = value;
-                                field.setAttribute('value', value);
-                                
-                                // Fire essential events only
-                                ['input', 'change', 'blur'].forEach(eventType => {{
-                                    field.dispatchEvent(new Event(eventType, {{ bubbles: true }}));
-                                }});
-                                fieldsSet++;
-                            }}
-                        }});
-                        
-                        // Set certification dropdown INSTANTLY
-                        const certField = document.getElementById('ahmgawpm003_kebutuhan_sertifikasi_add');
-                        if (certField) {{
-                            certField.value = 'N';
-                            certField.dispatchEvent(new Event('change', {{ bubbles: true }}));
-                            fieldsSet++;
-                        }}
-                        
-                        console.log('INSTANT FILL: Set ' + fieldsSet + ' fields for {name}');
-                        return fieldsSet;
-                    }})()
-                """)
-                
-                print(f"    ⚡ INSTANT FILL: {success} fields set")
-                
-                # ZERO delay submission - INSTANT! ⚡
-                submit_btn = page.locator("#ahmgawpm003_submit_button_add_modal")
-                submit_btn.click()
-                
-                # Minimal wait for modal to close - ULTRA FAST!
-                page.wait_for_timeout(100)
-                print(f"    ✅ INSTANT ADD: {name}")
-                
-            except Exception as e:
-                print(f"    ❌ Failed: {name} - {str(e)[:50]}...")
-                # Quick error recovery - take screenshot and continue
-                try:
-                    page.screenshot(path=f'error_person_{i}.png')
-                except:
-                    pass
-                continue
-
-        # ⚡ INSTANT AREA & TOOL ADDITION - ZERO DELAYS! ⚡
-        print("🏢 INSTANT WORK AREA...")
-        try:
-            page.get_by_role("button", name="+ Add Area").click()
-            page.wait_for_timeout(100)  # Minimal wait
-            page.locator("#ahmgawpm003_add_area_modal .btn-lookup").click()
-            page.wait_for_timeout(200)  # Brief wait for lookup
-            page.get_by_role("cell", name="G", exact=True).click()
-            page.locator("#ahmgawpm003_submit_button_add_area_modal").click()
-            print("⚡ INSTANT: Work area added")
-        except Exception as e:
-            print(f"⚠️ Area addition failed: {e}")
-
-        print("🔧 ULTRA-INSTANT TOOLS...")
-        try:
-            page.get_by_role("button", name="+ Add Tool").click()
-            page.wait_for_timeout(150)  # Slightly longer wait for modal to fully load
-            
-            # COMPREHENSIVE tool filling - ALL FIELDS COVERED!
-            tool_success = page.evaluate("""
-                (function() {
-                    try {
-                        // Find ALL possible tool fields
-                        const toolId = document.getElementById('ahmgawpm003_tool_id_add');
-                        const toolDesc = document.getElementById('ahmgawpm003_deskripsi_alat_add');
-                        const permitFlag = document.getElementById('ahmgawpm003_permit_flag_add');
-                        
-                        // Additional fields that might be required
-                        const toolName = document.getElementById('ahmgawpm003_nama_alat_add') || 
-                                        document.querySelector('input[name*="nama_alat"]') ||
-                                        document.querySelector('input[placeholder*="nama"]');
-                        const toolType = document.getElementById('ahmgawpm003_jenis_alat_add') ||
-                                        document.querySelector('select[name*="jenis"]');
-                        const toolQty = document.getElementById('ahmgawpm003_jumlah_add') ||
-                                       document.querySelector('input[name*="jumlah"]') ||
-                                       document.querySelector('input[type="number"]');
-                        
-                        let fieldsSet = 0;
-                        
-                        // Fill Tool ID
-                        if (toolId) {
-                            toolId.value = '1';
-                            toolId.setAttribute('value', '1');
-                            ['input', 'change', 'blur', 'keyup'].forEach(eventType => {
-                                toolId.dispatchEvent(new Event(eventType, {bubbles: true}));
-                            });
-                            console.log('Tool ID set: 1');
-                            fieldsSet++;
-                        }
-                        
-                        // Fill Tool Description
-                        if (toolDesc) {
-                            toolDesc.value = 'BASIC TOOLS';
-                            toolDesc.setAttribute('value', 'BASIC TOOLS');
-                            ['input', 'change', 'blur', 'keyup'].forEach(eventType => {
-                                toolDesc.dispatchEvent(new Event(eventType, {bubbles: true}));
-                            });
-                            console.log('Tool Description set: BASIC TOOLS');
-                            fieldsSet++;
->>>>>>> bc59a96 (oke mantap ini ikh dan ikk shiftnya udah ok banget)
                         }
                     }
                     
@@ -1585,7 +1131,6 @@ def run(playwright: Playwright, personnel_data, ikk_category="IA", work_date="30
                         cert.lower() not in ['', 'n/a', 'none', '-', 'null'] and
                         cert != 'None' and exp_cert != 'None'):  # Handle pandas None strings
                         
-<<<<<<< HEAD
                         cert_lookup[nik] = {
                             'cert': cert,
                             'exp_cert': exp_cert
@@ -4293,161 +3838,6 @@ def run(playwright: Playwright, personnel_data, ikk_category="IA", work_date="30
             except:
                 pass
 
-=======
-                        // Fill Tool Name if exists
-                        if (toolName) {
-                            toolName.value = 'HAND TOOLS';
-                            toolName.setAttribute('value', 'HAND TOOLS');
-                            ['input', 'change', 'blur'].forEach(eventType => {
-                                toolName.dispatchEvent(new Event(eventType, {bubbles: true}));
-                            });
-                            console.log('Tool Name set: HAND TOOLS');
-                            fieldsSet++;
-                        }
-                        
-                        // Fill Tool Type if exists
-                        if (toolType) {
-                            toolType.value = 'Manual';
-                            toolType.dispatchEvent(new Event('change', {bubbles: true}));
-                            console.log('Tool Type set: Manual');
-                            fieldsSet++;
-                        }
-                        
-                        // Fill Quantity if exists
-                        if (toolQty) {
-                            toolQty.value = '1';
-                            toolQty.setAttribute('value', '1');
-                            ['input', 'change', 'blur'].forEach(eventType => {
-                                toolQty.dispatchEvent(new Event(eventType, {bubbles: true}));
-                            });
-                            console.log('Tool Quantity set: 1');
-                            fieldsSet++;
-                        }
-                        
-                        // Fill Permit Flag (most important!)
-                        if (permitFlag) {
-                            permitFlag.value = 'Tidak';
-                            permitFlag.dispatchEvent(new Event('change', {bubbles: true}));
-                            permitFlag.dispatchEvent(new Event('blur', {bubbles: true}));
-                            console.log('Permit Flag set: Tidak');
-                            fieldsSet++;
-                        }
-                        
-                        // Fill "Butuh Izin Alat" dropdown - CRITICAL FIELD!
-                        const butuhIzin = document.getElementById('ahmgawpm003_butuh_izin_alat_add') ||
-                                         document.querySelector('select[name*="butuh_izin"]') ||
-                                         document.querySelector('select[aria-label*="Butuh Izin"]') ||
-                                         document.querySelector('select option[value="Tidak"]').parentElement;
-                        
-                        if (butuhIzin) {
-                            butuhIzin.value = 'Tidak';
-                            butuhIzin.dispatchEvent(new Event('change', {bubbles: true}));
-                            butuhIzin.dispatchEvent(new Event('blur', {bubbles: true}));
-                            console.log('Butuh Izin Alat set: Tidak');
-                            fieldsSet++;
-                        }
-                        
-                        // Also try to find and fill any other required fields
-                        const allInputs = document.querySelectorAll('#ahmgawpm003_add_tool_modal input[required], #ahmgawpm003_add_tool_modal select[required]');
-                        allInputs.forEach(function(input, index) {
-                            if (!input.value && input.type !== 'hidden') {
-                                if (input.type === 'text' || input.type === 'textarea') {
-                                    input.value = 'DEFAULT';
-                                    input.dispatchEvent(new Event('input', {bubbles: true}));
-                                } else if (input.type === 'number') {
-                                    input.value = '1';
-                                    input.dispatchEvent(new Event('input', {bubbles: true}));
-                                } else if (input.tagName === 'SELECT') {
-                                    if (input.options.length > 1) {
-                                        input.selectedIndex = 1;
-                                        input.dispatchEvent(new Event('change', {bubbles: true}));
-                                    }
-                                }
-                                console.log('Additional field filled:', input.name || input.id);
-                                fieldsSet++;
-                            }
-                        });
-                        
-                        // FORCE ENABLE submit button after all fields filled
-                        const submitBtn = document.getElementById('ahmgawpm003_submit_button_add_tool_modal');
-                        if (submitBtn) {
-                            submitBtn.removeAttribute('disabled');
-                            submitBtn.disabled = false;
-                            submitBtn.style.pointerEvents = 'auto';
-                            submitBtn.style.opacity = '1';
-                            console.log('Submit button FORCE ENABLED');
-                        }
-                        
-                        console.log('COMPREHENSIVE: ' + fieldsSet + ' total tool fields filled');
-                        return fieldsSet;
-                    } catch(e) {
-                        console.log('Tool fill error:', e);
-                        return 0;
-                    }
-                })()
-            """)
-            
-            print(f"    ⚡ COMPREHENSIVE FILL: {tool_success} tool fields set")
-            
-            # Brief wait for all fields to process
-            page.wait_for_timeout(200)
-            
-            # FORCE ENABLE submit button before clicking
-            page.evaluate("""
-                (function() {
-                    const submitBtn = document.getElementById('ahmgawpm003_submit_button_add_tool_modal');
-                    if (submitBtn) {
-                        submitBtn.removeAttribute('disabled');
-                        submitBtn.disabled = false;
-                        submitBtn.style.pointerEvents = 'auto';
-                        submitBtn.style.opacity = '1';
-                        submitBtn.classList.remove('disabled');
-                        console.log('Submit button FORCE ENABLED before click');
-                    }
-                })()
-            """)
-            
-            # INSTANT submit - try multiple methods!
-            try:
-                # Method 1: Direct click
-                submit_btn = page.locator("#ahmgawpm003_submit_button_add_tool_modal")
-                submit_btn.click()
-                print("⚡ SUBMIT: Direct click successful")
-            except Exception as e1:
-                print(f"⚠️ Direct click failed: {e1}")
-                try:
-                    # Method 2: JavaScript click
-                    page.evaluate("""
-                        document.getElementById('ahmgawpm003_submit_button_add_tool_modal').click();
-                    """)
-                    print("⚡ SUBMIT: JavaScript click successful")
-                except Exception as e2:
-                    print(f"⚠️ JavaScript click failed: {e2}")
-                    try:
-                        # Method 3: Force submit via function call
-                        page.evaluate("""
-                            if (typeof ahmgawpm003_submitTool === 'function') {
-                                ahmgawpm003_submitTool();
-                                console.log('SUBMIT: Function call successful');
-                            }
-                        """)
-                        print("⚡ SUBMIT: Function call successful")
-                    except Exception as e3:
-                        print(f"⚠️ All submit methods failed: {e3}")
-            
-            page.wait_for_timeout(150)  # Brief wait for modal close
-            print("⚡ ULTRA-INSTANT: Tools added")
-            
-        except Exception as e:
-            print(f"⚠️ Tool addition failed: {e}")
-            # Try screenshot for debugging
-            try:
-                page.screenshot(path='tool_error.png')
-                print("📸 Tool error screenshot saved")
-            except:
-                pass
-
->>>>>>> bc59a96 (oke mantap ini ikh dan ikk shiftnya udah ok banget)
         # ⚡ ULTRA-INSTANT FINAL SUBMISSION - BULLETPROOF! ⚡
         print("📋 ULTRA-INSTANT FINAL SUBMISSION...")
         try:
@@ -4480,8 +3870,6 @@ def run(playwright: Playwright, personnel_data, ikk_category="IA", work_date="30
             page.get_by_role("button", name=" Submit").click()
             print("⚡ SUBMIT CLICKED!")
             
-<<<<<<< HEAD
-<<<<<<< HEAD
             # ENHANCED ROBUST COMPLETION CHECK WITH MULTIPLE STRATEGIES
             print("⏳ ENHANCED completion verification...")
             success_found = False
@@ -4504,43 +3892,10 @@ def run(playwright: Playwright, personnel_data, ikk_category="IA", work_date="30
                         print(f"✅ SUCCESS NOTIFICATION: {notification_text}")
                         success_found = True
                         completion_method = f"notification_{i+1}"
-=======
-            # FAST success verification with multiple strategies
-            print("⏳ FAST completion check...")
-=======
-            # ENHANCED ROBUST COMPLETION CHECK WITH MULTIPLE STRATEGIES
-            print("⏳ ENHANCED completion verification...")
->>>>>>> 69b7eec (jangkrik)
-            success_found = False
-            completion_method = "unknown"
-            
-            # Strategy 1: Quick success message check (with retry)
-            print("🔍 Strategy 1: Checking success notifications...")
-            try:
-                success_selectors = [
-                    ".alert-success", ".success-message", ".notification.success",
-                    "[class*='success']", "div:has-text('berhasil')", ".swal2-success",
-                    ".toast-success", "[role='alert']:has-text('berhasil')",
-                    ".alert.alert-success", ".success", ".completed"
-                ]
-                
-                for i, selector in enumerate(success_selectors):
-                    try:
-                        page.wait_for_selector(selector, timeout=1000)
-                        notification_text = page.locator(selector).text_content()
-                        print(f"✅ SUCCESS NOTIFICATION: {notification_text}")
-                        success_found = True
-<<<<<<< HEAD
->>>>>>> bc59a96 (oke mantap ini ikh dan ikk shiftnya udah ok banget)
-=======
-                        completion_method = f"notification_{i+1}"
->>>>>>> 69b7eec (jangkrik)
                         break
                     except:
                         continue
                         
-<<<<<<< HEAD
-<<<<<<< HEAD
             except Exception as e:
                 print(f"⚠️ Strategy 1 error: {e}")
             
@@ -4603,84 +3958,11 @@ def run(playwright: Playwright, personnel_data, ikk_category="IA", work_date="30
             # Strategy 4: Submit button state check (enhanced)
             if not success_found:
                 print("🔍 Strategy 4: Checking submit button state...")
-=======
-            except Exception:
-                pass
-=======
-            except Exception as e:
-                print(f"⚠️ Strategy 1 error: {e}")
->>>>>>> 69b7eec (jangkrik)
-            
-            # Strategy 2: URL change check (enhanced with multiple patterns)
-            if not success_found:
-                print("🔍 Strategy 2: Checking URL redirects...")
-                try:
-                    # Multiple URL patterns to check
-                    url_patterns = [
-                        "**/dashboard.htm**",
-                        "**/dashboard**",
-                        "**/success**",
-                        "**/completed**",
-                        "**/result**"
-                    ]
-                    
-                    for pattern in url_patterns:
-                        try:
-                            page.wait_for_url(pattern, timeout=2000)
-                            print(f"✅ SUCCESS: Redirected to {pattern}")
-                            success_found = True
-                            completion_method = "redirect"
-                            break
-                        except:
-                            continue
-                            
-                except Exception as e:
-                    print(f"⚠️ Strategy 2 error: {e}")
-            
-            # Strategy 3: Form state analysis (enhanced)
-            if not success_found:
-<<<<<<< HEAD
->>>>>>> bc59a96 (oke mantap ini ikh dan ikk shiftnya udah ok banget)
-=======
-                print("🔍 Strategy 3: Analyzing form state...")
-                try:
-                    # Check if form elements disappeared
-                    form_elements = [
-                        "#ahmgawpm003_kategori_pekerjaan_request_kontraktor",
-                        "#ahmgawpm003_kategori_ikk_request_kontraktor",
-                        "#ahmgawpm003_tanggal_pelaksanaan_pekerjaan_khusus_request_kontraktor"
-                    ]
-                    
-                    form_still_present = False
-                    for element in form_elements:
-                        try:
-                            page.wait_for_selector(element, timeout=1000)
-                            form_still_present = True
-                            break
-                        except:
-                            continue
-                    
-                    if not form_still_present:
-                        print("✅ SUCCESS: Form elements disappeared (completed)")
-                        success_found = True
-                        completion_method = "form_disappeared"
-                    else:
-                        print("📋 Form still present, checking other indicators...")
-                        
-                except Exception as e:
-                    print(f"⚠️ Strategy 3 error: {e}")
-            
-            # Strategy 4: Submit button state check (enhanced)
-            if not success_found:
-                print("🔍 Strategy 4: Checking submit button state...")
->>>>>>> 69b7eec (jangkrik)
                 try:
                     submit_button = page.get_by_role("button", name=" Submit")
                     if not submit_button.is_enabled():
                         print("✅ SUCCESS: Submit button disabled (indicates completion)")
                         success_found = True
-<<<<<<< HEAD
-<<<<<<< HEAD
                         completion_method = "button_disabled"
                     else:
                         print("⚠️ Submit button still enabled - analyzing page content...")
@@ -4704,42 +3986,10 @@ def run(playwright: Playwright, personnel_data, ikk_category="IA", work_date="30
                             print("✅ SUCCESS: Page content indicates completion")
                             success_found = True
                             completion_method = "content_analysis"
-=======
-=======
-                        completion_method = "button_disabled"
->>>>>>> 69b7eec (jangkrik)
-                    else:
-                        print("⚠️ Submit button still enabled - analyzing page content...")
-                        
-                        # Enhanced page content analysis
-                        current_url = page.url
-                        page_content = page.content()
-                        
-                        success_indicators = [
-                            "dashboard", "berhasil", "sukses", "completed", 
-                            "success", "selesai", "tersimpan", "submitted"
-                        ]
-                        
-                        content_indicates_success = any(
-                            indicator in current_url.lower() or 
-                            indicator in page_content.lower() 
-                            for indicator in success_indicators
-                        )
-                        
-                        if content_indicates_success:
-                            print("✅ SUCCESS: Page content indicates completion")
-                            success_found = True
-<<<<<<< HEAD
->>>>>>> bc59a96 (oke mantap ini ikh dan ikk shiftnya udah ok banget)
-=======
-                            completion_method = "content_analysis"
->>>>>>> 69b7eec (jangkrik)
                         else:
                             print("⚠️ Submission status unclear, but no error detected")
                             
                 except Exception as e:
-<<<<<<< HEAD
-<<<<<<< HEAD
                     print(f"⚠️ Strategy 4 error: {e}")
             
             # Strategy 5: Final fallback - wait and retry
@@ -4912,190 +4162,6 @@ def run(playwright: Playwright, personnel_data, ikk_category="IA", work_date="30
         print(f"  📝 Description: {deskripsi}")
         print("="*40)
         
-=======
-                    print(f"⚠️ Button check failed: {e}")
-=======
-                    print(f"⚠️ Strategy 4 error: {e}")
->>>>>>> 69b7eec (jangkrik)
-            
-            # Strategy 5: Final fallback - wait and retry
-            if not success_found:
-                print("🔍 Strategy 5: Final completion check...")
-                try:
-                    page.wait_for_timeout(2000)  # Wait 2 seconds
-                    current_url = page.url
-                    
-                    # Check if URL changed from original form URL
-                    if "AHMGAWPM003" not in current_url:
-                        print("✅ SUCCESS: Moved away from form page")
-                        success_found = True
-                        completion_method = "url_change"
-                    else:
-                        print("⚠️ Still on form page, assuming completion")
-                        success_found = True  # Assume success to avoid infinite hang
-                        completion_method = "timeout_assumed"
-                        
-                except Exception as e:
-                    print(f"⚠️ Strategy 5 error: {e}")
-                    success_found = True  # Assume success to avoid hang
-                    completion_method = "error_assumed"
-            
-            # ENHANCED SUCCESS REPORTING
-            if success_found:
-                import datetime
-                current_time = datetime.datetime.now().strftime("%H:%M:%S")
-                formatted_date = setup_date(work_date)
-                personnel_count = len(personnel_data)
-                
-                print("🎉" + "="*60 + "🎉")
-                print("🚀 BERHASIL SUBMIT IKK! 🚀")
-                print("="*64)
-                print(f"📂 Kategori: {ikk_category}")
-                print(f"📅 Tanggal: {formatted_date}")
-                print(f"🔄 Shift: {selected_shift}")
-                print(f"👥 Jumlah Personnel: {personnel_count} orang")
-                print(f"📝 Deskripsi: {deskripsi}")
-                print(f"⏰ Waktu Selesai: {current_time}")
-                print(f"🔍 Metode Deteksi: {completion_method}")
-                print("="*64)
-                print("✅ IKK AUTOMATION COMPLETED SUCCESSFULLY!")
-                print("🎉" + "="*60 + "🎉")
-                
-                # Enhanced logging to automation.log
-                log_entry = f"""
-[{current_time}] IKK AUTOMATION SUCCESS
-  Category: {ikk_category}
-  Date: {formatted_date}
-  Shift: {selected_shift}
-  Personnel: {personnel_count}
-  Description: {deskripsi}
-  Completion Method: {completion_method}
-  Status: SUCCESS
-"""
-                
-                try:
-                    with open("/home/dan/Portal/automation.log", "a", encoding="utf-8") as log_file:
-                        log_file.write(log_entry)
-                        log_file.flush()
-                    print("📝 Success logged to automation.log")
-                except Exception as e:
-                    print(f"⚠️ Logging error: {e}")
-                    
-            else:
-                print("⚠️ Submission completed but status verification inconclusive")
-                print("    (This doesn't mean failure - form may have been submitted successfully)")
-                
-                # Log inconclusive result
-                try:
-                    import datetime
-                    current_time = datetime.datetime.now().strftime("%H:%M:%S")
-                    log_entry = f"""
-[{current_time}] IKK AUTOMATION INCONCLUSIVE
-  Category: {ikk_category}
-  Date: {work_date}
-  Shift: {selected_shift}
-  Personnel: {len(personnel_data)}
-  Status: INCONCLUSIVE (likely successful)
-"""
-                    with open("/home/dan/Portal/automation.log", "a", encoding="utf-8") as log_file:
-                        log_file.write(log_entry)
-                        log_file.flush()
-                except:
-                    pass
-                
-        except Exception as e:
-            print(f"⚠️ Final submission error: {e}")
-            
-            # ENHANCED ERROR RECOVERY AND ANALYSIS
-            try:
-                current_url = page.url
-                print(f"📍 Current URL: {current_url}")
-                
-                # Check if we're actually on a success page despite the error
-                success_indicators = ["dashboard", "success", "completed", "result"]
-                url_indicates_success = any(indicator in current_url.lower() for indicator in success_indicators)
-                
-                if url_indicates_success:
-                    print("✅ ERROR RECOVERY: Actually succeeded - we're on success page!")
-                    
-                    # Log recovery success
-                    try:
-                        import datetime
-                        current_time = datetime.datetime.now().strftime("%H:%M:%S")
-                        log_entry = f"""
-[{current_time}] IKK AUTOMATION RECOVERED
-  Category: {ikk_category}
-  Date: {work_date}
-  Shift: {selected_shift}
-  Personnel: {len(personnel_data)}
-  Error: {str(e)}
-  Recovery: SUCCESS (found on success page)
-"""
-                        with open("/home/dan/Portal/automation.log", "a", encoding="utf-8") as log_file:
-                            log_file.write(log_entry)
-                            log_file.flush()
-                    except:
-                        pass
-                else:
-                    print("❌ Error occurred and recovery unsuccessful")
-                    
-                    # Enhanced error screenshot with timestamp
-                    import datetime
-                    timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-                    screenshot_path = f'ikk_error_{timestamp}.png'
-                    page.screenshot(path=screenshot_path)
-                    print(f"📸 Error screenshot saved as {screenshot_path}")
-                    
-                    # Log detailed error
-                    try:
-                        current_time = datetime.datetime.now().strftime("%H:%M:%S")
-                        log_entry = f"""
-[{current_time}] IKK AUTOMATION ERROR
-  Category: {ikk_category}
-  Date: {work_date}
-  Shift: {selected_shift}
-  Personnel: {len(personnel_data)}
-  Error: {str(e)}
-  URL: {current_url}
-  Screenshot: {screenshot_path}
-  Status: FAILED
-"""
-                        with open("/home/dan/Portal/automation.log", "a", encoding="utf-8") as log_file:
-                            log_file.write(log_entry)
-                            log_file.flush()
-                    except:
-                        pass
-                        
-            except Exception as recovery_error:
-                print(f"🔥 Error recovery failed: {recovery_error}")
-                
-                # Fallback screenshot
-                try:
-                    page.screenshot(path='ikk_critical_error.png')
-                    print("📸 Critical error screenshot saved")
-                except:
-                    pass
-
-<<<<<<< HEAD
-        print("🎉 ULTRA-INSTANT IKK AUTOMATION COMPLETED! Press Enter to close...")
->>>>>>> bc59a96 (oke mantap ini ikh dan ikk shiftnya udah ok banget)
-=======
-        print("🎉 AUTOMATION SELESAI! Tekan Enter untuk menutup browser...")
-<<<<<<< HEAD
->>>>>>> 81d0bb7 (best lah siap maspro)
-=======
-        
-        # Enhanced completion summary
-        print("\n📊 AUTOMATION SUMMARY:")
-        print("="*40)
-        print(f"  🎯 Target: IKK {ikk_category}")
-        print(f"  📅 Date: {work_date}")
-        print(f"  🔄 Shift: {selected_shift}")
-        print(f"  👥 Personnel: {len(personnel_data)} orang")
-        print(f"  📝 Description: {deskripsi}")
-        print("="*40)
-        
->>>>>>> 69b7eec (jangkrik)
         input()
         
     except Exception as e:

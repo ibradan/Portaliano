@@ -273,11 +273,6 @@ def ikk_categories():
     """IKK categories page - landing page for all IKK types."""
     return render_template('ikk_categories.html')
 
-@app.route('/notification-demo')
-def notification_demo():
-    """Demo page to showcase all notification popup styles."""
-    return render_template('notification_demo.html')
-
 @app.route('/ikk/api')
 def ikk_api():
     """IKK Api automation page."""

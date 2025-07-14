@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification Demo - IKK/IKH Automation</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        .demo-container {
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        .demo-title {
+            color: white;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+        
+        .demo-subtitle {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+        
+        .current-notification {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px auto;
+            max-width: 600px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .notification-info {
+            color: white;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+        
+        .progress-bar-custom {
+            height: 6px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #28a745, #20c997);
+            width: 0%;
+            transition: width 0.1s linear;
+            border-radius: 3px;
+        }
+        
+        .controls {
+            margin-top: 30px;
+        }
+        
+        .btn-demo {
+            margin: 5px;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-demo:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        /* Notification Styles */
+        @keyframes slideIn {
+            from { transform: translate(-50%, -60%); opacity: 0; scale: 0.8; }
+            to { transform: translate(-50%, -50%); opacity: 1; scale: 1; }
+        }
+        
+        @keyframes slideOut {
+            from { transform: translate(-50%, -50%); opacity: 1; scale: 1; }
+            to { transform: translate(-50%, -60%); opacity: 0; scale: 0.8; }
+        }
+        
+        .simple-notification {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+            min-width: 250px;
+            max-width: 350px;
+            padding: 15px 20px;
+            border-radius: 10px;
+            color: white;
+            font-weight: 600;
+            font-size: 14px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            animation: slideIn 0.5s ease-out;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+        
+        /* IKK API - Fire Theme */
+        .notification-fire {
+            background: linear-gradient(135deg, #dc3545 0%, #fd7e14 100%);
+            box-shadow: 0 10px 20px rgba(220, 53, 69, 0.4);
+        }
+        
+        /* IKK Ketinggian - Height Theme */
+        .notification-height {
+            background: linear-gradient(135deg, #6f42c1 0%, #007bff 100%);
+            box-shadow: 0 10px 20px rgba(111, 66, 193, 0.4);
+        }
+        
+        /* IKK Ruang Terbatas - Confined Space Theme */
+        .notification-confined {
+            background: linear-gradient(135deg, #ffc107 0%, #fd7e14 100%);
+            box-shadow: 0 10px 20px rgba(255, 193, 7, 0.4);
+        }
+        
+        /* IKH - General Theme */
+        .notification-ikh {
+            background: linear-gradient(135deg, #007bff 0%, #6610f2 100%);
+            box-shadow: 0 10px 20px rgba(0, 123, 255, 0.4);
+        }
+        
+        /* Error Theme */
+        .notification-error {
+            background: linear-gradient(135deg, #dc3545 0%, #fd7e14 100%);
+            box-shadow: 0 10px 20px rgba(220, 53, 69, 0.4);
+        }
+        
+        .notification-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 12px;
+            cursor: pointer;
+            padding: 0;
+            margin-left: 8px;
+            opacity: 0.7;
+        }
+        
+        .notification-close:hover {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1 class="demo-title">🚀 Notification Demo</h1>
+        <p class="demo-subtitle">
+            Lihat semua notifikasi popup IKK/IKH yang sudah diperkecil<br>
+            <small>Bergantian setiap 3 detik secara otomatis</small>
+        </p>
+        
+        <div class="current-notification">
+            <div class="notification-info">
+                <strong id="currentNotificationName">Starting Demo...</strong>
+            </div>
+            <div class="text-muted">
+                <span id="currentDescription">Preparing to show all notification styles</span>
+            </div>
+            <div class="progress-bar-custom">
+                <div class="progress-fill" id="progressBar"></div>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <button class="btn btn-success btn-demo" onclick="startDemo()">
+                <i class="bi bi-play-circle me-2"></i>Start Demo
+            </button>
+            <button class="btn btn-warning btn-demo" onclick="pauseDemo()">
+                <i class="bi bi-pause-circle me-2"></i>Pause
+            </button>
+            <button class="btn btn-danger btn-demo" onclick="stopDemo()">
+                <i class="bi bi-stop-circle me-2"></i>Stop
+            </button>
+            <button class="btn btn-info btn-demo" onclick="nextNotification()">
+                <i class="bi bi-skip-forward me-2"></i>Next
+            </button>
+        </div>
+        
+        <div class="mt-4">
+            <a href="/" class="btn btn-light btn-demo">
+                <i class="bi bi-house me-2"></i>Back to Dashboard
+            </a>
+            <a href="/ikk" class="btn btn-outline-light btn-demo">
+                <i class="bi bi-grid me-2"></i>IKK Categories
+            </a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let demoInterval;
+        let progressInterval;
+        let currentIndex = 0;
+        let isRunning = false;
+        
+        const notifications = [
+            {
+                name: "IKK API - Fire Success",
+                description: "Hot work automation completed successfully",
+                type: "fire",
+                content: `
+                    <div class="text-center">
+                        <div class="mb-2">
+                            <i class="bi bi-fire" style="font-size: 2rem; color: #ffffff; text-shadow: 0 0 10px rgba(255,255,255,0.5);"></i>
+                        </div>
+                        <div class="mb-1">
+                            <h4 class="mb-1" style="font-size: 1.2rem; font-weight: 700; text-shadow: 0 1px 2px rgba(0,0,0,0.3);">
+                                🔥 IKK-API COMPLETED! 🔥
+                            </h4>
+                        </div>
+                        <div class="mb-2" style="font-size: 0.85rem; opacity: 0.95;">
+                            <div class="mb-1">⚡ Hot work automation finished!</div>
+                            <div style="font-size: 0.75rem; opacity: 0.8;">All permits ready 🔥</div>
+                        </div>
+                        <button class="btn btn-light btn-sm px-3" onclick="closeCurrentNotification()" style="border-radius: 15px; font-weight: 600; font-size: 0.8rem;">
+                            <i class="bi bi-fire me-1"></i>Great!
+                        </button>
+                    </div>
+                `
+            },
+            {
+                name: "IKK Ketinggian - Height Success",
+                description: "Height work automation completed successfully",
+                type: "height",
+                content: `
+                    <div class="text-center">
+                        <div class="mb-2">
+                            <i class="bi bi-building" style="font-size: 2rem; color: #ffffff; text-shadow: 0 0 10px rgba(255,255,255,0.5);"></i>
+                        </div>
+                        <div class="mb-1">
+                            <h4 class="mb-1" style="font-size: 1.2rem; font-weight: 700; text-shadow: 0 1px 2px rgba(0,0,0,0.3);">
+                                🏗️ IKK-IK COMPLETED! 🏗️
+                            </h4>
+                        </div>
+                        <div class="mb-2" style="font-size: 0.85rem; opacity: 0.95;">
+                            <div class="mb-1">⚡ Height work automation finished!</div>
+                            <div style="font-size: 0.75rem; opacity: 0.8;">All permits ready 🏗️</div>
+                        </div>
+                        <button class="btn btn-light btn-sm px-3" onclick="closeCurrentNotification()" style="border-radius: 15px; font-weight: 600; font-size: 0.8rem;">
+                            <i class="bi bi-building me-1"></i>Great!
+                        </button>
+                    </div>
+                `
+            },
+            {
+                name: "IKK Ruang Terbatas - Confined Space Success",
+                description: "Confined space automation completed successfully",
+                type: "confined",
+                content: `
+                    <div class="text-center">
+                        <div class="mb-2">
+                            <i class="bi bi-box" style="font-size: 2rem; color: #ffffff; text-shadow: 0 0 10px rgba(255,255,255,0.5);"></i>
+                        </div>
+                        <div class="mb-1">
+                            <h4 class="mb-1" style="font-size: 1.2rem; font-weight: 700; text-shadow: 0 1px 2px rgba(0,0,0,0.3);">
+                                📦 IKK-IR COMPLETED! 📦
+                            </h4>
+                        </div>
+                        <div class="mb-2" style="font-size: 0.85rem; opacity: 0.95;">
+                            <div class="mb-1">⚡ Confined space automation finished!</div>
+                            <div style="font-size: 0.75rem; opacity: 0.8;">All permits ready 🔒</div>
+                        </div>
+                        <button class="btn btn-light btn-sm px-3" onclick="closeCurrentNotification()" style="border-radius: 15px; font-weight: 600; font-size: 0.8rem;">
+                            <i class="bi bi-box me-1"></i>Great!
+                        </button>
+                    </div>
+                `
+            },
+            {
+                name: "IKH - General Success",
+                description: "IKH automation completed successfully",
+                type: "ikh",
+                content: `
+                    <div class="text-center">
+                        <div class="mb-2">
+                            <i class="bi bi-patch-check-fill" style="font-size: 2rem; color: #ffffff; text-shadow: 0 0 10px rgba(0,123,255,0.5);"></i>
+                        </div>
+                        <div class="mb-1">
+                            <h4 class="mb-1" style="font-size: 1.1rem; font-weight: 700; text-shadow: 0 1px 2px rgba(0,0,0,0.2);">
+                                ✅ IKH Completed!
+                            </h4>
+                            <div style="font-size: 0.9rem; font-weight: 600; color: #e3f0ff;">✅ Success!</div>
+                        </div>
+                        <button class="btn btn-light btn-sm px-3" onclick="closeCurrentNotification()" style="border-radius: 15px; font-weight: 600; font-size: 0.8rem;">
+                            <i class="bi bi-x-lg me-1"></i>Dismiss
+                        </button>
+                    </div>
+                `
+            },
+            {
+                name: "Error Notification",
+                description: "Example of error notification style",
+                type: "error",
+                content: `
+                    <div class="text-center">
+                        <div class="mb-2">
+                            <i class="bi bi-exclamation-triangle-fill" style="font-size: 2rem; color: #ffffff; text-shadow: 0 0 10px rgba(255,255,255,0.5);"></i>
+                        </div>
+                        <div class="mb-1">
+                            <h4 class="mb-1" style="font-size: 1.1rem; font-weight: 700; text-shadow: 0 1px 2px rgba(0,0,0,0.3);">
+                                ⚠️ Process Failed ⚠️
+                            </h4>
+                        </div>
+                        <div class="mb-2" style="font-size: 0.8rem; opacity: 0.95;">
+                            <div class="mb-1">❌ Automation process error</div>
+                            <div style="font-size: 0.75rem; opacity: 0.8;">Check log for details</div>
+                        </div>
+                        <button class="btn btn-light btn-sm px-3" onclick="closeCurrentNotification()" style="border-radius: 15px; font-weight: 600; font-size: 0.8rem;">
+                            <i class="bi bi-exclamation-triangle me-1"></i>Check Log
+                        </button>
+                    </div>
+                `
+            }
+        ];
+        
+        function updateProgress(progress) {
+            const progressBar = document.getElementById('progressBar');
+            progressBar.style.width = progress + '%';
+        }
+        
+        function showNotification(notification) {
+            // Remove any existing notification
+            const existing = document.querySelector('.simple-notification');
+            if (existing) {
+                existing.remove();
+            }
+            
+            // Create new notification
+            const notificationElement = document.createElement('div');
+            notificationElement.className = `simple-notification notification-${notification.type}`;
+            notificationElement.innerHTML = notification.content;
+            
+            document.body.appendChild(notificationElement);
+            
+            // Update info panel
+            document.getElementById('currentNotificationName').textContent = notification.name;
+            document.getElementById('currentDescription').textContent = notification.description;
+        }
+        
+        function closeCurrentNotification() {
+            const notification = document.querySelector('.simple-notification');
+            if (notification) {
+                notification.style.animation = 'slideOut 0.3s ease-in';
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.remove();
+                    }
+                }, 300);
+            }
+        }
+        
+        function nextNotification() {
+            if (notifications.length === 0) return;
+            
+            currentIndex = (currentIndex + 1) % notifications.length;
+            showNotification(notifications[currentIndex]);
+            updateProgress(0);
+        }
+        
+        function startDemo() {
+            if (isRunning) return;
+            
+            isRunning = true;
+            currentIndex = 0;
+            showNotification(notifications[currentIndex]);
+            
+            let progress = 0;
+            updateProgress(0);
+            
+            // Progress bar animation
+            progressInterval = setInterval(() => {
+                progress += (100 / 30); // 30 steps in 3 seconds (100ms each)
+                if (progress >= 100) {
+                    progress = 0;
+                    nextNotification();
+                }
+                updateProgress(progress);
+            }, 100);
+            
+            // Auto-cycle every 3 seconds
+            demoInterval = setInterval(() => {
+                nextNotification();
+            }, 3000);
+        }
+        
+        function pauseDemo() {
+            isRunning = false;
+            if (demoInterval) {
+                clearInterval(demoInterval);
+                demoInterval = null;
+            }
+            if (progressInterval) {
+                clearInterval(progressInterval);
+                progressInterval = null;
+            }
+        }
+        
+        function stopDemo() {
+            pauseDemo();
+            closeCurrentNotification();
+            currentIndex = 0;
+            updateProgress(0);
+            document.getElementById('currentNotificationName').textContent = 'Demo Stopped';
+            document.getElementById('currentDescription').textContent = 'Click Start Demo to begin again';
+        }
+        
+        // Auto-start demo when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                startDemo();
+            }, 1000);
+        });
+        
+        // Cleanup on page unload
+        window.addEventListener('beforeunload', function() {
+            stopDemo();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,686 @@
+🚀 IKK-KETINGGIAN LIGHTNING automation started
+🔄 Command line arguments:
+<<<<<<< HEAD
+   📂 Category: IA
+<<<<<<< HEAD
+<<<<<<< HEAD
+   📅 Date: 2025-07-14
+   📝 Description: MELTING REPAIR
+   🔄 Shift: 1
+📄 CSV File: /home/dan/Portal/personnel_list_IA.csv
+🔄 Shift 1: Will be set in IKK form (all personnel will be processed)
+⚡ LOADED: 7 personnel records
+👥 Loaded: 7 personnel (shift 1 will be set in form)
+📋 First person: ('NUR ARIFUDIN', '3301232112990003')
+🚀 IKK AUTOMATION START - Category: IA
+📊 Personnel: 7 people
+🔄 Shift: 1
+=======
+   📅 Date: 2025-07-07
+=======
+   📅 Date: 2025-07-08
+>>>>>>> 81d0bb7 (best lah siap maspro)
+=======
+   📂 Category: IK
+   📅 Date: 2025-07-09
+>>>>>>> 69b7eec (jangkrik)
+   📝 Description: MELTING REPAIR
+   🔄 Shift: 1
+📄 CSV File: /home/dan/Portal/personnel_list_IK.csv
+🔄 Shift 1: Will be set in IKK form (all personnel will be processed)
+⚡ LOADED: 7 personnel records
+👥 Loaded: 7 personnel (shift 1 will be set in form)
+📋 First person: ('HOTLES NAINGGOLAN', '3216062407780010')
+🚀 IKK AUTOMATION START - Category: IK
+📊 Personnel: 7 people
+<<<<<<< HEAD
+<<<<<<< HEAD
+🔄 Shift: 2
+>>>>>>> bc59a96 (oke mantap ini ikh dan ikk shiftnya udah ok banget)
+=======
+🔄 Shift: 3
+>>>>>>> 81d0bb7 (best lah siap maspro)
+=======
+🔄 Shift: 1
+>>>>>>> 69b7eec (jangkrik)
+🔐 LIGHTNING LOGIN...
+⚡ LOGIN SUCCESS
+🧭 LIGHTNING NAVIGATION...
+⚡ IKK FORM LOADED
+📋 ULTRA SPEED FORM SETUP...
+🏭 INSTANT AREA SELECTION...
+  ✅ SUCCESS: REPAIR MELTING
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+🔄 SETTING SHIFT: 1
+  🔍 SHIFT DEBUG INFO:
+    📋 Found 0 shift-related fields
+    📋 Detected shift dropdown by pattern: 1 -> 1
+    📋 Detected shift dropdown by pattern: 1 -> 1
+  ✅ SHIFT SET: Shift 1 set successfully (2 fields)
+📝 INSTANT DESCRIPTION: MELTING REPAIR
+📅 INSTANT DATE SETTING: 2025-07-14
+⚡ Formatted date: 14/07/2025
+👨‍💻 HUMAN-LIKE MODE: Setting work date 14/07/2025
+🎯 Target: Day=14, Month=7, Year=2025
+📅 HUMAN-LIKE: Opening calendar picker...
+📅 Clicking calendar icon: #ahmgawpm003_tanggal_pelaksanaan_pekerjaan_khusus_request_kontraktor_span
+🧭 HUMAN-LIKE: Navigating to target date...
+📅 Navigating to year 2025...
+⚠️ Year navigation error: invalid literal for int() with base 10: '2020-2031202020212022202320242025202620272028202920302031'
+📅 Navigating to month 7...
+📅 Clicking day 14...
+✅ Day 14 clicked successfully!
+✅ Final date value: '14-Jul-2025'
+🛡️ SETTING SAFETY INDUCTION STATUS (ONCE FOR ENTIRE FORM)...
+    ✅ Safety Induction set successfully!
+        📝 Value: Aktif
+        ⚠️ Field was disabled (unusual - should be active by default)
+    ⚠️ Could not set Safety Induction date: Timeout 30000ms exceeded.
+🛡️ SAFETY INDUCTION SETUP COMPLETE!
+👥 SMART PERSONNEL: 7 people
+📜 Reading certificate data from CSV...
+    🔍 DEBUG - Name: NUR ARIFUDIN, NIK: 3301232112990003
+        Cert: '78429 7212 0012670 2024' (len=23)
+        Exp: '5 Agustus 2027' (len=14)
+    ✅ CERTIFICATE FOUND for NIK 3301232112990003: 78429 7212 0012670 2024
+    🔍 DEBUG - Name: HOTLES NAINGGOLAN, NIK: 3216062407780010
+        Cert: 'None' (len=4)
+        Exp: 'None' (len=4)
+    ❌ NO CERTIFICATE for NIK 3216062407780010
+    🔍 DEBUG - Name: FADILAH, NIK: 3216091206900010
+        Cert: 'None' (len=4)
+        Exp: 'None' (len=4)
+    ❌ NO CERTIFICATE for NIK 3216091206900010
+    🔍 DEBUG - Name: YOGI MAHENDRA SITOMPUL, NIK: 1202062308030001
+        Cert: 'None' (len=4)
+        Exp: 'None' (len=4)
+    ❌ NO CERTIFICATE for NIK 1202062308030001
+    🔍 DEBUG - Name: TEGUH SUPRAPTO, NIK: 3301230305800002
+        Cert: 'None' (len=4)
+        Exp: 'None' (len=4)
+    ❌ NO CERTIFICATE for NIK 3301230305800002
+    🔍 DEBUG - Name: ADE DANA, NIK: 3217062403680010
+        Cert: 'None' (len=4)
+        Exp: 'None' (len=4)
+    ❌ NO CERTIFICATE for NIK 3217062403680010
+    🔍 DEBUG - Name: IMAM FAUZI, NIK: 3302030206910002
+        Cert: 'None' (len=4)
+        Exp: 'None' (len=4)
+    ❌ NO CERTIFICATE for NIK 3302030206910002
+📜 SUMMARY: Found certificate data for 1 personnel out of total processed
+  ⚡ Person 1: NUR ARIFUDIN (WITH CERTIFICATE)
+    📝 Person 1: Trying to access existing modal...
+    � Modal not visible, trying to trigger it...
+    🔄 FALLBACK: Searching for Add Personnel button for person 1...
+      🔄 Add Personnel click attempt 1 for person 1...
+      ✅ Add Personnel clicked successfully (attempt 1)
+        📝 Button: 
+					 Add Personnel
+				
+        🆔 ID: ahmgawpm003_add_personnel_button_request
+      ✅ Personnel modal appeared for person 1
+    📋 Filling basic fields for NUR ARIFUDIN (NIK: 3301232112990003)...
+    🎯 BULLETPROOF NIK & NAME FILLING...
+    🛡️ Installing GLOBAL Enter key protection system...
+    ✅ Global Enter key protection installed successfully
+      📝 NIK attempt 1: 3301232112990003
+      ✅ PURE JAVASCRIPT NIK SUCCESS: 3301232112990003 (attempt 1)
+      🔍 Verifying NIK value and checking for error notifications...
+      📊 NIK verification: Expected='3301232112990003', Got='3301232112990003'
+      ✅ No error notification - NIK accepted
+      📝 PURE JAVASCRIPT Name attempt 1: NUR ARIFUDIN
+      �️ ULTRA-SAFE Name filling with complete Enter key blocking...
+      ✅ ULTRA-SAFE JavaScript Name fill SUCCESS: NUR ARIFUDIN
+      ✅ Name verified: NUR ARIFUDIN
+      📝 Filling other basic fields (FAST MODE)...
+      ⚡ INSTANT FILL SUCCESS: 4/5 fields set
+    📊 Basic fields summary:
+      NIK: ✅ SUCCESS
+      Name: ✅ SUCCESS
+      Other fields: 4/5 filled
+    🏆 PERSON HAS CERTIFICATE: 78429 7212 0012670 2024 (Exp: 5 Agustus 2027)
+    🔧 ENHANCED CERTIFICATE HANDLING for person 1/7
+    🔧 Setting certification requirement to YES...
+    ✅ Certificate requirement set to YES
+    ⏳ Waiting for certificate fields to appear (extended wait for person 1)...
+    📜 Filling certificate number: 78429 7212 0012670 2024
+    ✅ Certificate number filled (attempt 1): 78429 7212 0012670 2024
+    ⏳ Waiting for certificate expiry date field to appear (person 1)...
+    ⚠️ Certificate expiry field wait attempt 1 failed: Timeout 5000ms exceeded.
+    ⚠️ Certificate expiry field wait attempt 2 failed: Timeout 5000ms exceeded.
+    ⚠️ Certificate expiry field wait attempt 3 failed: Timeout 5000ms exceeded.
+    ✅ Alternative expiry field found: input[id*="tanggal_akhir_berlaku"]
+    📅 Setting certificate expiry date for person 1/7 (ENHANCED MULTI-PERSON HANDLING)...
+    🗓️ Using FIXED expiry date: 31/07/2027 (NOT same as today!)
+    🔍 ULTRA-ENHANCED DYNAMIC field detection for person 1/7...
+    ✅ ULTRA-ENHANCED detection SUCCESS for person 1
+    🎯 Selected field: ahmgawpm003_tanggal_akhir_berlaku_izin_add (Fresh count: 1)
+    📊 Available expiry fields for person 1 (2 total):
+      🆕 ahmgawpm003_tanggal_akhir_berlaku_izin_add (priority: 10, type: text)
+      🔄 ahmgawpm003_tanggal_akhir_ikp_request_kontraktor (priority: 3, type: text)
+    📅 Attempting HUMAN MIMIC calendar navigation for person 1...
+👨‍💻 HUMAN-LIKE MODE: Setting expiry date 31/07/2027 to field ahmgawpm003_tanggal_akhir_berlaku_izin_add
+🎯 Target Expiry: Day=31, Month=7, Year=2027
+🚀 SPECIAL: Navigating to FUTURE YEAR 2027 - This should work!
+⏳ Waiting for expiry field ahmgawpm003_tanggal_akhir_berlaku_izin_add to be available...
+✅ Expiry field ahmgawpm003_tanggal_akhir_berlaku_izin_add is now available
+📅 HUMAN-LIKE: Opening expiry calendar picker...
+📅 Clicking expiry calendar icon: #ahmgawpm003_tanggal_akhir_berlaku_izin_add + span
+✅ Expiry calendar opened via icon
+🧭 HUMAN-LIKE: Navigating to target expiry date...
+📅 Navigating to year 2027... (Enhanced debugging mode)
+🔍 Year navigation attempt 1/5
+📊 Found 13 year elements
+❌ Year navigation error: invalid literal for int() with base 10: '2020-2031202020212022202320242025202620272028202920302031'
+✅ Year navigation completed in 1 attempts
+📅 Navigating to month 7...
+📅 Clicking day 31...
+✅ Day 31 clicked successfully!
+✅ Final expiry date value: '31-Jul-2025'
+    ✅ Certificate expiry date set HUMAN-LIKE for person 1: 31/07/2027
+    🎉 CERTIFICATE DATA COMPLETED for NUR ARIFUDIN (person 1/7)
+    📝 ENHANCED MODAL SUBMIT for person 1...
+      ✅ Submit clicked for person 1 (attempt 1)
+      ⏳ Waiting for submit processing and auto-modal closure...
+      ✅ Submit processed successfully - Modal auto-closed (wait 1)
+    🎉 SUBMIT SUCCESS for person 1 - NUR ARIFUDIN added successfully!
+    � POST-SUBMIT CLEANUP for person 1 before next person...
+    ✅ Post-submit cleanup SUCCESS
+    ⏳ Inter-person delay: 170ms (person 1/7)
+    ✅ Person 1 (NUR ARIFUDIN) COMPLETELY PROCESSED - Ready for next person!
+    🎉 SUCCESS: NUR ARIFUDIN added WITH certificate!
+    🧹 POST-SUCCESS: Cleaning up modal for next person...
+    🧹 Cleanup result: True
+  ⚡ Person 2: HOTLES NAINGGOLAN (NO CERTIFICATE)
+    🔄 ENHANCED: Clicking Add Personnel for person 2...
+    🔔 CRITICAL: Checking for notification modal before person 2...
+    ✅ Notification check complete: 0 modals closed
+      🧹 ENHANCED: Cleaning modal state for person 2...
+      🧹 Modal cleanup result: True
+      🔄 Add Personnel click attempt 1 for person 2...
+      ✅ Add Personnel clicked successfully (attempt 1)
+        📝 Button: 
+					 Add Personnel
+				
+        🆔 ID: ahmgawpm003_add_personnel_button_request
+      ✅ Personnel modal appeared for person 2
+      🔧 CRITICAL: Resetting modal fields for person 2...
+      ✅ Modal fields reset successful: 10/10 fields reset, 10 enabled
+    📋 Filling basic fields for HOTLES NAINGGOLAN (NIK: 3216062407780010)...
+    🔍 PRE-FILLING: Validating modal state for person 2...
+    ✅ Modal validation passed: 7/7 fields accessible
+    🎯 BULLETPROOF NIK & NAME FILLING...
+    🛡️ Installing GLOBAL Enter key protection system...
+    ✅ Global Enter key protection installed successfully
+    ⏳ Extra wait for person 2 modal to be completely ready...
+    🔒 Clearing keyboard state for person 2...
+      📝 NIK attempt 1: 3216062407780010
+      ✅ PURE JAVASCRIPT NIK SUCCESS: 3216062407780010 (attempt 1)
+      🔍 Verifying NIK value and checking for error notifications...
+      📊 NIK verification: Expected='3216062407780010', Got='3216062407780010'
+      🚨 NIK ERROR DETECTED AND DISMISSED!
+         📝 Message: NIK / Passport tidak dapat digunakan
+         📝 SubMessage: NIK / Passport yang dimasukkan belum melakukan / belum lulus Safety Induction.
+      📝 PURE JAVASCRIPT Name attempt 1: HOTLES NAINGGOLAN
+      �️ ULTRA-SAFE Name filling with complete Enter key blocking...
+      ✅ ULTRA-SAFE JavaScript Name fill SUCCESS: HOTLES NAINGGOLAN
+      ✅ Name verified: HOTLES NAINGGOLAN
+      📝 Filling other basic fields (FAST MODE)...
+      ⚡ INSTANT FILL SUCCESS: 4/5 fields set
+    📊 Basic fields summary:
+      NIK: ✅ SUCCESS
+      Name: ✅ SUCCESS
+      Other fields: 4/5 filled
+    📝 NO CERTIFICATE for HOTLES NAINGGOLAN - Setting to 'Tidak'
+    ✅ Certificate requirement set to 'Tidak' (N)
+    📝 Skipping certificate number and expiry date (not needed for 'Tidak')
+    📝 MODAL SUBMIT for person 2 (NO certificate)...
+      ✅ Submit clicked for person 2 (no cert, attempt 1)
+      ⏳ Waiting for submit processing (no cert)...
+      ✅ Submit processed successfully - Modal auto-closed (no cert, wait 1)
+    🎉 SUBMIT SUCCESS for person 2 (no cert) - HOTLES NAINGGOLAN added successfully!
+    🔧 POST-SUBMIT CLEANUP for person 2 (no cert) before next person...
+    ✅ Post-submit cleanup SUCCESS (no cert)
+    ⏳ Inter-person delay (no cert): 120ms (person 2/7)
+    ✅ Person 2 (HOTLES NAINGGOLAN) NO-CERT COMPLETELY PROCESSED - Ready for next person!
+    ✅ SUCCESS: HOTLES NAINGGOLAN added without certificate
+    🧹 POST-SUCCESS: Cleaning up modal for next person...
+    🧹 Cleanup result: True
+  ⚡ Person 3: FADILAH (NO CERTIFICATE)
+    🔄 ENHANCED: Clicking Add Personnel for person 3...
+    🔔 CRITICAL: Checking for notification modal before person 3...
+    ✅ Notification check complete: 0 modals closed
+      🧹 ENHANCED: Cleaning modal state for person 3...
+      🧹 Modal cleanup result: True
+      🔄 Add Personnel click attempt 1 for person 3...
+      ✅ Add Personnel clicked successfully (attempt 1)
+        📝 Button: 
+					 Add Personnel
+				
+        🆔 ID: ahmgawpm003_add_personnel_button_request
+      ✅ Personnel modal appeared for person 3
+      🔧 CRITICAL: Resetting modal fields for person 3...
+      ✅ Modal fields reset successful: 10/10 fields reset, 10 enabled
+    📋 Filling basic fields for FADILAH (NIK: 3216091206900010)...
+    🔍 PRE-FILLING: Validating modal state for person 3...
+    ✅ Modal validation passed: 7/7 fields accessible
+    🎯 BULLETPROOF NIK & NAME FILLING...
+    🛡️ Installing GLOBAL Enter key protection system...
+    ✅ Global Enter key protection installed successfully
+    ⏳ Extra wait for person 3 modal to be completely ready...
+    🔒 Clearing keyboard state for person 3...
+      📝 NIK attempt 1: 3216091206900010
+      ✅ PURE JAVASCRIPT NIK SUCCESS: 3216091206900010 (attempt 1)
+      🔍 Verifying NIK value and checking for error notifications...
+      📊 NIK verification: Expected='3216091206900010', Got='3216091206900010'
+      🚨 NIK ERROR DETECTED AND DISMISSED!
+         📝 Message: NIK / Passport tidak dapat digunakan
+         📝 SubMessage: NIK / Passport yang dimasukkan belum melakukan / belum lulus Safety Induction.
+      📝 PURE JAVASCRIPT Name attempt 1: FADILAH
+      �️ ULTRA-SAFE Name filling with complete Enter key blocking...
+      ✅ ULTRA-SAFE JavaScript Name fill SUCCESS: FADILAH
+      ✅ Name verified: FADILAH
+      📝 Filling other basic fields (FAST MODE)...
+      ⚡ INSTANT FILL SUCCESS: 4/5 fields set
+    📊 Basic fields summary:
+      NIK: ✅ SUCCESS
+      Name: ✅ SUCCESS
+      Other fields: 4/5 filled
+    📝 NO CERTIFICATE for FADILAH - Setting to 'Tidak'
+    ✅ Certificate requirement set to 'Tidak' (N)
+    📝 Skipping certificate number and expiry date (not needed for 'Tidak')
+    📝 MODAL SUBMIT for person 3 (NO certificate)...
+      ✅ Submit clicked for person 3 (no cert, attempt 1)
+      ⏳ Waiting for submit processing (no cert)...
+      ✅ Submit processed successfully - Modal auto-closed (no cert, wait 1)
+    🎉 SUBMIT SUCCESS for person 3 (no cert) - FADILAH added successfully!
+    🔧 POST-SUBMIT CLEANUP for person 3 (no cert) before next person...
+    ✅ Post-submit cleanup SUCCESS (no cert)
+    ⏳ Inter-person delay (no cert): 130ms (person 3/7)
+    ✅ Person 3 (FADILAH) NO-CERT COMPLETELY PROCESSED - Ready for next person!
+    ✅ SUCCESS: FADILAH added without certificate
+    🧹 POST-SUCCESS: Cleaning up modal for next person...
+    🧹 Cleanup result: True
+  ⚡ Person 4: YOGI MAHENDRA SITOMPUL (NO CERTIFICATE)
+    🔄 ENHANCED: Clicking Add Personnel for person 4...
+    🔔 CRITICAL: Checking for notification modal before person 4...
+    ✅ Notification check complete: 0 modals closed
+      🧹 ENHANCED: Cleaning modal state for person 4...
+      🧹 Modal cleanup result: True
+      🔄 Add Personnel click attempt 1 for person 4...
+      ✅ Add Personnel clicked successfully (attempt 1)
+        📝 Button: 
+					 Add Personnel
+				
+        🆔 ID: ahmgawpm003_add_personnel_button_request
+      ✅ Personnel modal appeared for person 4
+      🔧 CRITICAL: Resetting modal fields for person 4...
+      ✅ Modal fields reset successful: 10/10 fields reset, 10 enabled
+    📋 Filling basic fields for YOGI MAHENDRA SITOMPUL (NIK: 1202062308030001)...
+    🔍 PRE-FILLING: Validating modal state for person 4...
+    ✅ Modal validation passed: 7/7 fields accessible
+    🎯 BULLETPROOF NIK & NAME FILLING...
+    🛡️ Installing GLOBAL Enter key protection system...
+    ✅ Global Enter key protection installed successfully
+    ⏳ Extra wait for person 4 modal to be completely ready...
+    🔒 Clearing keyboard state for person 4...
+      📝 NIK attempt 1: 1202062308030001
+      ✅ PURE JAVASCRIPT NIK SUCCESS: 1202062308030001 (attempt 1)
+      🔍 Verifying NIK value and checking for error notifications...
+      📊 NIK verification: Expected='1202062308030001', Got='1202062308030001'
+      🚨 NIK ERROR DETECTED AND DISMISSED!
+         📝 Message: NIK / Passport tidak dapat digunakan
+         📝 SubMessage: NIK / Passport yang dimasukkan belum melakukan / belum lulus Safety Induction.
+      📝 PURE JAVASCRIPT Name attempt 1: YOGI MAHENDRA SITOMPUL
+      �️ ULTRA-SAFE Name filling with complete Enter key blocking...
+      ✅ ULTRA-SAFE JavaScript Name fill SUCCESS: YOGI MAHENDRA SITOMPUL
+      ✅ Name verified: YOGI MAHENDRA SITOMPUL
+      📝 Filling other basic fields (FAST MODE)...
+      ⚡ INSTANT FILL SUCCESS: 4/5 fields set
+    📊 Basic fields summary:
+      NIK: ✅ SUCCESS
+      Name: ✅ SUCCESS
+      Other fields: 4/5 filled
+    📝 NO CERTIFICATE for YOGI MAHENDRA SITOMPUL - Setting to 'Tidak'
+    ✅ Certificate requirement set to 'Tidak' (N)
+    📝 Skipping certificate number and expiry date (not needed for 'Tidak')
+    📝 MODAL SUBMIT for person 4 (NO certificate)...
+      ✅ Submit clicked for person 4 (no cert, attempt 1)
+      ⏳ Waiting for submit processing (no cert)...
+      ✅ Submit processed successfully - Modal auto-closed (no cert, wait 1)
+    🎉 SUBMIT SUCCESS for person 4 (no cert) - YOGI MAHENDRA SITOMPUL added successfully!
+    🔧 POST-SUBMIT CLEANUP for person 4 (no cert) before next person...
+    ✅ Post-submit cleanup SUCCESS (no cert)
+    ⏳ Inter-person delay (no cert): 140ms (person 4/7)
+    ✅ Person 4 (YOGI MAHENDRA SITOMPUL) NO-CERT COMPLETELY PROCESSED - Ready for next person!
+    ✅ SUCCESS: YOGI MAHENDRA SITOMPUL added without certificate
+    🧹 POST-SUCCESS: Cleaning up modal for next person...
+    🧹 Cleanup result: True
+  ⚡ Person 5: TEGUH SUPRAPTO (NO CERTIFICATE)
+    🔄 ENHANCED: Clicking Add Personnel for person 5...
+    🔔 CRITICAL: Checking for notification modal before person 5...
+    ✅ Notification check complete: 0 modals closed
+      🧹 ENHANCED: Cleaning modal state for person 5...
+      🧹 Modal cleanup result: True
+      🔄 Add Personnel click attempt 1 for person 5...
+      ✅ Add Personnel clicked successfully (attempt 1)
+        📝 Button: 
+					 Add Personnel
+				
+        🆔 ID: ahmgawpm003_add_personnel_button_request
+      ✅ Personnel modal appeared for person 5
+      🔧 CRITICAL: Resetting modal fields for person 5...
+      ✅ Modal fields reset successful: 10/10 fields reset, 10 enabled
+    📋 Filling basic fields for TEGUH SUPRAPTO (NIK: 3301230305800002)...
+    🔍 PRE-FILLING: Validating modal state for person 5...
+    ✅ Modal validation passed: 7/7 fields accessible
+    🎯 BULLETPROOF NIK & NAME FILLING...
+    🛡️ Installing GLOBAL Enter key protection system...
+    ✅ Global Enter key protection installed successfully
+    ⏳ Extra wait for person 5 modal to be completely ready...
+    🔒 Clearing keyboard state for person 5...
+      📝 NIK attempt 1: 3301230305800002
+      ✅ PURE JAVASCRIPT NIK SUCCESS: 3301230305800002 (attempt 1)
+      🔍 Verifying NIK value and checking for error notifications...
+      📊 NIK verification: Expected='3301230305800002', Got='3301230305800002'
+      🚨 NIK ERROR DETECTED AND DISMISSED!
+         📝 Message: NIK / Passport tidak dapat digunakan
+         📝 SubMessage: NIK / Passport yang dimasukkan belum melakukan / belum lulus Safety Induction.
+      📝 PURE JAVASCRIPT Name attempt 1: TEGUH SUPRAPTO
+      �️ ULTRA-SAFE Name filling with complete Enter key blocking...
+      ✅ ULTRA-SAFE JavaScript Name fill SUCCESS: TEGUH SUPRAPTO
+      ✅ Name verified: TEGUH SUPRAPTO
+      📝 Filling other basic fields (FAST MODE)...
+      ⚡ INSTANT FILL SUCCESS: 4/5 fields set
+    📊 Basic fields summary:
+      NIK: ✅ SUCCESS
+      Name: ✅ SUCCESS
+      Other fields: 4/5 filled
+    📝 NO CERTIFICATE for TEGUH SUPRAPTO - Setting to 'Tidak'
+    ✅ Certificate requirement set to 'Tidak' (N)
+    📝 Skipping certificate number and expiry date (not needed for 'Tidak')
+    📝 MODAL SUBMIT for person 5 (NO certificate)...
+      ✅ Submit clicked for person 5 (no cert, attempt 1)
+      ⏳ Waiting for submit processing (no cert)...
+      ✅ Submit processed successfully - Modal auto-closed (no cert, wait 1)
+    🎉 SUBMIT SUCCESS for person 5 (no cert) - TEGUH SUPRAPTO added successfully!
+    🔧 POST-SUBMIT CLEANUP for person 5 (no cert) before next person...
+    ✅ Post-submit cleanup SUCCESS (no cert)
+    ⏳ Inter-person delay (no cert): 150ms (person 5/7)
+    ✅ Person 5 (TEGUH SUPRAPTO) NO-CERT COMPLETELY PROCESSED - Ready for next person!
+    ✅ SUCCESS: TEGUH SUPRAPTO added without certificate
+    🧹 POST-SUCCESS: Cleaning up modal for next person...
+    🧹 Cleanup result: True
+  ⚡ Person 6: ADE DANA (NO CERTIFICATE)
+    🔄 ENHANCED: Clicking Add Personnel for person 6...
+    🔔 CRITICAL: Checking for notification modal before person 6...
+    ✅ Notification check complete: 0 modals closed
+      🧹 ENHANCED: Cleaning modal state for person 6...
+      🧹 Modal cleanup result: True
+      🔄 Add Personnel click attempt 1 for person 6...
+      ✅ Add Personnel clicked successfully (attempt 1)
+        📝 Button: 
+					 Add Personnel
+				
+        🆔 ID: ahmgawpm003_add_personnel_button_request
+      ✅ Personnel modal appeared for person 6
+      🔧 CRITICAL: Resetting modal fields for person 6...
+      ✅ Modal fields reset successful: 10/10 fields reset, 10 enabled
+    📋 Filling basic fields for ADE DANA (NIK: 3217062403680010)...
+    🔍 PRE-FILLING: Validating modal state for person 6...
+    ✅ Modal validation passed: 7/7 fields accessible
+    🎯 BULLETPROOF NIK & NAME FILLING...
+    🛡️ Installing GLOBAL Enter key protection system...
+    ✅ Global Enter key protection installed successfully
+    ⏳ Extra wait for person 6 modal to be completely ready...
+    🔒 Clearing keyboard state for person 6...
+      📝 NIK attempt 1: 3217062403680010
+      ✅ PURE JAVASCRIPT NIK SUCCESS: 3217062403680010 (attempt 1)
+      🔍 Verifying NIK value and checking for error notifications...
+      📊 NIK verification: Expected='3217062403680010', Got='3217062403680010'
+      🚨 NIK ERROR DETECTED AND DISMISSED!
+         📝 Message: NIK / Passport tidak dapat digunakan
+         📝 SubMessage: NIK / Passport yang dimasukkan belum melakukan / belum lulus Safety Induction.
+      📝 PURE JAVASCRIPT Name attempt 1: ADE DANA
+      �️ ULTRA-SAFE Name filling with complete Enter key blocking...
+      ✅ ULTRA-SAFE JavaScript Name fill SUCCESS: ADE DANA
+      ✅ Name verified: ADE DANA
+      📝 Filling other basic fields (FAST MODE)...
+      ⚡ INSTANT FILL SUCCESS: 4/5 fields set
+    📊 Basic fields summary:
+      NIK: ✅ SUCCESS
+      Name: ✅ SUCCESS
+      Other fields: 4/5 filled
+    📝 NO CERTIFICATE for ADE DANA - Setting to 'Tidak'
+    ✅ Certificate requirement set to 'Tidak' (N)
+    📝 Skipping certificate number and expiry date (not needed for 'Tidak')
+    📝 MODAL SUBMIT for person 6 (NO certificate)...
+      ✅ Submit clicked for person 6 (no cert, attempt 1)
+      ⏳ Waiting for submit processing (no cert)...
+      ✅ Submit processed successfully - Modal auto-closed (no cert, wait 1)
+    🎉 SUBMIT SUCCESS for person 6 (no cert) - ADE DANA added successfully!
+    🔧 POST-SUBMIT CLEANUP for person 6 (no cert) before next person...
+    ✅ Post-submit cleanup SUCCESS (no cert)
+    ⏳ Inter-person delay (no cert): 160ms (person 6/7)
+    ✅ Person 6 (ADE DANA) NO-CERT COMPLETELY PROCESSED - Ready for next person!
+    ✅ SUCCESS: ADE DANA added without certificate
+    🧹 POST-SUCCESS: Cleaning up modal for next person...
+    🧹 Cleanup result: True
+  ⚡ Person 7: IMAM FAUZI (NO CERTIFICATE)
+    🔄 ENHANCED: Clicking Add Personnel for person 7...
+    🔔 CRITICAL: Checking for notification modal before person 7...
+    ✅ Notification check complete: 0 modals closed
+      🧹 ENHANCED: Cleaning modal state for person 7...
+      🧹 Modal cleanup result: True
+      🔄 Add Personnel click attempt 1 for person 7...
+      ✅ Add Personnel clicked successfully (attempt 1)
+        📝 Button: 
+					 Add Personnel
+				
+        🆔 ID: ahmgawpm003_add_personnel_button_request
+      ✅ Personnel modal appeared for person 7
+      🔧 CRITICAL: Resetting modal fields for person 7...
+      ✅ Modal fields reset successful: 10/10 fields reset, 10 enabled
+    📋 Filling basic fields for IMAM FAUZI (NIK: 3302030206910002)...
+    🔍 PRE-FILLING: Validating modal state for person 7...
+    ✅ Modal validation passed: 7/7 fields accessible
+    🎯 BULLETPROOF NIK & NAME FILLING...
+    🛡️ Installing GLOBAL Enter key protection system...
+    ✅ Global Enter key protection installed successfully
+    ⏳ Extra wait for person 7 modal to be completely ready...
+    🔒 Clearing keyboard state for person 7...
+      📝 NIK attempt 1: 3302030206910002
+      ✅ PURE JAVASCRIPT NIK SUCCESS: 3302030206910002 (attempt 1)
+      🔍 Verifying NIK value and checking for error notifications...
+      📊 NIK verification: Expected='3302030206910002', Got='3302030206910002'
+      🚨 NIK ERROR DETECTED AND DISMISSED!
+         📝 Message: NIK / Passport tidak dapat digunakan
+         📝 SubMessage: NIK / Passport yang dimasukkan belum melakukan / belum lulus Safety Induction.
+      📝 PURE JAVASCRIPT Name attempt 1: IMAM FAUZI
+      �️ ULTRA-SAFE Name filling with complete Enter key blocking...
+      ✅ ULTRA-SAFE JavaScript Name fill SUCCESS: IMAM FAUZI
+      ✅ Name verified: IMAM FAUZI
+      📝 Filling other basic fields (FAST MODE)...
+      ⚡ INSTANT FILL SUCCESS: 4/5 fields set
+    📊 Basic fields summary:
+      NIK: ✅ SUCCESS
+      Name: ✅ SUCCESS
+      Other fields: 4/5 filled
+    📝 NO CERTIFICATE for IMAM FAUZI - Setting to 'Tidak'
+    ✅ Certificate requirement set to 'Tidak' (N)
+    📝 Skipping certificate number and expiry date (not needed for 'Tidak')
+    📝 MODAL SUBMIT for person 7 (NO certificate)...
+      ✅ Submit clicked for person 7 (no cert, attempt 1)
+      ⏳ Waiting for submit processing (no cert)...
+      ✅ Submit processed successfully - Modal auto-closed (no cert, wait 1)
+    🎉 SUBMIT SUCCESS for person 7 (no cert) - IMAM FAUZI added successfully!
+    🎉 FINAL PERSON 7 (IMAM FAUZI) NO-CERT COMPLETED SUCCESSFULLY!
+    ✅ SUCCESS: IMAM FAUZI added without certificate
+
+🎯 PERSONNEL ADDITION PHASE COMPLETED!
+📊 Summary: 7 people processed
+🔍 Add Personnel button status:
+  Exists: True
+  Visible: False
+  Enabled: True
+  Text: 
+					 Add Personnel
+				
+✅ Ready to proceed to next phase (Area & Tools)
+
+==================================================
+🏢 ADDING WORK AREA & TOOLS
+==================================================
+🏢 INSTANT WORK AREA...
+✅ Personnel addition phase completed - proceeding to area & tools
+=======
+🔄 SETTING SHIFT: 2
+=======
+🔄 SETTING SHIFT: 3
+>>>>>>> 81d0bb7 (best lah siap maspro)
+=======
+🔄 SETTING SHIFT: 1
+>>>>>>> 69b7eec (jangkrik)
+  🔍 SHIFT DEBUG INFO:
+    📋 Found 0 shift-related fields
+    📋 Detected shift dropdown by pattern: 1 -> 1
+    📋 Detected shift dropdown by pattern: 1 -> 1
+  ✅ SHIFT SET: Shift 1 set successfully (2 fields)
+📝 INSTANT DESCRIPTION: MELTING REPAIR
+📅 INSTANT DATE SETTING: 2025-07-09
+⚡ Formatted date: 09/07/2025
+🚀 ULTRA-ROBUST MODE: Setting date 09/07/2025
+🚀 ROBUST FALLBACK: Enhanced calendar navigation...
+⚡ Target: Day=9, Month=7, Year=2025
+⚡ Day 9 clicked successfully!
+🚀 DIRECT INPUT FALLBACK
+🚀 DIRECT INPUT COMPLETED
+🚀 ULTRA-ROBUST date setting completed!
+👥 ULTRA-FAST PERSONNEL: 7 people
+  ⚡ Person 1: HOTLES NAINGGOLAN
+    ⚡ INSTANT FILL: 7 fields set
+    ✅ INSTANT ADD: HOTLES NAINGGOLAN
+  ⚡ Person 2: FADILAH
+    ⚡ INSTANT FILL: 7 fields set
+    ✅ INSTANT ADD: FADILAH
+  ⚡ Person 3: YOGI MAHENDRA SITOMPUL
+    ⚡ INSTANT FILL: 7 fields set
+    ✅ INSTANT ADD: YOGI MAHENDRA SITOMPUL
+  ⚡ Person 4: TEGUH SUPRAPTO
+    ⚡ INSTANT FILL: 7 fields set
+    ✅ INSTANT ADD: TEGUH SUPRAPTO
+  ⚡ Person 5: NUR ARIFUDIN
+    ⚡ INSTANT FILL: 7 fields set
+    ✅ INSTANT ADD: NUR ARIFUDIN
+  ⚡ Person 6: ADE DANA
+    ⚡ INSTANT FILL: 7 fields set
+    ✅ INSTANT ADD: ADE DANA
+  ⚡ Person 7: IMAM FAUZI
+    ⚡ INSTANT FILL: 7 fields set
+    ✅ INSTANT ADD: IMAM FAUZI
+🏢 INSTANT WORK AREA...
+>>>>>>> bc59a96 (oke mantap ini ikh dan ikk shiftnya udah ok banget)
+⚡ INSTANT: Work area added
+🔧 ULTRA-INSTANT TOOLS...
+    ⚡ COMPREHENSIVE FILL: 5 tool fields set
+⚡ SUBMIT: Direct click successful
+⚡ ULTRA-INSTANT: Tools added
+📋 ULTRA-INSTANT FINAL SUBMISSION...
+⚡ Agreement checked
+⚡ SUBMIT CLICKED!
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 69b7eec (jangkrik)
+⏳ ENHANCED completion verification...
+🔍 Strategy 1: Checking success notifications...
+🔍 Strategy 2: Checking URL redirects...
+✅ SUCCESS: Redirected to **/dashboard.htm**
+<<<<<<< HEAD
+🎉============================================================🎉
+🚀 BERHASIL SUBMIT IKK! 🚀
+================================================================
+📂 Kategori: IA
+📅 Tanggal: 14/07/2025
+🔄 Shift: 1
+👥 Jumlah Personnel: 7 orang
+📝 Deskripsi: MELTING REPAIR
+⏰ Waktu Selesai: 22:39:10
+🔍 Metode Deteksi: redirect
+================================================================
+✅ IKK AUTOMATION COMPLETED SUCCESSFULLY!
+🎉============================================================🎉
+
+[22:39:10] IKK AUTOMATION SUCCESS
+  Category: IA
+  Date: 14/07/2025
+  Shift: 1
+  Personnel: 7
+  Description: MELTING REPAIR
+  Completion Method: redirect
+  Status: SUCCESS
+📝 Success logged to automation.log
+🎉 AUTOMATION SELESAI! Tekan Enter untuk menutup browser...
+
+📊 AUTOMATION SUMMARY:
+========================================
+  🎯 Target: IKK IA
+  📅 Date: 2025-07-14
+  🔄 Shift: 1
+  👥 Personnel: 7 orang
+  📝 Description: MELTING REPAIR
+========================================
+=======
+⏳ FAST completion check...
+✅ SUCCESS: Redirected to dashboard
+<<<<<<< HEAD
+🎉 IKK AUTOMATION COMPLETED SUCCESSFULLY! ⚡
+🎉 ULTRA-INSTANT IKK AUTOMATION COMPLETED! Press Enter to close...
+>>>>>>> bc59a96 (oke mantap ini ikh dan ikk shiftnya udah ok banget)
+=======
+=======
+>>>>>>> 69b7eec (jangkrik)
+🎉============================================================🎉
+🚀 BERHASIL SUBMIT IKK! 🚀
+================================================================
+📂 Kategori: IK
+📅 Tanggal: 09/07/2025
+🔄 Shift: 1
+👥 Jumlah Personnel: 7 orang
+📝 Deskripsi: MELTING REPAIR
+⏰ Waktu Selesai: 00:20:47
+🔍 Metode Deteksi: redirect
+================================================================
+✅ IKK AUTOMATION COMPLETED SUCCESSFULLY!
+🎉============================================================🎉
+
+[00:20:47] IKK AUTOMATION SUCCESS
+  Category: IK
+  Date: 09/07/2025
+  Shift: 1
+  Personnel: 7
+  Description: MELTING REPAIR
+  Completion Method: redirect
+  Status: SUCCESS
+📝 Success logged to automation.log
+🎉 AUTOMATION SELESAI! Tekan Enter untuk menutup browser...
+
+<<<<<<< HEAD
+❌ Failed: 1
+
+❌ Failed: 1
+
+❌ Failed: 1
+>>>>>>> 81d0bb7 (best lah siap maspro)
+=======
+📊 AUTOMATION SUMMARY:
+========================================
+  🎯 Target: IKK IK
+  📅 Date: 2025-07-09
+  🔄 Shift: 1
+  👥 Personnel: 7 orang
+  📝 Description: MELTING REPAIR
+========================================
+>>>>>>> 69b7eec (jangkrik)

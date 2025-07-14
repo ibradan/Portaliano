@@ -1,0 +1,35 @@
+/* Red theme for IKK notification popup */
+.notification-ikk {
+  background: linear-gradient(135deg, #dc3545 0%, #fd7e14 100%);
+  box-shadow: 0 20px 40px rgba(220, 53, 69, 0.4);
+  border: 3px solid rgba(220,53,69,0.2);
+}
+/* Blue theme for IKH notification popup */
+.notification-ikh {
+  background: linear-gradient(135deg, #007bff 0%, #339cff 100%);
+  box-shadow: 0 20px 40px rgba(0, 123, 255, 0.4);
+  border: 3px solid rgba(0,123,255,0.2);
+}
+/* Batasi tinggi card Work Date & Process Control dan Process Log agar lebih pendek di layar besar */
+@media (min-width: 992px) {
+  .ikh-row-height-limit {
+    max-height: 220px;
+    min-height: 120px;
+    height: 100%;
+    overflow: auto;
+  }
+  .ikh-log-body-limit {
+    max-height: 120px;
+    min-height: 80px;
+    overflow-y: auto;
+  }
+}
+
+/* Untuk layar kecil, biarkan responsif */
+@media (max-width: 991.98px) {
+  .ikh-row-height-limit, .ikh-log-body-limit {
+    max-height: none;
+    min-height: 0;
+    height: auto;
+  }
+}

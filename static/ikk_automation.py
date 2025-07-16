@@ -1480,8 +1480,15 @@ def run(playwright: Playwright, personnel_data, ikk_category="IA", work_date="30
         print("🎉"*25)
         
         # Wait longer before closing browser to ensure user sees everything
-        print("⏳ Waiting before closing browser...")
-        page.wait_for_timeout(3000)  # 3 seconds to see final state
+        import random
+        if notification_handled:
+            print("⏳ Waiting for user to press OK on notification before closing browser...")
+            # Sudah ditekan OK, langsung tutup
+            page.wait_for_timeout(1000)
+        else:
+            wait_time = random.randint(5, 10)
+            print(f"⏳ No notification detected, waiting {wait_time} seconds before closing browser...")
+            page.wait_for_timeout(wait_time * 1000)
         
     except Exception as e:
         print(f"❌ ERROR: {e}")

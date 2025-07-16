@@ -314,10 +314,7 @@
                     </div>
                 `;
                 document.body.appendChild(notification);
-                // Auto remove after 8 seconds
-                setTimeout(() => {
-                    closeNotification('successNotification');
-                }, 8000);
+                // Tidak auto remove, hanya hilang jika tombol ditutup ditekan
             }
 
             function showErrorNotification() {

@@ -354,30 +354,49 @@ def run_automation_process(script_path, csv_path, selected_indices, selected_dat
             if selected_shift:
                 process_args.append(f"--shift={selected_shift}")
         
-        logger.info(f"Starting {mode} automation")
+        logger.info(f"Starting {mode} automation with command: {' '.join(process_args)}")
         
-        # Initialize log
+        # Initialize log with detailed information
         log_path = 'automation.log'
         with open(log_path, 'w', encoding='utf-8') as log_file:
-            log_file.write(f"{mode} automation started\n")
+            log_file.write(f"🚀 {mode} AUTOMATION STARTED\n")
+            log_file.write("="*50 + "\n")
+            log_file.write(f"📂 Category: {category if 'ikk_automation.py' in script_path else 'IKH'}\n")
+            log_file.write(f"📄 CSV File: {csv_path}\n")
+            log_file.write(f"📅 Date: {selected_date}\n")
+            log_file.write(f"⏰ Shift: {selected_shift}\n")
+            log_file.write(f"🔧 Script: {script_path}\n")
+            log_file.write(f"💻 Command: {' '.join(process_args)}\n")
+            log_file.write("="*50 + "\n\n")
+            log_file.flush()
         
-        # Start process
+        # Start process with line buffering for real-time output
         with open(log_path, 'a', encoding='utf-8') as log_file:
             current_process = subprocess.Popen(
                 process_args, 
                 stdout=log_file, 
                 stderr=subprocess.STDOUT, 
                 text=True, 
-                env=env
+                env=env,
+                bufsize=1,  # Line buffering for real-time output
+                universal_newlines=True
             )
             
             try:
                 return_code = current_process.wait(timeout=1800)  # 30 minutes
                 
                 if return_code == 0:
-                    log_file.write(f"\n{mode} completed successfully!\n")
+                    log_file.write(f"\n🎉 {mode} COMPLETED SUCCESSFULLY!\n")
+                    log_file.write("="*50 + "\n")
+                    log_file.write(f"✅ Process finished with exit code: {return_code}\n")
+                    log_file.write(f"⏰ Completion time: {time.strftime('%Y-%m-%d %H:%M:%S')}\n")
+                    log_file.write("="*50 + "\n")
                 else:
-                    log_file.write(f"\nProcess failed with code: {return_code}\n")
+                    log_file.write(f"\n❌ PROCESS FAILED!\n")
+                    log_file.write("="*50 + "\n")
+                    log_file.write(f"🔥 Exit code: {return_code}\n")
+                    log_file.write(f"⏰ Failure time: {time.strftime('%Y-%m-%d %H:%M:%S')}\n")
+                    log_file.write("="*50 + "\n")
                     
             except subprocess.TimeoutExpired:
                 if current_process:
@@ -387,7 +406,11 @@ def run_automation_process(script_path, csv_path, selected_indices, selected_dat
                     except subprocess.TimeoutExpired:
                         current_process.kill()
                         
-                log_file.write(f"\nProcess timed out\n")
+                log_file.write(f"\n⏰ PROCESS TIMED OUT!\n")
+                log_file.write("="*50 + "\n")
+                log_file.write(f"🕐 Timeout after 30 minutes\n")
+                log_file.write(f"⏰ Timeout time: {time.strftime('%Y-%m-%d %H:%M:%S')}\n")
+                log_file.write("="*50 + "\n")
                 
     except Exception as e:
         logger.error(f"Automation process error: {e}")

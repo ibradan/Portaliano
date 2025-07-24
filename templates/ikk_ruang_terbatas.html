@@ -401,7 +401,6 @@
                                     logOutput.textContent = log;
                                     logOutput.scrollTop = logOutput.scrollHeight;
                                 }
-                                
                                 // Enhanced completion detection with multiple patterns
                                 const completionPatterns = [
                                     '⚡⚡⚡ LIGHTNING AUTOMATION COMPLETED! ⚡⚡⚡',
@@ -410,17 +409,14 @@
                                     'IKK AUTOMATION SUCCESS',
                                     'BERHASIL SUBMIT IKK!'
                                 ];
-                                
                                 const errorPatterns = [
                                     '⚡ Automation error:',
                                     '❌ AUTOMATION ERROR:',
                                     '❌ Error:',
                                     'IKK AUTOMATION ERROR'
                                 ];
-                                
                                 const isCompleted = completionPatterns.some(pattern => log.includes(pattern));
                                 const hasError = errorPatterns.some(pattern => log.includes(pattern));
-                                
                                 if (isCompleted && !hasError) {
                                     if (!window.completionNotificationShown) {
                                         window.completionNotificationShown = true;
@@ -429,7 +425,19 @@
                                         processBtn.className = 'btn btn-success';
                                         document.getElementById('stopBtn').style.display = 'none'; // Hide stop button
                                         setTimeout(() => { updateButtonText(); }, 2000);
-                                        showSuccessNotification();
+                                        // Fetch notification message from backend
+                                        fetch('/check_completion', {cache: 'no-store'})
+                                            .then(response => response.json())
+                                            .then(status => {
+                                                if (status && status.notification_message) {
+                                                    showIKKNotification(status.notification_message);
+                                                } else {
+                                                    showSuccessNotification();
+                                                }
+                                            })
+                                            .catch(() => {
+                                                showSuccessNotification();
+                                            });
                                     }
                                 } else if (hasError) {
                                     if (!window.errorNotificationShown) {
@@ -442,11 +450,9 @@
                                         showErrorNotification();
                                     }
                                 } else {
-                                    // Continue polling
                                     setTimeout(pollForCompletion, 1000);
                                 }
                             } else {
-                                // Continue polling even if log hasn't changed
                                 setTimeout(pollForCompletion, 1000);
                             }
                         });
@@ -468,6 +474,10 @@
         }
 
         function showSuccessNotification() {
+            showIKKNotification('📦 IKK-IR COMPLETED!\n⚡ Confined space automation finished!\nAll permits ready 🔒');
+        }
+
+        function showIKKNotification(message) {
             const notification = document.createElement('div');
             notification.className = 'simple-notification notification-success';
             notification.id = 'successNotification';
@@ -478,21 +488,15 @@
                     </div>
                     <div class="mb-1">
                         <h4 class="mb-1" style="font-size: 1.2rem; font-weight: 700; text-shadow: 0 1px 2px rgba(0,0,0,0.3);">
-                            📦 IKK-IR COMPLETED! 📦
+                            ${message.replace(/\n/g, '<br>')}
                         </h4>
                     </div>
-                    <div class="mb-2" style="font-size: 0.85rem; opacity: 0.95;">
-                        <div class="mb-1">⚡ Confined space automation finished!</div>
-                        <div style="font-size: 0.75rem; opacity: 0.8;">All permits ready 🔒</div>
-                    </div>
                     <button class="btn btn-light btn-sm px-3" onclick="closeNotification('successNotification')" style="border-radius: 15px; font-weight: 600; font-size: 0.8rem;">
-                        <i class="bi bi-box me-1"></i>Great!
+                        <i class="bi bi-box me-1"></i>OK!
                     </button>
                 </div>
             `;
-            
             document.body.appendChild(notification);
-            
             setTimeout(() => {
                 closeNotification('successNotification');
             }, 6000);

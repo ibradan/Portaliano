@@ -341,11 +341,13 @@ def run_automation_process(script_path, csv_path, selected_indices, selected_dat
                 'MELTING REPAIR',
                 str(selected_shift or 1)
             ]
+            if selected_indices and len(selected_indices) > 0:
+                process_args.extend([str(i) for i in selected_indices])
         else:
             # IKH script format
             process_args = [sys.executable, script_path, csv_path]
             
-            if selected_indices:
+            if selected_indices and len(selected_indices) > 0:
                 process_args.extend([str(i) for i in selected_indices])
             
             if selected_date:
@@ -512,6 +514,21 @@ def get_log():
         logger.error(f"Error reading log: {e}")
         return 'Error reading log'
 
+# --- Notification Parsing Helper ---
+def parse_notification_from_log(log_content):
+    notification_message = None
+    for line in log_content.splitlines():
+        if "Notification message:" in line:
+            notification_message = line.split("Notification message:",1)[-1].strip()
+        elif "SUCCESS NOTIFICATION DETECTED" in line and not notification_message:
+            notification_message = "IKK telah berhasil disubmit"
+    # Fallback: jika ada baris 'IKK-API COMPLETED SUCCESSFULLY!' tapi tidak ada notifikasi lain
+    if not notification_message:
+        for line in log_content.splitlines():
+            if "IKK-API COMPLETED SUCCESSFULLY!" in line:
+                notification_message = "IKK-API COMPLETED SUCCESSFULLY!"
+    return notification_message
+
 @app.route('/check_completion', methods=['GET'])
 def check_completion():
     """Check if automation process is completed."""
@@ -523,33 +540,38 @@ def check_completion():
                 status = json.load(f)
             return jsonify(status)
         
+
         # Fallback: check automation log
         log_file = "automation.log"
         if os.path.exists(log_file):
             with open(log_file, 'r', encoding='utf-8') as f:
                 content = f.read()
-            
+
             completion_indicators = [
                 "completed successfully",
-                "AUTOMATION COMPLETED",
+                "AUTOMATION COMPLETE",
                 "SUCCESS",
                 "BERHASIL"
             ]
-            
             is_completed = any(indicator in content for indicator in completion_indicators)
-            
+
+            # Parse notification message (IKK)
+            notification_message = parse_notification_from_log(content)
+
             return jsonify({
                 "process_running": False,
                 "process_completed": is_completed,
                 "completion_time": time.time() if is_completed else None,
-                "last_update": time.time()
+                "last_update": time.time(),
+                "notification_message": notification_message
             })
-        
+
         return jsonify({
             "process_running": False,
             "process_completed": False,
             "completion_time": None,
-            "last_update": time.time()
+            "last_update": time.time(),
+            "notification_message": None
         })
         
     except Exception as e:

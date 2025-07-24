@@ -439,7 +439,19 @@
                                         processBtn.className = 'btn btn-danger';
                                         document.getElementById('stopBtn').style.display = 'none'; // Hide stop button
                                         setTimeout(() => { updateButtonText(); }, 2000);
-                                        showSuccessNotification();
+                                        // Fetch notification message from backend
+                                        fetch('/check_completion', {cache: 'no-store'})
+                                            .then(response => response.json())
+                                            .then(status => {
+                                                let msg = status && typeof status.notification_message === 'string' ? status.notification_message.trim() : '';
+                                                if (!msg) {
+                                                    msg = '🔥 IKK-API COMPLETED!<br>⚡ Hot work automation finished!';
+                                                }
+                                                showIKKNotification(msg);
+                                            })
+                                            .catch(() => {
+                                                showIKKNotification('🔥 IKK-API COMPLETED!<br>⚡ Hot work automation finished!');
+                                            });
                                     }
                                 } else if (log.includes('❌ Automation failed')) {
                                     if (!window.errorNotificationShown) {
@@ -472,6 +484,10 @@
                 });
             }
             function showSuccessNotification() {
+                showIKKNotification('🔥 IKK-API COMPLETED!\n⚡ Hot work automation finished!');
+            }
+
+            function showIKKNotification(message) {
                 const notification = document.createElement('div');
                 notification.className = 'simple-notification notification-ikk';
                 notification.id = 'successNotification';
@@ -482,14 +498,11 @@
                         </div>
                         <div class="mb-2">
                             <h4 class="mb-1" style="font-size: 1.2rem; font-weight: 700; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">
-                                🔥 IKK-API COMPLETED! 🔥
+                                ${message.replace(/\n/g, '<br>')}
                             </h4>
                         </div>
-                        <div class="mb-2" style="font-size: 0.9rem; opacity: 0.95;">
-                            <div class="mb-1">⚡ Hot work automation finished!</div>
-                        </div>
                         <button class="btn btn-light btn-sm px-3" onclick="closeNotification('successNotification')" style="border-radius: 15px; font-weight: 600;">
-                            <i class="bi bi-fire me-1"></i>Great!
+                            <i class="bi bi-fire me-1"></i>OK!
                         </button>
                     </div>
                 `;

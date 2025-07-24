@@ -2,15 +2,15 @@
 ==================================================
 📂 Category: IK
 📄 CSV File: personnel_list_IK.csv
-📅 Date: 2025-07-17
+📅 Date: 2025-07-25
 ⏰ Shift: 1
 🔧 Script: static/ikk_automation.py
-💻 Command: /home/dan/Portal/.venv/bin/python static/ikk_automation.py IK 2025-07-17 MELTING REPAIR 1
+💻 Command: /home/dan/Portal/.venv/bin/python static/ikk_automation.py IK 2025-07-25 MELTING REPAIR 1 0 1 2 3 4 5 6
 ==================================================
 
 🔄 Shift 1: Will be set in IKK form
 ⚡ LOADED: 7 personnel records
-🚀 Starting MERGED IKK Automation - Category: IK, Date: 2025-07-17, Shift: 1
+🚀 Starting MERGED IKK Automation - Category: IK, Date: 2025-07-25, Shift: 1
 📄 CSV file: /home/dan/Portal/personnel_list_IK.csv
 👥 Personnel count: 7
 🚀 MERGED IKK START - Category: IK, Shift: 1
@@ -27,21 +27,21 @@ Shift debug info:
     Detected shift dropdown by pattern: 1 -> 1
   ✅ SHIFT SET: Shift 1 set successfully (2 fields)
 📝 INSTANT DESCRIPTION: MELTING REPAIR
-📅 HUMAN MIMIC DATE SETTING: 2025-07-17
-⚡ Formatted work date: 17/07/2025
+📅 HUMAN MIMIC DATE SETTING: 2025-07-25
+⚡ Formatted work date: 25/07/2025
 👨‍💻 Setting WORK DATE with human mimic calendar navigation...
-👨‍💻 ENHANCED MODE: Setting work date 17/07/2025
-🎯 Target: Day=17, Month=7, Year=2025
+👨‍💻 ENHANCED MODE: Setting work date 25/07/2025
+🎯 Target: Day=25, Month=7, Year=2025
 📅 HUMAN-LIKE: Opening calendar picker...
 📅 Clicking calendar icon: #ahmgawpm003_tanggal_pelaksanaan_pekerjaan_khusus_request_kontraktor_span
 🧭 HUMAN-LIKE: Navigating to target date...
 📅 Navigating to year 2025...
 ⚠️ Year navigation error: invalid literal for int() with base 10: '2020-2031202020212022202320242025202620272028202920302031'
 📅 Navigating to month 7...
-📅 Clicking day 17...
-✅ Day 17 clicked successfully!
-✅ Final date value: '17-Jul-2025'
-✅ Work date set successfully with human mimic: 17/07/2025
+📅 Clicking day 25...
+✅ Day 25 clicked successfully!
+✅ Final date value: '25-Jul-2025'
+✅ Work date set successfully with human mimic: 25/07/2025
 🛡️ ENHANCED SAFETY INDUCTION...
 ✅ Safety induction set successfully
 ⚡ ULTRA-FAST PERSONNEL: 7 people
@@ -71,6 +71,8 @@ Shift debug info:
 📅 Clicking day 31...
 ✅ Day 31 clicked successfully!
 ✅ Final expiry date value: '31-Jul-2025'
+⚠️ Final value '31-Jul-2025' tidak sesuai target '31/01/2026', force set via JS (all events)
+✅ Final expiry date value after force set (all events): '31-Jul-2025'
 ✅ Certificate expiry date set successfully with human mimic: 31/01/2026
 ✅ Person 1 SUCCESS: FADILAH
 ⚡ Person 2: YOGI MAHENDRA SITOMPUL
@@ -98,8 +100,10 @@ Shift debug info:
 📅 Clicking day 31...
 ⚠️ Day selector td:text('31') failed: Timeout 30000ms exceeded.
 ⚠️ Could not click day 31, trying JavaScript fallback...
-      JavaScript fallback result: {'success': True, 'value': '17-Jul-2025'}
-✅ Final expiry date value: '17-Jul-2025'
+      JavaScript fallback result: {'success': True, 'value': '25-Jul-2025'}
+✅ Final expiry date value: '25-Jul-2025'
+⚠️ Final value '25-Jul-2025' tidak sesuai target '31/01/2026', force set via JS (all events)
+✅ Final expiry date value after force set (all events): '25-Jul-2025'
 ✅ Certificate expiry date set successfully with human mimic: 31/01/2026
 ✅ Person 2 SUCCESS: YOGI MAHENDRA SITOMPUL
 ⚡ Person 3: TEGUH SUPRAPTO
@@ -125,12 +129,12 @@ Shift debug info:
 ✅ Year navigation completed in 1 attempts
 📅 Navigating to month 1...
 📅 Clicking day 31...
-⚠️ Day selector td:text('31') failed: Timeout 30000ms exceeded.
-⚠️ Could not click day 31, trying JavaScript fallback...
-      JavaScript fallback result: {'success': True, 'value': '17-Jul-2025'}
-✅ Final expiry date value: '17-Jul-2025'
+✅ Day 31 clicked successfully!
+✅ Final expiry date value: ''
+⚠️ Final value '' tidak sesuai target '31/01/2026', force set via JS (all events)
+✅ Final expiry date value after force set (all events): '31-Jul-2025'
 ✅ Certificate expiry date set successfully with human mimic: 31/01/2026
-✅ Person 3 SUCCESS: TEGUH SUPRAPTO
+❌ Person 3 SUBMIT FAILED: Timeout 30000ms exceeded.
 ⚡ Person 4: HOTLES NAINGGOLAN
     🔄 Person 4: Clicking Add Personnel...
     ✅ Add Personnel clicked for person 4
@@ -151,39 +155,40 @@ Shift debug info:
     ✅ Add Personnel clicked for person 7
     ✅ Personnel modal ready for person 7
 ✅ Person 7 SUCCESS: IMAM FAUZI
-⚡ PERSONNEL COMPLETE: 7/7
+⚡ PERSONNEL COMPLETE: 6/7
 ⚡ INSTANT AREA & TOOLS...
-  ✅ AREA
+  ⚠️ AREA SKIP
     🔧 Tool fields filled: {'success': True, 'fieldsProcessed': 2}
   ✅ TOOLS (Field 1='1', Field 2='1')
 ⚡ INSTANT FINAL SUBMIT...
 🔔 WAITING FOR SUCCESS NOTIFICATION...
 🔍 Checking for success notification modal...
+⚠️ No success notification modal found: Timeout 10000ms exceeded.
+🔍 Checking for success alert...
+⚠️ No success alert found
+🔍 Checking for dashboard redirect...
+🎉 DASHBOARD REDIRECT DETECTED!
 📢 Notification message: IKK telah berhasil disubmit
 🎉 SUCCESS NOTIFICATION DETECTED!
-⏳ Waiting for user to read success notification...
-🔘 Looking for OK button in success notification...
-✅ Clicking OK button...
-⚠️ OK button click failed: Timeout 30000ms exceeded.
 ✅ SUBMISSION SUCCESSFUL!
+✅ IKK AUTOMATION COMPLETED SUCCESSFULLY!
 
 🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉
 🚀 MERGED IKK AUTOMATION COMPLETE! 🚀
 ==================================================
 📂 Category: IK
-📅 Work Date: 17/07/2025
+📅 Work Date: 25/07/2025
 🔄 Shift: 1
-👥 Personnel: 7/7 people processed
+👥 Personnel: 6/7 people processed
 📝 Description: MELTING REPAIR
-⏰ Completed at: 06:16:21
+⏰ Completed at: 00:14:07
 🔔 Notification: Not detected
 ✅ Status: SUCCESS
 ==================================================
 🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉
-⏳ No notification detected, waiting 6 seconds before closing browser...
 
 🎉 IKK-KETINGGIAN COMPLETED SUCCESSFULLY!
 ==================================================
 ✅ Process finished with exit code: 0
-⏰ Completion time: 2025-07-17 06:16:27
+⏰ Completion time: 2025-07-25 00:14:07
 ==================================================

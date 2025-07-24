@@ -344,39 +344,28 @@
             .then(response => response.json())
             .then(data => {
                 console.log('Data sent to backend:', { selected_indices: selectedIndices, selected_date: selectedDate, selected_shift: finalShift, mode });
-                
                 // Start log polling immediately but with better timing
                 startLogPolling();
-                
-                // Start polling for completion with delay
                 let completionCheckCount = 0;
                 const maxChecks = 300; // 5 minutes max
-                
                 function pollForCompletion() {
                     completionCheckCount++;
-                    
-                    // Don't check completion too early - wait at least 10 seconds
                     if (completionCheckCount < 10) {
                         setTimeout(pollForCompletion, 1000);
                         return;
                     }
-                    
-                    // Stop checking after max attempts
                     if (completionCheckCount > maxChecks) {
                         console.log('Max completion checks reached');
                         return;
                     }
-                    
                     fetch('/get_log', {cache: 'no-store'})
                         .then(response => response.text())
                         .then(log => {
-                            // Enhanced completion detection with stricter patterns
                             const completionPatterns = [
                                 '⚡⚡⚡ LIGHTNING AUTOMATION COMPLETED! ⚡⚡⚡',
                                 '✅ IKK AUTOMATION COMPLETED SUCCESSFULLY!',
                                 '🎉 AUTOMATION SELESAI! Tekan Enter untuk menutup browser...'
                             ];
-                            
                             const errorPatterns = [
                                 '⚡ Automation error:',
                                 '❌ AUTOMATION ERROR:',
@@ -384,10 +373,8 @@
                                 'IKK AUTOMATION ERROR',
                                 'AUTOMATION FAILED'
                             ];
-                            
                             const isCompleted = completionPatterns.some(pattern => log.includes(pattern));
                             const hasError = errorPatterns.some(pattern => log.includes(pattern));
-                            
                             if (isCompleted && !hasError) {
                                 if (!window.completionNotificationShown) {
                                     window.completionNotificationShown = true;
@@ -397,7 +384,19 @@
                                     processBtn.className = 'btn btn-success';
                                     document.getElementById('stopBtn').style.display = 'none';
                                     setTimeout(() => { updateButtonText(); }, 3000);
-                                    showSuccessNotification();
+                                    // Fetch notification message from backend
+                                    fetch('/check_completion', {cache: 'no-store'})
+                                        .then(response => response.json())
+                                        .then(status => {
+                                            if (status && status.notification_message) {
+                                                showIKKNotification(status.notification_message);
+                                            } else {
+                                                showSuccessNotification();
+                                            }
+                                        })
+                                        .catch(() => {
+                                            showSuccessNotification();
+                                        });
                                 }
                             } else if (hasError) {
                                 if (!window.errorNotificationShown) {
@@ -411,7 +410,6 @@
                                     showErrorNotification();
                                 }
                             } else {
-                                // Continue polling with longer interval
                                 setTimeout(pollForCompletion, 2000);
                             }
                         })
@@ -420,8 +418,6 @@
                             setTimeout(pollForCompletion, 3000);
                         });
                 }
-                
-                // Start completion polling after 10 second delay
                 setTimeout(pollForCompletion, 10000);
             })
             .catch(error => {
@@ -439,6 +435,10 @@
         }
 
         function showSuccessNotification() {
+            showIKKNotification('🏗️ IKK-IK COMPLETED!\n⚡ Height work automation finished!');
+        }
+
+        function showIKKNotification(message) {
             const notification = document.createElement('div');
             notification.className = 'simple-notification notification-success';
             notification.id = 'successNotification';
@@ -449,21 +449,15 @@
                     </div>
                     <div class="mb-2">
                         <h4 class="mb-1" style="font-size: 1.2rem; font-weight: 700; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">
-                            🏗️ IKK-IK COMPLETED! 🏗️
+                            ${message.replace(/\n/g, '<br>')}
                         </h4>
                     </div>
-                    <div class="mb-2" style="font-size: 0.9rem; opacity: 0.95;">
-                        <div class="mb-1">⚡ Height work automation finished!</div>
-                    </div>
                     <button class="btn btn-light btn-sm px-3" onclick="closeNotification('successNotification')" style="border-radius: 15px; font-weight: 600;">
-                        <i class="bi bi-building me-1"></i>Great!
+                        <i class="bi bi-building me-1"></i>OK!
                     </button>
                 </div>
             `;
-            
             document.body.appendChild(notification);
-            
-            // Auto remove after 8 seconds
             setTimeout(() => {
                 closeNotification('successNotification');
             }, 8000);

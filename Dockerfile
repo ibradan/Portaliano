@@ -77,9 +77,6 @@ EXPOSE 5000
 HEALTHCHECK --interval=30s --timeout=10s --start-period=15s --retries=3 \
     CMD curl -f http://localhost:5000/ || exit 1
 
-# Production startup script
-COPY --chown=appuser:appuser start_production.sh /app/
-RUN chmod +x start_production.sh
 
 # Default command
-CMD ["./start_production.sh"]
+ENTRYPOINT ["python", "app.py"]

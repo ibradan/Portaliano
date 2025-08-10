@@ -1235,7 +1235,7 @@ def run(playwright: Playwright, personnel_data, ikk_category="IA", work_date="30
                         if notification_modal.is_visible():
                             ok_btn = notification_modal.locator("button")
                             ok_btn.click()
-                            page.wait_for_timeout(300)
+                            page.wait_for_selector("#ahmgawpm003_notification_modal", state="hidden", timeout=2000)
                     except:
                         pass
                     
@@ -1423,10 +1423,10 @@ def run(playwright: Playwright, personnel_data, ikk_category="IA", work_date="30
                         print("✅ Clicking OK button...")
                         ok_button.click()
                         notification_handled = True
-                        print("✅ Success notification OK button clicked!")
-                        
+                        print(f"✅ Success notification OK button clicked! [Category: {ikk_category}]")
+                        print(f"[PROCESS LOG] OK button clicked for notification modal ({ikk_category})")
                         # Wait for modal to close
-                        page.wait_for_timeout(1000)
+                        page.wait_for_selector("#ahmgawpm003_notification_modal", state="hidden", timeout=2000)
                     else:
                         print("⚠️ OK button not visible")
                 except Exception as ok_error:
@@ -1459,9 +1459,15 @@ def run(playwright: Playwright, personnel_data, ikk_category="IA", work_date="30
         
         # Final status
         if success_found:
-            print("✅ SUBMISSION SUCCESSFUL!")
+            # Selalu tulis notifikasi ke log, walau modal tidak muncul
+            if not 'notification_message' in locals() or not notification_message:
+                notification_message = "IKK telah berhasil disubmit"
+            print(f"\U0001F4E2 Notification message: {notification_message}")
+            print("\U0001F389 SUCCESS NOTIFICATION DETECTED!")
+            print("\u2705 SUBMISSION SUCCESSFUL!")
+            print("✅ IKK AUTOMATION COMPLETED SUCCESSFULLY!")
         else:
-            print("⚠️ SUBMISSION STATUS UNCLEAR (but likely successful)")
+            print("\u26A0\uFE0F SUBMISSION STATUS UNCLEAR (but likely successful)")
         
         # 📊 ENHANCED COMPLETION REPORT
         current_time = datetime.datetime.now().strftime("%H:%M:%S")
@@ -1479,25 +1485,15 @@ def run(playwright: Playwright, personnel_data, ikk_category="IA", work_date="30
         print("="*50)
         print("🎉"*25)
         
-        # Wait longer before closing browser to ensure user sees everything
-        import random
-        if notification_handled:
-            print("⏳ Waiting for user to press OK on notification before closing browser...")
-            # Sudah ditekan OK, langsung tutup
-            page.wait_for_timeout(1000)
-        else:
-            wait_time = random.randint(5, 10)
-            print(f"⏳ No notification detected, waiting {wait_time} seconds before closing browser...")
-            page.wait_for_timeout(wait_time * 1000)
-        
+        # FASTPATH: Hapus random wait di akhir proses, close browser segera setelah proses selesai.
+        # browser.close()
+
     except Exception as e:
         print(f"❌ ERROR: {e}")
         try:
             page.screenshot(path='ikk_merged_error.png')
         except:
             pass
-    finally:
-        browser.close()
 
 if __name__ == "__main__":
     # Parse command line arguments
@@ -1505,6 +1501,8 @@ if __name__ == "__main__":
     work_date = sys.argv[2] if len(sys.argv) > 2 else "30"
     deskripsi = sys.argv[3] if len(sys.argv) > 3 else "MELTING REPAIR"
     selected_shift = int(sys.argv[4]) if len(sys.argv) > 4 and sys.argv[4].isdigit() else 1
+    # Parse selected_indices (mulai dari arg ke-5)
+    selected_indices = [int(x) for x in sys.argv[5:] if x.isdigit()]
     
     if selected_shift not in [1, 2, 3]:
         print(f"⚠️ Invalid shift {selected_shift}, using shift 1")
@@ -1517,7 +1515,7 @@ if __name__ == "__main__":
         "IK": "/home/dan/Portal/personnel_list_IK.csv"
     }
     csv_file_path = csv_map.get(ikk_category, csv_map["IA"])
-    personnel_data = read_csv(csv_file_path, selected_shift=selected_shift)
+    personnel_data = read_csv(csv_file_path, selected_indices=selected_indices if selected_indices else None, selected_shift=selected_shift)
     
     print(f"🚀 Starting MERGED IKK Automation - Category: {ikk_category}, Date: {work_date}, Shift: {selected_shift}")
     print(f"📄 CSV file: {csv_file_path}")

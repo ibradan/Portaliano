@@ -357,6 +357,12 @@
                         if (notification.parentNode) {
                             notification.remove();
                         }
+                        // Close browser after successful notification is dismissed
+                        if (notificationId === 'successNotification') {
+                            setTimeout(() => {
+                                window.close();
+                            }, 500);
+                        }
                     }, 300);
                 }
             }

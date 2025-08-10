@@ -458,7 +458,9 @@
                 </div>
             `;
             document.body.appendChild(notification);
-            // No auto remove - let user dismiss manually
+            setTimeout(() => {
+                closeNotification('successNotification');
+            }, 8000);
         }
 
         function showErrorNotification() {

@@ -607,6 +607,40 @@ def set_expiry_date_field(page, date_str, input_id='ahmgawpm003_tanggal_akhir_be
             }})()
         """)
         print(f"✅ Final expiry date value: '{final_value}'")
+        # Force set value if not as expected
+        if final_value != date_str:
+            print(f"⚠️ Final value '{final_value}' tidak sesuai target '{date_str}', force set via JS (all events)")
+            page.evaluate(f"""
+                (function() {{
+                    const field = document.getElementById('{input_id}');
+                    if (field) {{
+                        field.value = '{date_str}';
+                        field.setAttribute('value', '{date_str}');
+                        ['input', 'change', 'blur', 'focus', 'keydown', 'keyup'].forEach(eventType => {{
+                            field.dispatchEvent(new Event(eventType, {{bubbles: true}}));
+                        }});
+                        // Blur ke field lain
+                        field.blur();
+                        setTimeout(() => {{
+                            field.focus();
+                        }}, 100);
+                    }}
+                }})()
+            """)
+            # Re-verify
+            import time
+            time.sleep(0.2)
+            final_value2 = page.evaluate(f"""
+                (function() {{
+                    try {{
+                        const field = document.getElementById('{input_id}');
+                        return field ? field.value : 'field_not_found';
+                    }} catch(e) {{
+                        return 'verification_error';
+                    }}
+                }})()
+            """)
+            print(f"✅ Final expiry date value after force set (all events): '{final_value2}'")
         
         return True
         
@@ -1486,7 +1520,7 @@ def run(playwright: Playwright, personnel_data, ikk_category="IA", work_date="30
         print("🎉"*25)
         
         # FASTPATH: Hapus random wait di akhir proses, close browser segera setelah proses selesai.
-        # browser.close()
+        browser.close()
 
     except Exception as e:
         print(f"❌ ERROR: {e}")

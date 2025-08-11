@@ -70,6 +70,17 @@ ENV FLASK_APP=app.py \
     PYTHONDONTWRITEBYTECODE=1 \
     PORT=5000
 
+# Create startup script for Xvfb
+RUN echo '#!/bin/bash\n\
+# Start Xvfb in background\n\
+Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &\n\
+export DISPLAY=:99\n\
+# Wait a moment for Xvfb to start\n\
+sleep 2\n\
+# Start the Flask application\n\
+exec python app.py\n\
+' > /app/start.sh && chmod +x /app/start.sh
+
 # Expose port
 EXPOSE 5000
 
@@ -79,4 +90,4 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=15s --retries=3 \
 
 
 # Default command
-ENTRYPOINT ["python", "app.py"]
+ENTRYPOINT ["/app/start.sh"]

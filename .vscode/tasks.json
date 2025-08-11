@@ -4,7 +4,7 @@
 		{
 			"type": "shell",
 			"label": "Run Flask App",
-			"command": "/home/dan/Portal/.venv/bin/python",
+			"command": "py",
 			"args": [
 				"app.py"
 			],

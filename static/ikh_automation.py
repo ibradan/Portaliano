@@ -2,7 +2,13 @@ import sys
 import csv
 import datetime
 import re
+import argparse
 from playwright.sync_api import Playwright, sync_playwright
+
+# Set UTF-8 encoding for Windows console
+import os
+if os.name == 'nt':  # Windows
+    os.system('chcp 65001 > nul')  # Set console to UTF-8
 
 def read_csv(file_path, selected_indices=None):
     """Read personnel data from CSV file with optional row selection."""
@@ -11,7 +17,7 @@ def read_csv(file_path, selected_indices=None):
         reader = csv.DictReader(csvfile)
         rows = list(reader)
         
-        print(f"📁 CSV Headers: {reader.fieldnames}")
+        print(f"[FILE] CSV Headers: {reader.fieldnames}")
         
         if selected_indices:
             for idx in selected_indices:
@@ -35,7 +41,7 @@ def read_csv(file_path, selected_indices=None):
                 else:
                     print(f"⚠️ Skipped row {idx}: Missing name or NIK - Name: '{name}', NIK: '{nik}'")
     
-    print(f"📊 Loaded {len(data)} valid personnel records")
+    print(f"[INFO] Loaded {len(data)} valid personnel records")
     return data
 
 def setup_date(selected_date=None):
@@ -123,7 +129,7 @@ def debug_calendar_structure(page):
                         
                         // Check for date cells
                         if ((el.tagName === 'TD' || el.tagName === 'DIV') && 
-                            /^\d{1,2}$/.test(text) && text.length <= 2) {
+                            /^\\d{1,2}$/.test(text) && text.length <= 2) {
                             results.date_cells.push({
                                 tag: el.tagName,
                                 id: id,
@@ -497,20 +503,19 @@ def add_personnel(page, name, nik, common_data):
 
 def run(playwright: Playwright, personnel_list, selected_date=None, selected_shift=1):
     """Main automation function optimized for speed."""
-    print(f"🔄 Starting IKH automation with parameters:")
+    print(f"[PROC] Starting IKH automation with parameters:")
     print(f"   📅 Date: {selected_date}")
     print(f"   🔄 Shift: {selected_shift}")
     print(f"   👥 Personnel count: {len(personnel_list)}")
     
     browser = playwright.chromium.launch(
-        headless=False,
+        headless=True,  # Changed to True for Docker environment
         args=[
-            '--start-maximized',
-            '--disable-web-security',
             '--no-sandbox',
             '--disable-dev-shm-usage',
             '--disable-gpu',
-            '--disable-features=VizDisplayCompositor'
+            '--disable-features=VizDisplayCompositor',
+            '--disable-web-security'
         ],
         slow_mo=0  # Set to 0 for maximum speed
     )

@@ -983,9 +983,9 @@ def run(playwright: Playwright, personnel_data, ikk_category="IA", work_date="30
         
         # Load certificate data
         csv_map = {
-            "IA": "/home/dan/Portal/personnel_list_IA.csv",
-            "IR": "/home/dan/Portal/personnel_list_IR.csv", 
-            "IK": "/home/dan/Portal/personnel_list_IK.csv"
+            "IA": "personnel_list_IA.csv",
+            "IR": "personnel_list_IR.csv", 
+            "IK": "personnel_list_IK.csv"
         }
         csv_file_path = csv_map.get(ikk_category, csv_map["IA"])
         
@@ -1544,9 +1544,9 @@ if __name__ == "__main__":
     
     # Map categories to CSV files
     csv_map = {
-        "IA": "/home/dan/Portal/personnel_list_IA.csv",
-        "IR": "/home/dan/Portal/personnel_list_IR.csv",
-        "IK": "/home/dan/Portal/personnel_list_IK.csv"
+        "IA": "personnel_list_IA.csv",
+        "IR": "personnel_list_IR.csv",
+        "IK": "personnel_list_IK.csv"
     }
     csv_file_path = csv_map.get(ikk_category, csv_map["IA"])
     personnel_data = read_csv(csv_file_path, selected_indices=selected_indices if selected_indices else None, selected_shift=selected_shift)

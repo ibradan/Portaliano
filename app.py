@@ -322,6 +322,7 @@ def run_automation_process(script_path, csv_path, selected_indices, selected_dat
     try:
         env = os.environ.copy()
         env['DISPLAY'] = os.environ.get('DISPLAY', ':0')
+        env['PLAYWRIGHT_HEADLESS'] = os.environ.get('PLAYWRIGHT_HEADLESS', 'true')
         env['PYTHONUNBUFFERED'] = '1'
         
         # Build command based on script type

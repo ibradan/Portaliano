@@ -14,6 +14,7 @@ services:
     environment:
       - FLASK_ENV=production
       - DISPLAY=:99
+      - PLAYWRIGHT_HEADLESS=true
       - PYTHONUNBUFFERED=1
     restart: unless-stopped
     healthcheck:

@@ -16,6 +16,7 @@ Arguments:
 import csv
 import sys
 import datetime
+import os
 from playwright.sync_api import Playwright, sync_playwright
 
 def read_csv(file_path, selected_indices=None, selected_shift=None):
@@ -663,7 +664,11 @@ def run(playwright: Playwright, personnel_data, ikk_category="IA", work_date="30
     print(f"🚀 MERGED IKK START - Category: {ikk_category}, Shift: {selected_shift}")
     print(f"👥 Personnel: {len(personnel_data)} people")
     
-    browser = playwright.chromium.launch(headless=False, slow_mo=0)
+    # Check if running in Docker or headless environment
+    headless_mode = os.getenv('PLAYWRIGHT_HEADLESS', 'true').lower() == 'true'
+    print(f"🖥️ Browser mode: {'Headless' if headless_mode else 'Headed'}")
+    
+    browser = playwright.chromium.launch(headless=headless_mode, slow_mo=0)
     context = browser.new_context()
     page = context.new_page()
 

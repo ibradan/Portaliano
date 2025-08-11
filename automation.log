@@ -2,19 +2,20 @@
 ==================================================
 📂 Category: IK
 📄 CSV File: personnel_list_IK.csv
-📅 Date: 2025-08-10
+📅 Date: 2025-08-12
 ⏰ Shift: 2
 🔧 Script: static/ikk_automation.py
-💻 Command: /opt/venv/bin/python static/ikk_automation.py IK 2025-08-10 MELTING REPAIR 2 0 1 2 3 4 5 6
+💻 Command: /opt/venv/bin/python static/ikk_automation.py IK 2025-08-12 MELTING REPAIR 2 0 1 2 3 4 5 6
 ==================================================
 
 🔄 Shift 2: Will be set in IKK form
 ⚡ LOADED: 7 personnel records
-🚀 Starting MERGED IKK Automation - Category: IK, Date: 2025-08-10, Shift: 2
+🚀 Starting MERGED IKK Automation - Category: IK, Date: 2025-08-12, Shift: 2
 📄 CSV file: personnel_list_IK.csv
 👥 Personnel count: 7
 🚀 MERGED IKK START - Category: IK, Shift: 2
 👥 Personnel: 7 people
+🖥️ Browser mode: Headless
 ⚡ INSTANT LOGIN...
 ✅ LOGIN SUCCESS
 ⚡ INSTANT NAVIGATION...
@@ -27,22 +28,21 @@ Shift debug info:
     Detected shift dropdown by pattern: 1 -> 2
   ✅ SHIFT SET: Shift 2 set successfully (2 fields)
 📝 INSTANT DESCRIPTION: MELTING REPAIR
-📅 HUMAN MIMIC DATE SETTING: 2025-08-10
-⚡ Formatted work date: 10/08/2025
+📅 HUMAN MIMIC DATE SETTING: 2025-08-12
+⚡ Formatted work date: 12/08/2025
 👨‍💻 Setting WORK DATE with human mimic calendar navigation...
-👨‍💻 ENHANCED MODE: Setting work date 10/08/2025
-🎯 Target: Day=10, Month=8, Year=2025
+👨‍💻 ENHANCED MODE: Setting work date 12/08/2025
+🎯 Target: Day=12, Month=8, Year=2025
 📅 HUMAN-LIKE: Opening calendar picker...
 📅 Clicking calendar icon: #ahmgawpm003_tanggal_pelaksanaan_pekerjaan_khusus_request_kontraktor_span
 🧭 HUMAN-LIKE: Navigating to target date...
 📅 Navigating to year 2025...
 ⚠️ Year navigation error: invalid literal for int() with base 10: '2020-2031202020212022202320242025202620272028202920302031'
 📅 Navigating to month 8...
-📅 Clicking day 10...
-⚠️ Could not click day 10, trying JavaScript fallback...
-      JavaScript fallback result: {'success': True, 'value': '11-Aug-2025'}
-✅ Final date value: '11-Aug-2025'
-✅ Work date set successfully with human mimic: 10/08/2025
+📅 Clicking day 12...
+✅ Day 12 clicked successfully!
+✅ Final date value: '12-Aug-2025'
+✅ Work date set successfully with human mimic: 12/08/2025
 🛡️ ENHANCED SAFETY INDUCTION...
 ✅ Safety induction set successfully
 ⚡ ULTRA-FAST PERSONNEL: 7 people
@@ -181,11 +181,11 @@ Shift debug info:
 🚀 MERGED IKK AUTOMATION COMPLETE! 🚀
 ==================================================
 📂 Category: IK
-📅 Work Date: 10/08/2025
+📅 Work Date: 12/08/2025
 🔄 Shift: 2
 👥 Personnel: 7/7 people processed
 📝 Description: MELTING REPAIR
-⏰ Completed at: 00:07:30
+⏰ Completed at: 23:48:45
 🔔 Notification: Not detected
 ✅ Status: SUCCESS
 ==================================================
@@ -194,5 +194,5 @@ Shift debug info:
 🎉 IKK-KETINGGIAN COMPLETED SUCCESSFULLY!
 ==================================================
 ✅ Process finished with exit code: 0
-⏰ Completion time: 2025-08-11 00:07:31
+⏰ Completion time: 2025-08-11 23:48:45
 ==================================================

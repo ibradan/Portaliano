@@ -1,12 +1,17 @@
-# Python
+# Docker ignore file for Portaliano - Optimized for minimal image size
+# ================================================================
+
+# Virtual environment (largest size impact)
+venv/
+.venv/
+env/
+
+# Python cache and compiled files
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
 .Python
-env/
-venv/
-.venv/
 pip-log.txt
 pip-delete-this-directory.txt
 .tox/
@@ -16,11 +21,19 @@ pip-delete-this-directory.txt
 nosetests.xml
 coverage.xml
 *.cover
-*.log
 
-# Flask
-instance/
-.webassets-cache
+# Development and documentation files
+*.md
+README.md
+VENV_SETUP_GUIDE.md
+BROWSER_CONFIG_GUIDE.md
+REFACTORING_COMPLETE.md
+
+# Development scripts (not needed in production)
+check_venv.py
+switch_browser_mode.sh
+start_portal_venv.sh
+*.service
 
 # Git
 .git/
@@ -42,12 +55,23 @@ instance/
 ehthumbs.db
 Thumbs.db
 
-# Docker
+# Docker files (avoid recursion)
 .dockerignore
 Dockerfile
 docker-compose.yml
 
+# Runtime files (will be mounted as volumes)
+*.log
+automation.log
+logs/
+uploads/
+
 # Temporary files
 *.tmp
+*.temp
 temp_selected_data_*.csv
 enter_signal.txt
+.tmp/
+
+# Screenshots (if any)
+screenshots/

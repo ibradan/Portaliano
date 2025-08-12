@@ -1,10 +1,10 @@
 services:
-  portal-app:
+  portaliano:
     build: 
       context: .
       dockerfile: Dockerfile
-    image: portal-portal-app:latest
-    container_name: portal-flask-app
+    image: portaliano:latest
+    container_name: portaliano-app
     ports:
       - "5000:5000"
     volumes:
@@ -13,23 +13,22 @@ services:
       - ./logs:/app/logs
     environment:
       - FLASK_ENV=production
-      - DISPLAY=:99
-      - PLAYWRIGHT_HEADLESS=true
+      - HEADLESS_MODE=true
       - PYTHONUNBUFFERED=1
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:5000/"]
+      test: ["CMD", "curl", "-f", "http://localhost:5000/dashboard"]
       interval: 30s
       timeout: 10s
       retries: 3
-      start_period: 40s
+      start_period: 60s
     networks:
-      - portal-network
+      - portaliano-network
 
 networks:
-  portal-network:
+  portaliano-network:
     driver: bridge
     
 volumes:
-  portal-uploads:
-  portal-logs:
+  portaliano-uploads:
+  portaliano-logs:

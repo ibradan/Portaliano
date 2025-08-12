@@ -3,16 +3,30 @@
 Browser Configuration for Portaliano Automation
 ================================================
 
-This file controls browser behavior for all automation scripts.
-Simply change HEADLESS_MODE to switch between visible and headless browser.
+Central place to control browser behavior for all automation scripts.
 
-Usage:
-- HEADLESS_MODE = False  -> Browser window visible (for development/debugging)
-- HEADLESS_MODE = False   -> Browser runs in background (for production/server)
+Usage (static edit):
+- HEADLESS_MODE = False  -> Browser window visible (development/debugging)
+- HEADLESS_MODE = True   -> Browser runs in background (production/server)
+
+Environment overrides (preferred for Docker / deployment):
+- Set HEADLESS_MODE=true|false|1|0|yes|no|on|off
+- Set SLOW_MO=<milliseconds delay> (e.g. 0 / 50 / 200)
+
+Precedence:
+1. Environment variables (if provided)
+2. Values defined in this file
+
+Example:
+    HEADLESS_MODE=true SLOW_MO=0 python3 app.py
+
+This keeps local dev simple (edit file) while making container/runtime configurable.
 """
 
-# Browser Configuration
-HEADLESS_MODE = True  # Change this to True for headless mode, False to show browser
+from os import getenv
+
+# Base (fallback) browser configuration
+HEADLESS_MODE = True  # Default: headless. Override via env HEADLESS_MODE
 
 # Browser Arguments (for optimization)
 BROWSER_ARGS = [
@@ -24,7 +38,23 @@ BROWSER_ARGS = [
 ]
 
 # Browser Speed (milliseconds delay between actions)
-SLOW_MO = 0  # 0 = fastest, increase for slower automation (e.g. 50, 100)
+SLOW_MO = 0  # Fallback default. Can be overridden by env SLOW_MO
+
+# --- Environment Overrides -------------------------------------------------
+_env_headless = getenv("HEADLESS_MODE")
+if _env_headless is not None:
+    _val = _env_headless.strip().lower()
+    if _val in ("1", "true", "yes", "on"):  # truthy
+        HEADLESS_MODE = True
+    elif _val in ("0", "false", "no", "off"):  # falsy
+        HEADLESS_MODE = False
+
+_env_slow_mo = getenv("SLOW_MO")
+if _env_slow_mo and _env_slow_mo.isdigit():
+    try:
+        SLOW_MO = max(0, int(_env_slow_mo))
+    except ValueError:
+        pass  # ignore invalid value, keep fallback
 
 def get_browser_config():
     """
@@ -68,7 +98,7 @@ def set_development_mode():
 def set_production_mode():
     """Set browser for production (headless, fastest)"""
     global HEADLESS_MODE, SLOW_MO
-    HEADLESS_MODE = False
+    HEADLESS_MODE = True
     SLOW_MO = 0
 
 def set_debug_mode():
@@ -84,10 +114,16 @@ if __name__ == "__main__":
     print(f"🖥️  Browser Mode: {get_browser_mode_description()}")
     print(f"⚡ Slow Motion: {SLOW_MO}ms")
     print(f"🔧 Browser Args: {len(BROWSER_ARGS)} optimizations")
-    print("\n📝 To change configuration:")
-    print("   Edit HEADLESS_MODE in browser_config.py")
-    print("   - False = Browser visible")
-    print("   - True  = Browser hidden")
+    print("\n📝 Configuration precedence:")
+    print("   1. Environment variables (HEADLESS_MODE, SLOW_MO)")
+    print("   2. Values in browser_config.py")
+    print("\n🔄 Override examples:")
+    print("   HEADLESS_MODE=false python3 app.py  # show browser")
+    print("   HEADLESS_MODE=true SLOW_MO=50 python3 app.py")
+    print("\n🐳 Docker Compose:")
+    print("   environment:")
+    print("     - HEADLESS_MODE=true")
+    print("     - SLOW_MO=0")
 else:
-    # Show config when imported
+    # Show concise config when imported
     print(f"🖥️ Browser mode: {get_browser_mode_description()}")

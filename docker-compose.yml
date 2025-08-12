@@ -14,6 +14,7 @@ services:
     environment:
       - FLASK_ENV=production
       - HEADLESS_MODE=true
+  - SLOW_MO=0
       - PYTHONUNBUFFERED=1
     restart: unless-stopped
     healthcheck:

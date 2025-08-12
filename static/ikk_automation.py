@@ -19,6 +19,10 @@ import datetime
 import os
 from playwright.sync_api import Playwright, sync_playwright
 
+# Import browser configuration
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from browser_config import get_browser_config, get_browser_mode_description
+
 def read_csv(file_path, selected_indices=None, selected_shift=None):
     """⚡ SPEED READ CSV - Ultra FAST! ⚡"""
     data = []
@@ -664,11 +668,15 @@ def run(playwright: Playwright, personnel_data, ikk_category="IA", work_date="30
     print(f"🚀 MERGED IKK START - Category: {ikk_category}, Shift: {selected_shift}")
     print(f"👥 Personnel: {len(personnel_data)} people")
     
-    # Check if running in Docker or headless environment
-    headless_mode = os.getenv('PLAYWRIGHT_HEADLESS', 'true').lower() == 'true'
-    print(f"🖥️ Browser mode: {'Headless' if headless_mode else 'Headed'}")
+    # Get browser configuration from config file
+    browser_config = get_browser_config()
+    print(f"🖥️ Browser mode: {get_browser_mode_description()}")
     
-    browser = playwright.chromium.launch(headless=headless_mode, slow_mo=0)
+    browser = playwright.chromium.launch(
+        headless=browser_config['headless'],
+        args=browser_config['args'],
+        slow_mo=browser_config['slow_mo']
+    )
     context = browser.new_context()
     page = context.new_page()
 

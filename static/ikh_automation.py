@@ -1,12 +1,21 @@
+#!/usr/bin/env python3
 import sys
 import csv
 import datetime
 import re
 import argparse
+import os
 from playwright.sync_api import Playwright, sync_playwright
 
-# Set UTF-8 encoding for Windows console
-import os
+# Import browser configuration
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from browser_config import get_browser_config, get_browser_mode_description
+
+# Linux console encoding handling
+if os.name == 'posix':  # Linux/Unix
+    import locale
+    locale.setlocale(locale.LC_ALL, '')
+
 if os.name == 'nt':  # Windows
     os.system('chcp 65001 > nul')  # Set console to UTF-8
 
@@ -508,16 +517,14 @@ def run(playwright: Playwright, personnel_list, selected_date=None, selected_shi
     print(f"   🔄 Shift: {selected_shift}")
     print(f"   👥 Personnel count: {len(personnel_list)}")
     
+    # Get browser configuration from config file
+    browser_config = get_browser_config()
+    print(f"   🖥️ Browser mode: {get_browser_mode_description()}")
+    
     browser = playwright.chromium.launch(
-        headless=True,  # Changed to True for Docker environment
-        args=[
-            '--no-sandbox',
-            '--disable-dev-shm-usage',
-            '--disable-gpu',
-            '--disable-features=VizDisplayCompositor',
-            '--disable-web-security'
-        ],
-        slow_mo=0  # Set to 0 for maximum speed
+        headless=browser_config['headless'],
+        args=browser_config['args'],
+        slow_mo=browser_config['slow_mo']
     )
     context = browser.new_context()
     page = context.new_page()

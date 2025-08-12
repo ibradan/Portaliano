@@ -335,7 +335,7 @@ def run_automation_process(script_path, csv_path, selected_indices, selected_dat
             category = category_map.get(mode, 'IA')
             
             process_args = [
-                sys.executable, 
+                'python3', 
                 script_path, 
                 category,
                 selected_date or '30',
@@ -346,7 +346,7 @@ def run_automation_process(script_path, csv_path, selected_indices, selected_dat
                 process_args.extend([str(i) for i in selected_indices])
         else:
             # IKH script format
-            process_args = [sys.executable, script_path, csv_path]
+            process_args = ['python3', script_path, csv_path]
             
             if selected_indices and len(selected_indices) > 0:
                 process_args.extend([str(i) for i in selected_indices])

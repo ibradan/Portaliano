@@ -1,208 +1,210 @@
-# Portal Automation System
+# Portaliano - Work Permit Automation System
 
-A robust Flask web application for automating IKH (Izin Kerja Harian) and IKK (Izin Kerja Khusus) work permit processes.
+A clean, efficient Flask web application for automating IKH (Izin Kerja Harian) and IKK (Izin Kerja Khusus) work permit processes.
 
-## Features
+## ✨ Features
 
-- **Web Interface**: Clean, responsive dashboard for managing personnel data and automation
-- **IKH Automation**: Automated daily work permit processing
-- **IKK Automation**: Automated special work permit processing for API, Ruang Terbatas, and Ketinggian categories
-- **CSV Management**: Upload and manage personnel data files
-- **Real-time Monitoring**: Live log monitoring and process status tracking
-- **Multi-shift Support**: Support for different work shifts
-- **Robust Error Handling**: Comprehensive error handling and recovery mechanisms
+- **🌐 Web Interface**: Clean, responsive dashboard for managing personnel data and automation
+- **📋 IKH Automation**: Automated daily work permit processing
+- **🔧 IKK Automation**: Automated special work permit processing (API, Ruang Terbatas, Ketinggian)
+- **📊 CSV Management**: Upload and manage personnel data files
+- **📡 Real-time Monitoring**: Live log monitoring and process status tracking
+- **⏰ Multi-shift Support**: Support for different work shifts (1, 2, 3)
+- **🛡️ Robust Error Handling**: Comprehensive error handling and recovery
 
-## Architecture
+## 🚀 Quick Start
 
-### Core Components
+### Prerequisites
+- Python 3.8+
+- Git
 
-1. **Flask Application** (`app.py`)
-   - Main web server with RESTful API endpoints
-   - Session management and file handling
-   - Process orchestration and monitoring
-   - Caching for improved performance
+### Installation
 
-2. **IKH Automation** (`static/ikh_automation.py`)
-   - Daily work permit automation
-   - Personnel data processing
-   - Date and shift management
-
-3. **IKK Automation** (`static/ikk_automation.py`)
-   - Special work permit automation
-   - Category-specific processing (API, Ruang Terbatas, Ketinggian)
-   - Certificate validation and management
-
-### Key Improvements
-
-- **Removed excessive debugging code** that was cluttering the logs
-- **Consolidated duplicate functions** for better maintainability
-- **Implemented proper error handling** with graceful degradation
-- **Added caching mechanisms** for improved performance
-- **Streamlined process management** with thread pools
-- **Enhanced security** with proper session handling
-- **Improved code organization** with clear separation of concerns
-
-## Installation
-
-1. **Clone the repository**
+1. **Clone and setup**
    ```bash
    git clone https://github.com/ibradan/Portaliano.git
-   cd Portal
+   cd Portaliano
    ```
 
-2. **Create virtual environment**
+2. **Run with Virtual Environment (Recommended)**
    ```bash
-   python -m venv .venv
-   source .venv/bin/activate  # Linux/Mac
-   # or
-   .venv\Scripts\activate     # Windows
+   ./start_portal_venv.sh
    ```
 
-3. **Install dependencies**
+   This will automatically:
+   - Create virtual environment if not exists
+   - Install all dependencies
+   - Install Playwright browser
+   - Start the Flask application
+
+3. **Manual Setup (Alternative)**
    ```bash
+   python3 -m venv venv
+   source venv/bin/activate
    pip install -r requirements.txt
-   ```
-
-4. **Install Playwright browsers**
-   ```bash
    playwright install chromium
-   ```
-
-## Usage
-
-### Starting the Application
-
-```bash
-python app.py
-```
-
-The application will be available at `http://localhost:5000`
-
-### Environment Variables
-
-- `FLASK_ENV`: Set to `production` for production deployment
-- `SECRET_KEY`: Secret key for session management
-- `PORT`: Port number (default: 5000)
-- `MAX_WORKERS`: Maximum thread pool workers (default: 4)
-- `UPLOAD_FOLDER`: Upload directory (default: uploads)
-- `MAX_FILE_SIZE`: Maximum file size in bytes (default: 5MB)
-
-### CSV File Format
-
-Personnel CSV files should contain the following columns:
-- `Nama`: Personnel name
-- `Nomor`: Personnel ID/NIK
-- `Sertif`: Certificate number (for IKK)
-- `Expsertif`: Certificate expiry date (for IKK)
-
-### API Endpoints
-
-- `GET /dashboard`: Main dashboard
-- `GET /ikh`: IKH automation page
-- `GET /ikk`: IKK categories page
-- `GET /ikk/api`: IKK API automation
-- `GET /ikk/ruang-terbatas`: IKK Ruang Terbatas automation
-- `GET /ikk/ketinggian`: IKK Ketinggian automation
-- `POST /upload`: Upload CSV file
-- `POST /process`: Start automation process
-- `POST /stop_process`: Stop running process
-- `GET /get_log`: Get automation logs
-- `GET /check_completion`: Check process status
-
-## Docker Deployment
-
-```bash
-# Build image
-docker build -t portal-automation .
-
-# Run container
-docker run -p 5000:5000 portal-automation
-
-# Or use docker-compose
-docker-compose up -d
-```
-
-## File Structure
-
-```
-Portal/
-├── app.py                      # Main Flask application
-├── requirements.txt            # Python dependencies
-├── Dockerfile                 # Docker configuration
-├── docker-compose.yml         # Docker Compose configuration
-├── static/
-│   ├── ikh_automation.py      # IKH automation script
-│   ├── ikk_automation.py      # IKK automation script
-│   └── style.css             # CSS styles
-├── templates/                 # HTML templates
-│   ├── dashboard.html
-│   ├── ikh.html
-│   ├── ikk_*.html
-│   └── ...
-├── uploads/                   # Upload directory
-├── personnel_list_*.csv       # Personnel data files
-└── README.md                  # This file
-```
-
-## Performance Optimizations
-
-1. **Caching**: LRU cache for CSV data and file listings
-2. **Thread Pool**: Concurrent process execution
-3. **Resource Management**: Proper cleanup and signal handling
-4. **Memory Efficiency**: Limited CSV row loading (50 rows max for preview)
-5. **Connection Pooling**: Optimized database connections
-
-## Security Features
-
-1. **File Upload Validation**: Secure filename handling and type checking
-2. **Session Management**: HTTP-only cookies with proper expiration
-3. **Input Sanitization**: Protection against injection attacks
-4. **Error Handling**: No sensitive information in error messages
-5. **Process Isolation**: Sandboxed automation processes
-
-## Monitoring and Logging
-
-- **Structured Logging**: Consistent log format with timestamps
-- **Process Monitoring**: Real-time status tracking
-- **Error Screenshots**: Automatic error capture for debugging
-- **Performance Metrics**: Response time and resource usage tracking
-
-## Troubleshooting
-
-### Common Issues
-
-1. **Playwright Installation**
-   ```bash
-   playwright install --with-deps chromium
-   ```
-
-2. **Permission Issues**
-   ```bash
-   chmod +x static/*.py
-   ```
-
-3. **Port Already in Use**
-   ```bash
-   export PORT=8000
    python app.py
    ```
 
-### Debug Mode
+### Access
+Open your browser to `http://localhost:5000`
 
-Set `FLASK_ENV=development` for detailed error messages and auto-reload.
+## 🎛️ Browser Configuration
 
-## Contributing
+### Quick Mode Switching
+```bash
+# Show browser window (for development/debugging)
+./switch_browser_mode.sh visible
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
+# Hide browser window (for production/server)
+./switch_browser_mode.sh headless
 
-## License
+# Check current configuration
+./switch_browser_mode.sh status
+```
 
-This project is licensed under the MIT License.
+### Manual Configuration
+Edit `browser_config.py`:
+- `HEADLESS_MODE = False` → Browser visible
+- `HEADLESS_MODE = True` → Browser hidden
 
-## Support
+## 📁 Project Structure
+
+```
+Portaliano/
+├── 🐍 app.py                     # Main Flask application
+├── 📋 requirements.txt           # Python dependencies  
+├── 🐳 Dockerfile                # Docker configuration
+├── 🐳 docker-compose.yml        # Docker Compose setup
+├── 🚀 start_portal_venv.sh       # Main launcher script
+├── ✅ check_venv.py              # Environment verification
+├── 🎛️ browser_config.py          # Browser mode configuration
+├── 🔄 switch_browser_mode.sh     # Quick browser mode switcher
+├── 📖 VENV_SETUP_GUIDE.md       # Setup documentation
+├── 📊 personnel_list_*.csv       # Personnel data files
+├── 🔧 portaliano.service         # Systemd service file
+├── 📁 static/
+│   ├── 🤖 ikh_automation.py      # IKH automation script
+│   ├── 🤖 ikk_automation.py      # IKK automation script  
+│   └── 🎨 style.css             # Web interface styles
+├── 📁 templates/                 # HTML templates
+│   ├── 🏠 dashboard.html         # Main dashboard
+│   ├── 📋 ikh.html              # IKH automation page
+│   ├── 🔧 ikk_*.html            # IKK automation pages
+│   └── 📊 table.html            # Data display
+├── 📁 uploads/                   # CSV upload directory
+└── 📁 venv/                     # Virtual environment
+```
+
+## 🔧 Core Components
+
+### Browser Configuration (`browser_config.py`)
+- Centralized browser mode control
+- Easy switching between visible/headless
+- Configurable browser arguments and speed
+- Development/Production presets
+
+### Flask Application (`app.py`)
+- RESTful API endpoints
+- Session management and file handling  
+- Process orchestration and monitoring
+- Real-time logging system
+
+### IKH Automation (`static/ikh_automation.py`)
+- Daily work permit automation
+- Personnel data processing
+- Multi-shift support (Shift 1, 2, 3)
+- Browser automation with Playwright
+
+### IKK Automation (`static/ikk_automation.py`)  
+- Special work permit automation
+- Three categories: API, Ruang Terbatas, Ketinggian
+- Certificate validation and expiry checking
+- Dynamic calendar navigation
+
+## 📊 CSV File Format
+
+Personnel CSV files should contain:
+- `Nama`: Personnel name
+- `Nomor`: Personnel ID/NIK  
+- `Sertif`: Certificate number (for IKK)
+- `Expsertif`: Certificate expiry date (for IKK, format: DD/MM/YYYY)
+
+## 🌐 API Endpoints
+
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/dashboard` | GET | Main dashboard |
+| `/ikh` | GET | IKH automation page |
+| `/ikk/api` | GET | IKK API automation |
+| `/ikk/ruang-terbatas` | GET | IKK Confined Space |
+| `/ikk/ketinggian` | GET | IKK Height Work |
+| `/upload` | POST | Upload CSV file |
+| `/process` | POST | Start automation |
+| `/stop_process` | POST | Stop process |
+| `/get_log` | GET | Get real-time logs |
+
+## 🐳 Docker Deployment
+
+```bash
+# Quick start with Docker Compose
+docker-compose up -d
+
+# Manual Docker build
+docker build -t portaliano .
+docker run -p 5000:5000 portaliano
+```
+
+## ⚙️ Environment Variables
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `FLASK_ENV` | `development` | Flask environment |
+| `PORT` | `5000` | Application port |
+| `PLAYWRIGHT_HEADLESS` | `false` | Browser visibility |
+
+## 🔍 Monitoring & Troubleshooting
+
+### Check Environment
+```bash
+python check_venv.py
+```
+
+### View Logs
+- Real-time logs available in web interface
+- Check terminal output for detailed information
+
+### Common Issues
+
+1. **Playwright not installed**
+   ```bash
+   source venv/bin/activate
+   playwright install chromium
+   ```
+
+2. **Permission denied**
+   ```bash
+   chmod +x start_portal_venv.sh
+   ```
+
+3. **Port already in use**
+   ```bash
+   export PORT=8080
+   ./start_portal_venv.sh
+   ```
+
+## 🎯 Recent Improvements
+
+✅ **Clean Virtual Environment**: Isolated Python dependencies  
+✅ **User Package Cleanup**: Removed conflicting system packages  
+✅ **Simplified Structure**: Removed unnecessary files and scripts  
+✅ **Browser Visibility**: Set headless=False for development  
+✅ **Documentation**: Comprehensive setup guides  
+
+## 📝 License
+
+MIT License - See LICENSE file for details
+
+## 💬 Support
 
 For issues and questions, please create an issue in the GitHub repository.

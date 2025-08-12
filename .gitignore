@@ -104,3 +104,21 @@ coverage.xml
 # Backup files
 *.bak
 *.backup
+
+# Temporary development files (prevent re-creation)
+check_environment.py
+final_check.py
+fix_linux_config.py
+test_automation.py
+setup_venv.sh
+start_portal_linux.sh
+CLEANUP_SUMMARY.md
+LINUX_SETUP_COMPLETE.md
+README_LINUX.md
+
+# Development patterns
+*_temp.py
+*_test.py
+*_debug.py
+*_old.*
+*_backup.*

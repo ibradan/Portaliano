@@ -23,6 +23,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libgbm1 \
     libxss1 \
     libasound2 \
+    fonts-unifont \
+    fonts-liberation \
     # Essential for Flask app
     curl \
     && apt-get clean \
@@ -36,12 +38,10 @@ WORKDIR /app
 # Copy and install Python dependencies (separate layer for caching)
 COPY requirements.txt .
 RUN pip install --no-cache-dir --upgrade pip \
-    && pip install --no-cache-dir -r requirements.txt \
-    && pip cache purge
+    && pip install --no-cache-dir -r requirements.txt
 
 # Install only Chromium browser (not all browsers) to save 400MB+
 RUN playwright install chromium \
-    && playwright install-deps chromium \
     && rm -rf /tmp/* /var/tmp/*
 
 # ========================= 

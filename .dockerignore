@@ -1,43 +1,24 @@
-# Docker ignore file for Portaliano - Optimized for minimal image size
-# ================================================================
+# Git
+.git
+.gitignore
+.gitattributes
 
-# Virtual environment (largest size impact)
+# Documentation
+README.md
+*.md
+docs/
+
+# Development files
 venv/
 .venv/
 env/
-
-# Python cache and compiled files
+ENV/
 __pycache__/
-*.py[cod]
-*$py.class
-*.so
+*.pyc
+*.pyo
+*.pyd
 .Python
-pip-log.txt
-pip-delete-this-directory.txt
-.tox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-
-# Development and documentation files
-*.md
-README.md
-VENV_SETUP_GUIDE.md
-BROWSER_CONFIG_GUIDE.md
-REFACTORING_COMPLETE.md
-
-# Development scripts (not needed in production)
-check_venv.py
-switch_browser_mode.sh
-start_portal_venv.sh
-*.service
-
-# Git
-.git/
-.gitignore
+*.so
 
 # IDE
 .vscode/
@@ -55,23 +36,64 @@ start_portal_venv.sh
 ehthumbs.db
 Thumbs.db
 
-# Docker files (avoid recursion)
-.dockerignore
-Dockerfile
-docker-compose.yml
-
-# Runtime files (will be mounted as volumes)
+# Logs
 *.log
-automation.log
 logs/
-uploads/
+automation.log
 
 # Temporary files
 *.tmp
 *.temp
-temp_selected_data_*.csv
-enter_signal.txt
-.tmp/
+temp/
+tmp/
+.cache/
+.pytest_cache/
 
-# Screenshots (if any)
-screenshots/
+# Environment files
+.env
+.env.local
+.env.production
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Coverage
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+.hypothesis/
+
+# Jupyter
+.ipynb_checkpoints
+
+# Backup files
+*.bak
+*.backup
+
+# Development scripts
+*.sh
+check_*.py
+test_*.py
+*_temp.py
+*_debug.py
+*_old.*
+*_backup.*
+
+# Docker
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Screenshots (keep only if needed for debugging)
+*.png
+error_*.png
+
+# Service files
+*.service
+
+# Analysis scripts
+size-analysis.sh

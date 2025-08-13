@@ -66,7 +66,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Set environment variables
 ENV PYTHONUNBUFFERED=1 \
     PYTHONDONTWRITEBYTECODE=1 \
-    PLAYWRIGHT_BROWSERS_PATH=/ms-playwright
+    PLAYWRIGHT_BROWSERS_PATH=/ms-playwright \
+    FLASK_APP=app.py \
+    FLASK_ENV=production \
+    PORT=5000
 
 # Set working directory
 WORKDIR /app
@@ -86,11 +89,6 @@ USER appuser
 
 # Create required directories
 RUN mkdir -p uploads logs
-
-# Set environment variables for production headless mode
-ENV FLASK_APP=app.py \
-    FLASK_ENV=production \
-    PORT=5000
 
 # Expose Flask port
 EXPOSE 5000

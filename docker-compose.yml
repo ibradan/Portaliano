@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   portaliano:
     build: 
@@ -9,13 +11,17 @@ services:
       - "5000:5000"
     volumes:
       - ./uploads:/app/uploads
-      - ./automation.log:/app/automation.log
       - ./logs:/app/logs
+      - ./automation.log:/app/automation.log
     environment:
       - FLASK_ENV=production
+      - FLASK_APP=app.py
       - HEADLESS_MODE=true
-  - SLOW_MO=0
+      - SLOW_MO=0
       - PYTHONUNBUFFERED=1
+      - SECRET_KEY=${SECRET_KEY:-dev-key-change-in-production}
+      - MAX_WORKERS=4
+      - MAX_FILE_SIZE=5242880
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:5000/dashboard"]
@@ -25,11 +31,19 @@ services:
       start_period: 60s
     networks:
       - portaliano-network
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+          cpus: '1.0'
+        reservations:
+          memory: 512M
+          cpus: '0.5'
 
 networks:
   portaliano-network:
     driver: bridge
-    
+
 volumes:
   portaliano-uploads:
   portaliano-logs:

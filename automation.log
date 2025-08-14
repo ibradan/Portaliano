@@ -88,3 +88,71 @@
 🎯 Expected date value: '14/08/2025'
 ❌ Date verification failed!
 🚨 CRITICAL: Date verification failed! Automation may fail.
+🔍 FINAL DEBUG - Field contains: '14-Aug-2025'
+🔄 Preparing to set shift to: 1
+✅ Shift field is available
+🔄 Setting shift to: 1
+🎯 Method 1: Standard select_option...
+✅ Method 1 successful: 1
+✅ Shift setting confirmed successful
+🔍 Current shift value: '1'
+🎯 Expected shift value: '1'
+✅ Shift verification successful!
+👥 Processing 25 personnel records...
+🔄 Processing 1/25: DANI IBRAHIM (NIK: 3209252101970001)
+🔄 Processing 2/25: ASEP PRIYATMAN (NIK: 3214012511700001)
+🔄 Processing 3/25: SLAMET WASPADI (NIK: 3276100406750002)
+🔄 Processing 4/25: MUHAMAD RIVA GUSTAVIA (NIK: 3214010508060005)
+🔄 Processing 5/25: YUDI PERMADI (NIK: 3214081112900006)
+⏳ Progress: 20% (5/25)
+🔄 Processing 6/25: IKBAL MAULANA (NIK: 3214062909030002)
+🔄 Processing 7/25: DEVI RAHMADIAN YUSUP (NIK: 3214080808880004)
+🔄 Processing 8/25: USNI (NIK: 3214120504820005)
+🔄 Processing 9/25: ALDI JAENUL HAKIM (NIK: 3215161709970002)
+🔄 Processing 10/25: WAWAN (NIK: 3214082608860001)
+⏳ Progress: 40% (10/25)
+🔄 Processing 11/25: CEP AYI (NIK: 3214080408840004)
+🔄 Processing 12/25: SUPARMAN (NIK: 3215140505030010)
+🔄 Processing 13/25: ASEP HERYANTO (NIK: 3214020109940001)
+🔄 Processing 14/25: HOTLES NAINGGOLAN (NIK: 3216062407780010)
+🔄 Processing 15/25: BAGUS ADIYATMA (NIK: 3329100710940001)
+⏳ Progress: 60% (15/25)
+🔄 Processing 16/25: FADILAH (NIK: 3216091206900010)
+🔄 Processing 17/25: YOGI MAHENDRA SITOMPUL (NIK: 1202062308030001)
+🔄 Processing 18/25: TEGUH SUPRAPTO (NIK: 3301230305800002)
+🔄 Processing 19/25: NUR ARIFUDIN (NIK: 3301232112990003)
+🔄 Processing 20/25: GIRAN (NIK: 2102031506800001)
+⏳ Progress: 80% (20/25)
+🔄 Processing 21/25: IMAN SUMANTRI (NIK: 3216210712730003)
+🔄 Processing 22/25: NOPITA CANDRA DEWI (NIK: 3216064611970020)
+🔄 Processing 23/25: SUPADI (NIK: 3301121505790001)
+🔄 Processing 24/25: ADE DANA (NIK: 3217062403680010)
+🔄 Processing 25/25: IMAM FAUZI (NIK: 3302030206910002)
+⏳ Progress: 100% (25/25)
+❌ Automation failed: Timeout 30000ms exceeded.
+Traceback (most recent call last):
+  File "/app/static/ikh_automation.py", line 1679, in <module>
+    run(playwright, personnel_list, args.date, args.shift)
+  File "/app/static/ikh_automation.py", line 708, in run
+    page.get_by_role("button", name=" OK").click()
+  File "/usr/local/lib/python3.10/site-packages/playwright/sync_api/_generated.py", line 15784, in click
+    self._sync(
+  File "/usr/local/lib/python3.10/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+  File "/usr/local/lib/python3.10/site-packages/playwright/_impl/_locator.py", line 159, in click
+    return await self._frame.click(self._selector, strict=True, **params)
+  File "/usr/local/lib/python3.10/site-packages/playwright/_impl/_frame.py", line 484, in click
+    await self._channel.send("click", locals_to_params(locals()))
+  File "/usr/local/lib/python3.10/site-packages/playwright/_impl/_connection.py", line 62, in send
+    return await self._connection.wrap_api_call(
+  File "/usr/local/lib/python3.10/site-packages/playwright/_impl/_connection.py", line 492, in wrap_api_call
+    return await cb()
+  File "/usr/local/lib/python3.10/site-packages/playwright/_impl/_connection.py", line 100, in inner_send
+    result = next(iter(done)).result()
+playwright._impl._errors.TimeoutError: Timeout 30000ms exceeded.
+
+❌ PROCESS FAILED!
+==================================================
+🔥 Exit code: 1
+⏰ Failure time: 2025-08-14 14:34:51
+==================================================

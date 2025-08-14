@@ -528,6 +528,10 @@ def run(playwright: Playwright, personnel_list, selected_date=None, selected_shi
     )
     context = browser.new_context()
     page = context.new_page()
+    
+    # Set timeout configurations
+    page.set_default_timeout(browser_config['default_timeout'])
+    page.set_default_navigation_timeout(browser_config['navigation_timeout'])
     common_data = {
         'address': "RT.004/RW.011, Marga Mulya, Bekasi Utara, Bekasi, West Java 17143",
         'phone': "082129002163",

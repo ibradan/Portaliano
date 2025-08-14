@@ -679,6 +679,10 @@ def run(playwright: Playwright, personnel_data, ikk_category="IA", work_date="30
     )
     context = browser.new_context()
     page = context.new_page()
+    
+    # Set timeout configurations
+    page.set_default_timeout(browser_config['default_timeout'])
+    page.set_default_navigation_timeout(browser_config['navigation_timeout'])
 
     try:
         # ⚡ INSTANT LOGIN

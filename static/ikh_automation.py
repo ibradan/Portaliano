@@ -330,7 +330,7 @@ def set_date_field(page, date_str):
             }}
         """)
         
-        page.wait_for_timeout(100)  # Reduced wait time for faster processing
+        page.wait_for_timeout(get_wait_time(100))  # Optimized minimal wait
         
         # Verify JavaScript method worked
         current_value = page.locator(f"#{input_id}").input_value()
@@ -1279,7 +1279,7 @@ def set_shift_field(page, selected_shift):
                 """)
                 page.wait_for_timeout(get_wait_time(500))  # Optimized wait
             shift_locator.select_option(shift_value)
-            page.wait_for_timeout(1000)
+            page.wait_for_timeout(get_wait_time(800))  # Optimized critical wait for shift selection
             
             # Verify selection
             selected_value = shift_locator.input_value()
@@ -1362,7 +1362,7 @@ def set_shift_field(page, selected_shift):
                         option_element.click()
                         print(f"✅ Clicked option using selector: {selector}")
                         option_clicked = True
-                        page.wait_for_timeout(1000)
+                        page.wait_for_timeout(get_wait_time(800))  # Optimized critical wait for option selection
                         break
                 except Exception as e:
                     print(f"⚠️ Option selector {selector} failed: {e}")

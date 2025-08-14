@@ -211,7 +211,7 @@ def set_date_field(page, date_str):
             if calendar_icon.is_visible():
                 print("📅 Clicking calendar icon...")
                 calendar_icon.click()
-                page.wait_for_timeout(2000)  # Give more time for calendar to load
+                page.wait_for_timeout(500)  # Reduced wait time for faster processing
                 
                 # Debug calendar structure
                 calendar_debug = debug_calendar_structure(page)
@@ -235,7 +235,7 @@ def set_date_field(page, date_str):
                         
                         if navigation_success:
                             print("✅ Calendar navigation completed")
-                            page.wait_for_timeout(1000)  # Wait for calendar to update
+                            page.wait_for_timeout(200)  # Reduced wait time for faster processing
                         else:
                             print("❌ All navigation methods failed")
                             # Continue anyway, maybe the day exists in current view
@@ -280,7 +280,7 @@ def set_date_field(page, date_str):
                             continue
                     
                     if date_clicked:
-                        page.wait_for_timeout(1500)  # Give more time for value to be set
+                        page.wait_for_timeout(300)  # Reduced wait time for faster processing
                         # Verify the date was set
                         current_value = page.locator(f"#{input_id}").input_value()
                         print(f"📝 Calendar result: '{current_value}' vs expected '{date_str}'")
@@ -330,7 +330,7 @@ def set_date_field(page, date_str):
             }}
         """)
         
-        page.wait_for_timeout(500)
+        page.wait_for_timeout(100)  # Reduced wait time for faster processing
         
         # Verify JavaScript method worked
         current_value = page.locator(f"#{input_id}").input_value()
@@ -361,7 +361,7 @@ def set_date_field(page, date_str):
             calendar_icon = page.locator(f"#{input_id}_span")
             if calendar_icon.is_visible():
                 calendar_icon.click()
-                page.wait_for_timeout(2000)
+                page.wait_for_timeout(500)  # Reduced wait time for faster processing
                 
                 # Try to directly set the calendar's internal date
                 emergency_result = page.evaluate(f"""
@@ -414,7 +414,7 @@ def set_date_field(page, date_str):
                 """)
                 
                 if emergency_result:
-                    page.wait_for_timeout(2000)
+                    page.wait_for_timeout(500)  # Reduced wait time for faster processing
                     emergency_value = date_input.input_value()
                     if emergency_value == date_str:
                         print(f"🚨✅ Emergency method succeeded: {emergency_value}")
@@ -707,7 +707,7 @@ def run(playwright: Playwright, personnel_list, selected_date=None, selected_shi
         page.get_by_role("button", name=" Submit").click()
         page.get_by_role("button", name=" OK").click()
         print("✅ Automation completed successfully!")
-        page.wait_for_timeout(1000)
+        page.wait_for_timeout(200)  # Reduced wait time for faster processing
     except Exception as e:
         print(f"❌ Automation failed: {e}")
         raise
@@ -941,7 +941,7 @@ def navigate_bootstrap_calendar(page, target_month, target_year, current_month, 
                                     element.click()
                                     print(f"{'➡️' if direction == 'next' else '⬅️'} Clicked {direction} using: {selector} (element {i}, step {step+1}/{steps})")
                                     clicked = True
-                                    page.wait_for_timeout(1000)  # Wait for calendar to update
+                                    page.wait_for_timeout(200)  # Reduced wait time for faster processing
                                     break
                             except Exception as e:
                                 print(f"⚠️ Failed to click element {i} with selector {selector}: {e}")
@@ -1006,7 +1006,7 @@ def try_header_navigation(page, target_month, target_year):
                     
                     # Try clicking the header to get month/year picker
                     header.click()
-                    page.wait_for_timeout(1000)
+                    page.wait_for_timeout(200)  # Reduced wait time for faster processing
                     
                     # Look for month picker view
                     month_selectors = [

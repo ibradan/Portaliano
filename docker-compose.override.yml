@@ -9,7 +9,7 @@ services:
     environment:
       - FLASK_ENV=development
       - FLASK_DEBUG=1
-      - HEADLESS_MODE=false  # Show browser for debugging
+      - HEADLESS_MODE=true  # Headless mode for Docker container
       - SLOW_MO=100  # Slower for debugging
       - PYTHONUNBUFFERED=1
       - SECRET_KEY=dev-secret-key-change-in-production

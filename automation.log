@@ -1,199 +1,90 @@
-🚀 IKK-KETINGGIAN AUTOMATION STARTED
+🚀 IKH AUTOMATION STARTED
 ==================================================
-📂 Category: IK
-📄 CSV File: personnel_list_IK.csv
-📅 Date: 2025-08-13
-⏰ Shift: 2
-🔧 Script: static/ikk_automation.py
-💻 Command: python3 static/ikk_automation.py IK 2025-08-13 MELTING REPAIR 2 0 1 2 3 4 5 6
+📂 Category: IKH
+📄 CSV File: personnel_list_ALL.csv
+📅 Date: 2025-08-14
+⏰ Shift: 1
+🔧 Script: static/ikh_automation.py
+💻 Command: python3 static/ikh_automation.py personnel_list_ALL.csv 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 --date=2025-08-14 --shift=1
 ==================================================
 
 🖥️ Browser mode: Headless (Background)
-🔄 Shift 2: Will be set in IKK form
-⚡ LOADED: 7 personnel records
-🚀 Starting MERGED IKK Automation - Category: IK, Date: 2025-08-13, Shift: 2
-📄 CSV file: personnel_list_IK.csv
-👥 Personnel count: 7
-🚀 MERGED IKK START - Category: IK, Shift: 2
-👥 Personnel: 7 people
-🖥️ Browser mode: Headless (Background)
-⚡ INSTANT LOGIN...
-✅ LOGIN SUCCESS
-⚡ INSTANT NAVIGATION...
-⚡ INSTANT FORM SETUP...
-⚡ INSTANT AREA...
-🔄 ENHANCED SHIFT SETTING: 2
-Shift debug info:
-    Found 0 shift-related fields
-    Detected shift dropdown by pattern: 1 -> 2
-    Detected shift dropdown by pattern: 1 -> 2
-  ✅ SHIFT SET: Shift 2 set successfully (2 fields)
-📝 INSTANT DESCRIPTION: MELTING REPAIR
-📅 HUMAN MIMIC DATE SETTING: 2025-08-13
-⚡ Formatted work date: 13/08/2025
-👨‍💻 Setting WORK DATE with human mimic calendar navigation...
-👨‍💻 ENHANCED MODE: Setting work date 13/08/2025
-🎯 Target: Day=13, Month=8, Year=2025
-📅 HUMAN-LIKE: Opening calendar picker...
-📅 Clicking calendar icon: #ahmgawpm003_tanggal_pelaksanaan_pekerjaan_khusus_request_kontraktor_span
-🧭 HUMAN-LIKE: Navigating to target date...
-📅 Navigating to year 2025...
-⚠️ Year navigation error: invalid literal for int() with base 10: '2020-2031202020212022202320242025202620272028202920302031'
-📅 Navigating to month 8...
-📅 Clicking day 13...
-✅ Day 13 clicked successfully!
-✅ Final date value: '13-Aug-2025'
-✅ Work date set successfully with human mimic: 13/08/2025
-🛡️ ENHANCED SAFETY INDUCTION...
-✅ Safety induction set successfully
-⚡ ULTRA-FAST PERSONNEL: 7 people
-⚡ Person 1: FADILAH
-    📝 Person 1: Accessing personnel modal...
-    🔄 Modal not visible, trying to trigger for person 1...
-    ✅ Add Personnel clicked for person 1
-    ✅ Personnel modal ready for person 1
-📅 ACTUAL EXPIRY DATE from CSV: 31 Januari 2026
-🔄 Converted Indonesian date: '31 Januari 2026' -> '31/01/2026'
-👨‍💻 Setting VALIDATED CERTIFICATE EXPIRY DATE: 31/01/2026
-🎯 Target year: 2026 (validated DD/MM/YYYY format)
-👨‍💻 HUMAN MIMIC MODE: Setting certificate expiry date 31/01/2026 to field ahmgawpm003_tanggal_akhir_berlaku_izin_add
-🎯 Target Expiry: Day=31, Month=1, Year=2026
-⏳ Waiting for expiry field ahmgawpm003_tanggal_akhir_berlaku_izin_add to be available...
-✅ Expiry field ahmgawpm003_tanggal_akhir_berlaku_izin_add is now available
-📅 HUMAN MIMIC: Opening expiry calendar picker...
-📅 Clicking expiry calendar icon: #ahmgawpm003_tanggal_akhir_berlaku_izin_add + span
-✅ Expiry calendar opened via icon
-🧭 HUMAN MIMIC: Navigating to target expiry date...
-📅 Navigating to year 2026...
-🔍 Year navigation attempt 1/5
-📊 Found 13 year elements
-❌ Year navigation error: invalid literal for int() with base 10: '2020-2031202020212022202320242025202620272028202920302031'
-✅ Year navigation completed in 1 attempts
-📅 Navigating to month 1...
-📅 Clicking day 31...
-✅ Day 31 clicked successfully!
-✅ Final expiry date value: '31-Aug-2025'
-⚠️ Final value '31-Aug-2025' tidak sesuai target '31/01/2026', force set via JS (all events)
-✅ Final expiry date value after force set (all events): '31-Aug-2025'
-✅ Certificate expiry date set successfully with human mimic: 31/01/2026
-✅ Person 1 SUCCESS: FADILAH
-⚡ Person 2: YOGI MAHENDRA SITOMPUL
-    🔄 Person 2: Clicking Add Personnel...
-    ✅ Add Personnel clicked for person 2
-    ✅ Personnel modal ready for person 2
-📅 ACTUAL EXPIRY DATE from CSV: 31 Januari 2026
-🔄 Converted Indonesian date: '31 Januari 2026' -> '31/01/2026'
-👨‍💻 Setting VALIDATED CERTIFICATE EXPIRY DATE: 31/01/2026
-🎯 Target year: 2026 (validated DD/MM/YYYY format)
-👨‍💻 HUMAN MIMIC MODE: Setting certificate expiry date 31/01/2026 to field ahmgawpm003_tanggal_akhir_berlaku_izin_add
-🎯 Target Expiry: Day=31, Month=1, Year=2026
-⏳ Waiting for expiry field ahmgawpm003_tanggal_akhir_berlaku_izin_add to be available...
-✅ Expiry field ahmgawpm003_tanggal_akhir_berlaku_izin_add is now available
-📅 HUMAN MIMIC: Opening expiry calendar picker...
-📅 Clicking expiry calendar icon: #ahmgawpm003_tanggal_akhir_berlaku_izin_add + span
-✅ Expiry calendar opened via icon
-🧭 HUMAN MIMIC: Navigating to target expiry date...
-📅 Navigating to year 2026...
-🔍 Year navigation attempt 1/5
-📊 Found 13 year elements
-❌ Year navigation error: invalid literal for int() with base 10: '2020-2031202020212022202320242025202620272028202920302031'
-✅ Year navigation completed in 1 attempts
-📅 Navigating to month 1...
-📅 Clicking day 31...
-⚠️ Day selector td:text('31') failed: Timeout 30000ms exceeded.
-⚠️ Could not click day 31, trying JavaScript fallback...
-      JavaScript fallback result: {'success': True, 'value': '13-Aug-2025'}
-✅ Final expiry date value: '13-Aug-2025'
-⚠️ Final value '13-Aug-2025' tidak sesuai target '31/01/2026', force set via JS (all events)
-✅ Final expiry date value after force set (all events): '13-Aug-2025'
-✅ Certificate expiry date set successfully with human mimic: 31/01/2026
-✅ Person 2 SUCCESS: YOGI MAHENDRA SITOMPUL
-⚡ Person 3: TEGUH SUPRAPTO
-    🔄 Person 3: Clicking Add Personnel...
-    ✅ Add Personnel clicked for person 3
-    ✅ Personnel modal ready for person 3
-📅 ACTUAL EXPIRY DATE from CSV: 31 Januari 2026
-🔄 Converted Indonesian date: '31 Januari 2026' -> '31/01/2026'
-👨‍💻 Setting VALIDATED CERTIFICATE EXPIRY DATE: 31/01/2026
-🎯 Target year: 2026 (validated DD/MM/YYYY format)
-👨‍💻 HUMAN MIMIC MODE: Setting certificate expiry date 31/01/2026 to field ahmgawpm003_tanggal_akhir_berlaku_izin_add
-🎯 Target Expiry: Day=31, Month=1, Year=2026
-⏳ Waiting for expiry field ahmgawpm003_tanggal_akhir_berlaku_izin_add to be available...
-✅ Expiry field ahmgawpm003_tanggal_akhir_berlaku_izin_add is now available
-📅 HUMAN MIMIC: Opening expiry calendar picker...
-📅 Clicking expiry calendar icon: #ahmgawpm003_tanggal_akhir_berlaku_izin_add + span
-✅ Expiry calendar opened via icon
-🧭 HUMAN MIMIC: Navigating to target expiry date...
-📅 Navigating to year 2026...
-🔍 Year navigation attempt 1/5
-📊 Found 13 year elements
-❌ Year navigation error: invalid literal for int() with base 10: '2020-2031202020212022202320242025202620272028202920302031'
-✅ Year navigation completed in 1 attempts
-📅 Navigating to month 1...
-📅 Clicking day 31...
-⚠️ Day selector td:text('31') failed: Timeout 30000ms exceeded.
-⚠️ Could not click day 31, trying JavaScript fallback...
-      JavaScript fallback result: {'success': True, 'value': '13-Aug-2025'}
-✅ Final expiry date value: '13-Aug-2025'
-⚠️ Final value '13-Aug-2025' tidak sesuai target '31/01/2026', force set via JS (all events)
-✅ Final expiry date value after force set (all events): '13-Aug-2025'
-✅ Certificate expiry date set successfully with human mimic: 31/01/2026
-✅ Person 3 SUCCESS: TEGUH SUPRAPTO
-⚡ Person 4: HOTLES NAINGGOLAN
-    🔄 Person 4: Clicking Add Personnel...
-    ✅ Add Personnel clicked for person 4
-    ✅ Personnel modal ready for person 4
-✅ Person 4 SUCCESS: HOTLES NAINGGOLAN
-⚡ Person 5: NUR ARIFUDIN
-    🔄 Person 5: Clicking Add Personnel...
-    ✅ Add Personnel clicked for person 5
-    ✅ Personnel modal ready for person 5
-✅ Person 5 SUCCESS: NUR ARIFUDIN
-⚡ Person 6: ADE DANA
-    🔄 Person 6: Clicking Add Personnel...
-    ✅ Add Personnel clicked for person 6
-    ✅ Personnel modal ready for person 6
-✅ Person 6 SUCCESS: ADE DANA
-⚡ Person 7: IMAM FAUZI
-    🔄 Person 7: Clicking Add Personnel...
-    ✅ Add Personnel clicked for person 7
-    ✅ Personnel modal ready for person 7
-✅ Person 7 SUCCESS: IMAM FAUZI
-⚡ PERSONNEL COMPLETE: 7/7
-⚡ INSTANT AREA & TOOLS...
-  ✅ AREA
-    🔧 Tool fields filled: {'success': True, 'fieldsProcessed': 2}
-  ✅ TOOLS (Field 1='1', Field 2='1')
-⚡ INSTANT FINAL SUBMIT...
-🔔 WAITING FOR SUCCESS NOTIFICATION...
-🔍 Checking for success notification modal...
-📢 Notification message: IKK telah berhasil disubmit
-🎉 SUCCESS NOTIFICATION DETECTED!
-⏳ Waiting for user to read success notification...
-🔘 Looking for OK button in success notification...
-✅ Clicking OK button...
-⚠️ OK button click failed: Timeout 30000ms exceeded.
-📢 Notification message: IKK telah berhasil disubmit
-🎉 SUCCESS NOTIFICATION DETECTED!
-✅ SUBMISSION SUCCESSFUL!
-✅ IKK AUTOMATION COMPLETED SUCCESSFULLY!
-
-🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉
-🚀 MERGED IKK AUTOMATION COMPLETE! 🚀
-==================================================
-📂 Category: IK
-📅 Work Date: 13/08/2025
-🔄 Shift: 2
-👥 Personnel: 7/7 people processed
-📝 Description: MELTING REPAIR
-⏰ Completed at: 06:35:21
-🔔 Notification: Not detected
-✅ Status: SUCCESS
-==================================================
-🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉
-
-🎉 IKK-KETINGGIAN COMPLETED SUCCESSFULLY!
-==================================================
-✅ Process finished with exit code: 0
-⏰ Completion time: 2025-08-13 06:35:21
-==================================================
+[FILE] CSV Headers: ['Nama', 'Nomor']
+✅ Added: DANI IBRAHIM - NIK: 3209252101970001
+✅ Added: ASEP PRIYATMAN - NIK: 3214012511700001
+✅ Added: SLAMET WASPADI - NIK: 3276100406750002
+✅ Added: MUHAMAD RIVA GUSTAVIA - NIK: 3214010508060005
+✅ Added: YUDI PERMADI - NIK: 3214081112900006
+✅ Added: IKBAL MAULANA - NIK: 3214062909030002
+✅ Added: DEVI RAHMADIAN YUSUP - NIK: 3214080808880004
+✅ Added: USNI - NIK: 3214120504820005
+✅ Added: ALDI JAENUL HAKIM - NIK: 3215161709970002
+✅ Added: WAWAN - NIK: 3214082608860001
+✅ Added: CEP AYI - NIK: 3214080408840004
+✅ Added: SUPARMAN - NIK: 3215140505030010
+✅ Added: ASEP HERYANTO - NIK: 3214020109940001
+✅ Added: HOTLES NAINGGOLAN - NIK: 3216062407780010
+✅ Added: BAGUS ADIYATMA - NIK: 3329100710940001
+✅ Added: FADILAH - NIK: 3216091206900010
+✅ Added: YOGI MAHENDRA SITOMPUL - NIK: 1202062308030001
+✅ Added: TEGUH SUPRAPTO - NIK: 3301230305800002
+✅ Added: NUR ARIFUDIN - NIK: 3301232112990003
+✅ Added: GIRAN - NIK: 2102031506800001
+✅ Added: IMAN SUMANTRI - NIK: 3216210712730003
+✅ Added: NOPITA CANDRA DEWI - NIK: 3216064611970020
+✅ Added: SUPADI - NIK: 3301121505790001
+✅ Added: ADE DANA - NIK: 3217062403680010
+✅ Added: IMAM FAUZI - NIK: 3302030206910002
+[INFO] Loaded 25 valid personnel records
+[PROC] Starting IKH automation with parameters:
+   📅 Date: 2025-08-14
+   🔄 Shift: 1
+   👥 Personnel count: 25
+   🖥️ Browser mode: Headless (Background)
+🚀 Starting automation...
+🗓️ Attempting to set date: 14/08/2025
+📅 Target: Day=14, Month=8, Year=2025
+📅 Clicking calendar icon...
+🔍 === CALENDAR DEBUGGING MODE ===
+📸 Calendar screenshot saved: calendar_debug.png
+📋 Calendar Analysis Results:
+📦 Calendar containers found: 5
+   - DIV id='' class='bootstrap-datetimepicker-widget dropdown-menu uset...'
+   - DIV id='' class='datepicker...'
+   - DIV id='' class='datepicker-days...'
+   - TH id='' class='picker-switch...'
+   - SPAN id='ahmgawpm002_tanggal_pekerjaan_request_kontraktor_span' class='glyphicon glyphicon-calendar...'
+🧭 Navigation buttons found: 0
+📅 Date cells found: 42
+   - TD '27' class='day old disabled weekend...'
+   - TD '28' class='day old disabled...'
+   - TD '29' class='day old disabled...'
+   - TD '30' class='day old disabled...'
+   - TD '31' class='day old disabled...'
+   - TD '1' class='day disabled...'
+   - TD '2' class='day disabled weekend...'
+   - TD '3' class='day disabled weekend...'
+   - TD '4' class='day disabled...'
+   - TD '5' class='day disabled...'
+🏷️ Headers found: 3
+   - DIV 'Maintain Izin Kerja Proyek' class='menu-title...'
+   - DIV 'Maintain Izin Kerja Harian' class='menu-title...'
+   - DIV 'Maintain Izin Kerja Khusus' class='menu-title...'
+🔍 === END CALENDAR DEBUGGING ===
+🔍 Analyzing calendar debug results...
+📝 Header text: 'Maintain Izin Kerja Proyek'
+📝 Header text: 'Maintain Izin Kerja Harian'
+📝 Header text: 'Maintain Izin Kerja Khusus'
+⚠️ No month/year found in headers, checking for numeric patterns...
+⚠️ Using fallback: Month=8, Year=2025
+🗓️ Detected calendar: Month=8, Year=2025
+🎯 Looking for day 14 in calendar...
+🔍 Found 1 elements for selector: td.day:not(.disabled):has-text('14')
+✅ Clicked day 14 using: td.day:not(.disabled):has-text('14') (element 0)
+📝 Calendar result: '14-Aug-2025' vs expected '14/08/2025'
+✅ Date set via calendar successfully: 14-Aug-2025
+✅ Date setting confirmed successful
+🔍 Current date value in field: '14-Aug-2025'
+🎯 Expected date value: '14/08/2025'
+❌ Date verification failed!
+🚨 CRITICAL: Date verification failed! Automation may fail.

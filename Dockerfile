@@ -23,8 +23,25 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libgbm1 \
     libxss1 \
     libasound2 \
+    libcups2 \
+    libxfixes3 \
+    libpango-1.0-0 \
+    libcairo2 \
+    libgtk-3-0 \
+    libx11-xcb1 \
+    libxcomposite1 \
+    libxcursor1 \
+    libxdamage1 \
+    libxext6 \
+    libxfixes3 \
+    libxi6 \
+    libxrandr2 \
+    libxrender1 \
+    libxss1 \
+    libxtst6 \
     fonts-unifont \
     fonts-liberation \
+    fonts-noto-color-emoji \
     # Essential for Flask app
     curl \
     && apt-get clean \
@@ -58,7 +75,11 @@ COPY --from=builder /ms-playwright /ms-playwright
 RUN apt-get update && apt-get install -y --no-install-recommends \
     libnss3 libatk-bridge2.0-0 libdrm2 libxkbcommon0 \
     libxcomposite1 libxdamage1 libxrandr2 libgbm1 \
-    libxss1 libasound2 curl \
+    libxss1 libasound2 libcups2 libxfixes3 \
+    libpango-1.0-0 libcairo2 libgtk-3-0 \
+    libx11-xcb1 libxcursor1 libxext6 libxi6 \
+    libxrender1 libxtst6 fonts-unifont \
+    fonts-liberation fonts-noto-color-emoji curl \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
     && apt-get autoremove -y

@@ -26,12 +26,15 @@ BROWSER_ARGS = [
 ]
 
 # Browser Speed (milliseconds delay between actions)
-SLOW_MO = 100  # Increased from 0 to prevent timeout issues
+SLOW_MO = 25  # Reduced from 100ms - balance between speed and stability
 
 # Timeout Configuration (milliseconds)
 DEFAULT_TIMEOUT = 60000  # 60 seconds default timeout
 NAVIGATION_TIMEOUT = 90000  # 90 seconds for page navigation
 ACTION_TIMEOUT = 45000  # 45 seconds for click/type actions
+
+# Performance Mode
+FAST_MODE = True  # Set to False for more stability, True for speed
 
 def get_browser_config():
     """
@@ -48,6 +51,21 @@ def get_browser_config():
         'navigation_timeout': NAVIGATION_TIMEOUT,
         'action_timeout': ACTION_TIMEOUT
     }
+
+def get_wait_time(base_time):
+    """
+    Get optimized wait time based on performance mode.
+    
+    Args:
+        base_time (int): Base wait time in milliseconds
+        
+    Returns:
+        int: Optimized wait time
+    """
+    if FAST_MODE:
+        return max(50, base_time // 4)  # Reduce to 25% but minimum 50ms
+    else:
+        return base_time  # Use original wait time for stability
 
 def get_browser_mode_description():
     """
@@ -71,21 +89,24 @@ def set_headless_mode(headless=True):
 # Quick configuration presets
 def set_development_mode():
     """Set browser for development (visible, slower)"""
-    global HEADLESS_MODE, SLOW_MO
+    global HEADLESS_MODE, SLOW_MO, FAST_MODE
     HEADLESS_MODE = False
     SLOW_MO = 50
+    FAST_MODE = False
 
 def set_production_mode():
     """Set browser for production (headless, fastest)"""
-    global HEADLESS_MODE, SLOW_MO
-    HEADLESS_MODE = False
+    global HEADLESS_MODE, SLOW_MO, FAST_MODE
+    HEADLESS_MODE = True
     SLOW_MO = 0
+    FAST_MODE = True
 
 def set_debug_mode():
     """Set browser for debugging (visible, very slow)"""
-    global HEADLESS_MODE, SLOW_MO
+    global HEADLESS_MODE, SLOW_MO, FAST_MODE
     HEADLESS_MODE = False
     SLOW_MO = 500
+    FAST_MODE = False
 
 # Display current configuration when imported
 if __name__ == "__main__":
@@ -93,6 +114,7 @@ if __name__ == "__main__":
     print("=" * 40)
     print(f"🖥️  Browser Mode: {get_browser_mode_description()}")
     print(f"⚡ Slow Motion: {SLOW_MO}ms")
+    print(f"🚀 Performance Mode: {'FAST' if FAST_MODE else 'STABLE'}")
     print(f"⏱️  Default Timeout: {DEFAULT_TIMEOUT/1000}s")
     print(f"🧭 Navigation Timeout: {NAVIGATION_TIMEOUT/1000}s")
     print(f"🎯 Action Timeout: {ACTION_TIMEOUT/1000}s")
@@ -101,6 +123,8 @@ if __name__ == "__main__":
     print("   Edit HEADLESS_MODE in browser_config.py")
     print("   - False = Browser visible")
     print("   - True  = Browser hidden")
+    print("   Edit FAST_MODE for speed optimization")
 else:
     # Show config when imported
-    print(f"🖥️ Browser mode: {get_browser_mode_description()}")
+    mode = "FAST" if FAST_MODE else "STABLE"
+    print(f"🖥️ Browser mode: {get_browser_mode_description()} | Performance: {mode}")

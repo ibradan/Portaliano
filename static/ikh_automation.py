@@ -9,7 +9,7 @@ from playwright.sync_api import Playwright, sync_playwright
 
 # Import browser configuration
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from browser_config import get_browser_config, get_browser_mode_description
+from browser_config import get_browser_config, get_browser_mode_description, get_wait_time
 
 # Linux console encoding handling
 if os.name == 'posix':  # Linux/Unix
@@ -211,7 +211,7 @@ def set_date_field(page, date_str):
             if calendar_icon.is_visible():
                 print("📅 Clicking calendar icon...")
                 calendar_icon.click()
-                page.wait_for_timeout(500)  # Reduced wait time for faster processing
+                page.wait_for_timeout(get_wait_time(500))  # Optimized wait time
                 
                 # Debug calendar structure
                 calendar_debug = debug_calendar_structure(page)
@@ -235,7 +235,7 @@ def set_date_field(page, date_str):
                         
                         if navigation_success:
                             print("✅ Calendar navigation completed")
-                            page.wait_for_timeout(200)  # Reduced wait time for faster processing
+                            page.wait_for_timeout(get_wait_time(200))  # Optimized wait
                         else:
                             print("❌ All navigation methods failed")
                             # Continue anyway, maybe the day exists in current view
@@ -280,7 +280,7 @@ def set_date_field(page, date_str):
                             continue
                     
                     if date_clicked:
-                        page.wait_for_timeout(300)  # Reduced wait time for faster processing
+                        page.wait_for_timeout(get_wait_time(300))  # Optimized wait
                         # Verify the date was set
                         current_value = page.locator(f"#{input_id}").input_value()
                         print(f"📝 Calendar result: '{current_value}' vs expected '{date_str}'")
@@ -346,9 +346,7 @@ def set_date_field(page, date_str):
         
         # Trigger change event
         date_input.dispatch_event('change')
-        page.wait_for_timeout(500)
-        
-        # Final verification
+        page.wait_for_timeout(get_wait_time(500))  # Optimized wait
         final_value = date_input.input_value()
         if final_value == date_str:
             print(f"✅ Date successfully set via Playwright: {final_value}")
@@ -361,7 +359,7 @@ def set_date_field(page, date_str):
             calendar_icon = page.locator(f"#{input_id}_span")
             if calendar_icon.is_visible():
                 calendar_icon.click()
-                page.wait_for_timeout(500)  # Reduced wait time for faster processing
+                page.wait_for_timeout(get_wait_time(500))  # Optimized wait
                 
                 # Try to directly set the calendar's internal date
                 emergency_result = page.evaluate(f"""
@@ -414,7 +412,7 @@ def set_date_field(page, date_str):
                 """)
                 
                 if emergency_result:
-                    page.wait_for_timeout(500)  # Reduced wait time for faster processing
+                    page.wait_for_timeout(get_wait_time(500))  # Optimized wait
                     emergency_value = date_input.input_value()
                     if emergency_value == date_str:
                         print(f"🚨✅ Emergency method succeeded: {emergency_value}")
@@ -560,7 +558,7 @@ def run(playwright: Playwright, personnel_list, selected_date=None, selected_shi
             page.screenshot(path="date_setting_error.png")
         else:
             print("✅ Date setting confirmed successful")
-        page.wait_for_timeout(500)  # Only one short wait after date set
+        page.wait_for_timeout(get_wait_time(500))  # Optimized wait
         final_verification = verify_date_input(page, date_str)
         if not final_verification:
             print("🚨 CRITICAL: Date verification failed! Automation may fail.")
@@ -591,7 +589,7 @@ def run(playwright: Playwright, personnel_list, selected_date=None, selected_shi
             print("✅ Shift setting confirmed successful")
         
         # Verify shift setting
-        page.wait_for_timeout(500)
+        page.wait_for_timeout(get_wait_time(500))  # Optimized wait
         shift_verification = verify_shift_setting(page, selected_shift)
         if not shift_verification:
             print("🚨 CRITICAL: Shift verification failed! Attempting emergency retry...")
@@ -711,7 +709,7 @@ def run(playwright: Playwright, personnel_list, selected_date=None, selected_shi
         page.get_by_role("button", name=" Submit").click()
         page.get_by_role("button", name=" OK").click()
         print("✅ Automation completed successfully!")
-        page.wait_for_timeout(200)  # Reduced wait time for faster processing
+        page.wait_for_timeout(get_wait_time(200))  # Optimized wait
     except Exception as e:
         print(f"❌ Automation failed: {e}")
         raise
@@ -849,7 +847,7 @@ def navigate_to_month_year(page, target_month, target_year, current_month, curre
                             next_btn.click()
                             print(f"➡️ Clicked next using: {selector}")
                             clicked = True
-                            page.wait_for_timeout(300)
+                            page.wait_for_timeout(get_wait_time(300))  # Optimized wait
                             break
                     except:
                         continue
@@ -867,7 +865,7 @@ def navigate_to_month_year(page, target_month, target_year, current_month, curre
                             prev_btn.click()
                             print(f"⬅️ Clicked prev using: {selector}")
                             clicked = True
-                            page.wait_for_timeout(300)
+                            page.wait_for_timeout(get_wait_time(300))  # Optimized wait
                             break
                     except:
                         continue
@@ -945,7 +943,7 @@ def navigate_bootstrap_calendar(page, target_month, target_year, current_month, 
                                     element.click()
                                     print(f"{'➡️' if direction == 'next' else '⬅️'} Clicked {direction} using: {selector} (element {i}, step {step+1}/{steps})")
                                     clicked = True
-                                    page.wait_for_timeout(200)  # Reduced wait time for faster processing
+                                    page.wait_for_timeout(get_wait_time(200))  # Optimized wait
                                     break
                             except Exception as e:
                                 print(f"⚠️ Failed to click element {i} with selector {selector}: {e}")
@@ -1010,7 +1008,7 @@ def try_header_navigation(page, target_month, target_year):
                     
                     # Try clicking the header to get month/year picker
                     header.click()
-                    page.wait_for_timeout(200)  # Reduced wait time for faster processing
+                    page.wait_for_timeout(get_wait_time(200))  # Optimized wait
                     
                     # Look for month picker view
                     month_selectors = [
@@ -1028,7 +1026,7 @@ def try_header_navigation(page, target_month, target_year):
                                 month_elem.click()
                                 print(f"📅 Clicked month using: {month_sel}")
                                 month_clicked = True
-                                page.wait_for_timeout(500)
+                                page.wait_for_timeout(get_wait_time(500))  # Optimized wait
                                 break
                         except:
                             continue
@@ -1048,7 +1046,7 @@ def try_header_navigation(page, target_month, target_year):
                                 if year_elem.is_visible():
                                     year_elem.click()
                                     print(f"📅 Clicked year using: {year_sel}")
-                                    page.wait_for_timeout(500)
+                                    page.wait_for_timeout(get_wait_time(500))  # Optimized wait
                                     break
                             except:
                                 continue
@@ -1279,9 +1277,7 @@ def set_shift_field(page, selected_shift):
                         select.removeAttribute('disabled');
                     }}
                 """)
-                page.wait_for_timeout(500)
-            
-            # Select the option
+                page.wait_for_timeout(get_wait_time(500))  # Optimized wait
             shift_locator.select_option(shift_value)
             page.wait_for_timeout(1000)
             
@@ -1394,19 +1390,13 @@ def set_shift_field(page, selected_shift):
             
             # Focus on the select element
             shift_locator.focus()
-            page.wait_for_timeout(500)
-            
-            # Use keyboard navigation to select the option
+            page.wait_for_timeout(get_wait_time(500))  # Optimized wait
             # Reset to first option
             shift_locator.press("Home")
-            page.wait_for_timeout(300)
-            
-            # Navigate to the desired option (1-based)
+            page.wait_for_timeout(get_wait_time(300))  # Optimized wait
             for i in range(int(shift_value) - 1):
                 shift_locator.press("ArrowDown")
-                page.wait_for_timeout(200)
-            
-            # Confirm selection
+                page.wait_for_timeout(get_wait_time(200))  # Optimized wait
             shift_locator.press("Enter")
             page.wait_for_timeout(1000)
             

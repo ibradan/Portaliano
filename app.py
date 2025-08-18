@@ -6,6 +6,7 @@ import sys
 import uuid
 import logging
 import signal
+import datetime
 from werkzeug.utils import secure_filename
 from functools import lru_cache
 from threading import Thread
@@ -334,11 +335,14 @@ def run_automation_process(script_path, csv_path, selected_indices, selected_dat
             }
             category = category_map.get(mode, 'IA')
             
+            # Use today's date if no selected_date provided
+            work_date = selected_date if selected_date else datetime.datetime.now().strftime('%d/%m/%Y')
+            
             process_args = [
                 'python3', 
                 script_path, 
                 category,
-                selected_date or '30',
+                work_date,
                 'MELTING REPAIR',
                 str(selected_shift or 1)
             ]

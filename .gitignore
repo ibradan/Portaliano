@@ -122,3 +122,19 @@ README_LINUX.md
 *_debug.py
 *_old.*
 *_backup.*
+
+# Guide files and setup scripts (prevent re-creation)
+BROWSER_CONFIG_GUIDE.md
+VENV_SETUP_GUIDE.md
+REFACTORING_COMPLETE.md
+DOCKER_DEPLOYMENT_GUIDE.md
+check_venv.py
+optimize_ikh_performance.py
+switch_browser_mode.sh
+deploy.sh
+docker-build.sh
+setup-portainer.sh
+start_portal_venv.sh
+docker-compose.override.yml
+docker-compose.prod.yml
+portaliano.service
